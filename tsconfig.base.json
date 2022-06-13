@@ -15,12 +15,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@everything-zen/admin-ui": ["libs/admin-ui/src/index.ts"],
       "@components/*": ["apps/public-ui/components/*"],
+      "@db": ["apps/public-ui/prisma"],
       "@hooks/*": ["apps/public-ui/hooks/*"],
       "@photos/*": ["apps/public-ui/public/photos/*"],
-      "@testimonials/*": ["apps/public-ui/public/testimonials/*"],
-      "@db": ["apps/public-ui/prisma"]
+      "@testimonials/*": ["apps/public-ui/public/testimonials/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
