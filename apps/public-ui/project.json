@@ -5,12 +5,20 @@
   "targets": {
     "build": {
       "executor": "@nrwl/next:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "defaultConfiguration": "production",
       "options": {
         "root": "apps/public-ui",
         "outputPath": "dist/apps/public-ui"
       },
+      "dependsOn": [
+        {
+          "target": "generate",
+          "projects": "self"
+        }
+      ],
       "configurations": {
         "development": {},
         "production": {}
@@ -42,7 +50,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/public-ui"],
+      "outputs": [
+        "coverage/apps/public-ui"
+      ],
       "options": {
         "jestConfig": "apps/public-ui/jest.config.ts",
         "passWithNoTests": true
@@ -50,9 +60,21 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/public-ui/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": [
+          "apps/public-ui/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "generate": {
+      "builder": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "npx prisma generate --schema ./prisma/schema.prisma",
+        "cwd": "apps/public-ui"
       }
     }
   },

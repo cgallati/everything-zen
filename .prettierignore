@@ -2,3 +2,5 @@
 
 /dist
 /coverage
+public
+schema.prisma

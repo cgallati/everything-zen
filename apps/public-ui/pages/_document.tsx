@@ -1,7 +1,37 @@
 /* eslint-disable react/display-name */
 import { ReactElement } from 'react';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Document, { Html, Head as NextHead, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
+
+const Head = ({ children }) => (
+  <NextHead>
+    {children}
+    <link rel="icon" type="image/svg+xml" href="/wave.svg" />
+    <link rel="alternate icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    {/* Global Site Tag (gtag.js) - Google Analytics */}
+    <script
+      async
+      src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+    />
+    <script
+      dangerouslySetInnerHTML={{
+        __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+              page_path: window.location.pathname,
+            });
+          `,
+      }}
+    />
+  </NextHead>
+);
 
 export default class CustomDocument extends Document<{
   styleTags: ReactElement[];
@@ -20,7 +50,7 @@ export default class CustomDocument extends Document<{
 
   render() {
     return (
-      <Html>
+      <Html lang="en">
         <Head>{this.props.styleTags}</Head>
         <body>
           <Main />
