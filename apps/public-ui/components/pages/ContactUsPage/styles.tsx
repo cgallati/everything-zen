@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const FormHeading = styled.h2`
   font: normal normal 600 16px/28px Source Sans Pro;

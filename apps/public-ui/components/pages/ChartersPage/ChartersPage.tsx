@@ -5,7 +5,7 @@ import {
   ResponsiveSubheading,
   Subheading,
   SubheadingAndFriend,
-} from "../../common.styles"
+} from '../../common.styles';
 import {
   CharterCard,
   CharterCardSection,
@@ -15,32 +15,32 @@ import {
   MainDetails,
   PaddedTileGrid,
   WhatToExpect,
-} from "./styles"
-import { Gallery } from "../../Gallery/Gallery"
-import React, { FC } from "react"
-import { Tile } from "../../Tile/Tile"
-import { CTA } from "../../CTA/CTA"
-import { Footer } from "../../Layout/Footer"
-import { NextSeo } from "next-seo"
-import boat0 from "@photos/boat0.jpg"
-import boat1 from "@photos/boat1.jpg"
-import boat2 from "@photos/boat2.jpg"
-import boat3 from "@photos/boat3.jpg"
-import boat4 from "@photos/boat4.jpg"
-import boat5 from "@photos/boat5.jpg"
-import boat6 from "@photos/boat6.jpg"
-import boat7 from "@photos/boat7.jpg"
-import boat8 from "@photos/boat8.jpg"
-import boat9 from "@photos/boat9.jpg"
-import boat10 from "@photos/boat10.jpg"
-import boat11 from "@photos/boat11.jpg"
-import boat12 from "@photos/boat12.jpg"
-import boat13 from "@photos/boat13.jpg"
+} from './styles';
+import { Gallery } from '../../Gallery/Gallery';
+import React, { FC } from 'react';
+import { Tile } from '../../Tile/Tile';
+import { CTA } from '../../CTA/CTA';
+import { Footer } from '../../Layout/Footer';
+import { NextSeo } from 'next-seo';
+import boat0 from '@photos/boat0.jpg';
+import boat1 from '@photos/boat1.jpg';
+import boat2 from '@photos/boat2.jpg';
+import boat3 from '@photos/boat3.jpg';
+import boat4 from '@photos/boat4.jpg';
+import boat5 from '@photos/boat5.jpg';
+import boat6 from '@photos/boat6.jpg';
+import boat7 from '@photos/boat7.jpg';
+import boat8 from '@photos/boat8.jpg';
+import boat9 from '@photos/boat9.jpg';
+import boat10 from '@photos/boat10.jpg';
+import boat11 from '@photos/boat11.jpg';
+import boat12 from '@photos/boat12.jpg';
+import boat13 from '@photos/boat13.jpg';
 
 export const ChartersPage: FC = () => {
   return (
     <>
-      <NextSeo title={"CHARTERS & RATES"} />
+      <NextSeo title={'CHARTERS & RATES'} />
       <ContentSection>
         <Heading>CHARTERS & RATES</Heading>
         <MainDetails>
@@ -91,26 +91,26 @@ export const ChartersPage: FC = () => {
         <PaddedTileGrid>
           <div>
             <Tile
-              iconSrc={"/icons/speaker.svg"}
-              alt={"Bluetooth speaker"}
-              text={"Bluetooth sound system available"}
+              iconSrc={'/icons/speaker.svg'}
+              alt={'Bluetooth speaker'}
+              text={'Bluetooth sound system available'}
             />
             <Tile
-              iconSrc={"/icons/lifevest.svg"}
-              alt={"Personal floatation device"}
-              text={"Safety instruction given at the start of each charter"}
+              iconSrc={'/icons/lifevest.svg'}
+              alt={'Personal floatation device'}
+              text={'Safety instruction given at the start of each charter'}
             />
           </div>
           <div>
             <Tile
-              iconSrc={"/icons/binocs.svg"}
-              alt={"Binoculars"}
-              text={"Watch for dolphin and birds along your experience"}
+              iconSrc={'/icons/binocs.svg'}
+              alt={'Binoculars'}
+              text={'Watch for dolphin and birds along your experience'}
             />
             <Tile
-              iconSrc={"/icons/barrel.svg"}
-              alt={"Wooden cask."}
-              text={"Special catering available from our local partners"}
+              iconSrc={'/icons/barrel.svg'}
+              alt={'Wooden cask.'}
+              text={'Special catering available from our local partners'}
             />
           </div>
         </PaddedTileGrid>
@@ -123,29 +123,29 @@ export const ChartersPage: FC = () => {
         </Paragraph>
         <Gallery
           images={[
-            { src: boat0, alt: "" },
-            { src: boat1, alt: "" },
-            { src: boat2, alt: "" },
-            { src: boat3, alt: "" },
-            { src: boat4, alt: "" },
+            { src: boat0, alt: '' },
+            { src: boat1, alt: '' },
+            { src: boat2, alt: '' },
+            { src: boat3, alt: '' },
+            { src: boat4, alt: '' },
             {
               src: boat5,
               alt: "Everything Zen sails along Charleston's Low Battery.",
             },
-            { src: boat6, alt: "" },
-            { src: boat7, alt: "" },
+            { src: boat6, alt: '' },
+            { src: boat7, alt: '' },
             {
               src: boat8,
               alt: "Everything Zen's spacious and open aft seating and galley.",
             },
-            { src: boat9, alt: "" },
+            { src: boat9, alt: '' },
             {
               src: boat10,
-              alt: "A bottle of wine and glasses on the aft table.",
+              alt: 'A bottle of wine and glasses on the aft table.',
             },
-            { src: boat11, alt: "" },
-            { src: boat12, alt: "" },
-            { src: boat13, alt: "" },
+            { src: boat11, alt: '' },
+            { src: boat12, alt: '' },
+            { src: boat13, alt: '' },
           ]}
           startingIndex={6}
         />
@@ -197,10 +197,10 @@ export const ChartersPage: FC = () => {
           everyone onboard.
         </Paragraph>
         <CTAPadding>
-          <CTA variant={"bluefat"} />
+          <CTA variant={'bluefat'} />
         </CTAPadding>
       </ContentSection>
       <Footer />
     </>
-  )
-}
+  );
+};

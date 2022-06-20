@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components';
 
 export const Wrapper = styled.a`
   display: block;
@@ -9,4 +9,4 @@ export const Wrapper = styled.a`
   @media (min-width: 600px) {
     margin-top: 5rem;
   }
-`
+`;

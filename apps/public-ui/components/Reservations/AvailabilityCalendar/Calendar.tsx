@@ -1,4 +1,4 @@
-import React, { Dispatch, FC, SetStateAction } from "react"
+import React, { Dispatch, FC, SetStateAction } from 'react';
 import {
   CalendarContainer,
   Day,
@@ -10,20 +10,20 @@ import {
   MonthName,
   MonthSlider,
   WeekHeader,
-} from "@components/Reservations/AvailabilityCalendar/styles"
+} from '@components/Reservations/AvailabilityCalendar/styles';
 import {
   getHeaders,
   getMonthStartPad,
-} from "@components/Reservations/AvailabilityCalendar/utils"
-import { isSameDay, setDate } from "date-fns"
-import { Month } from "@components/Reservations/types"
+} from '@components/Reservations/AvailabilityCalendar/utils';
+import { isSameDay, setDate } from 'date-fns';
+import { Month } from '@components/Reservations/types';
 
 export interface CalendarProps {
-  months: Month[]
-  idx: number
-  setIdx: Dispatch<number>
-  selectedDate: Date
-  setSelectedDate: Dispatch<SetStateAction<Date | null>>
+  months: Month[];
+  idx: number;
+  setIdx: Dispatch<number>;
+  selectedDate: Date;
+  setSelectedDate: Dispatch<SetStateAction<Date | null>>;
 }
 
 export const Calendar: FC<CalendarProps> = ({
@@ -33,18 +33,18 @@ export const Calendar: FC<CalendarProps> = ({
   selectedDate,
   setSelectedDate,
 }) => {
-  const headers = getHeaders(months)
+  const headers = getHeaders(months);
   const handleMonthClick = (index: number) => {
     if (index === idx + 1 || index === 0 || index === headers.length - 1) {
-      return
+      return;
     } else if (index === idx + 2) {
-      setIdx(idx + 1)
-      setSelectedDate(null)
+      setIdx(idx + 1);
+      setSelectedDate(null);
     } else {
-      setIdx(idx - 1)
-      setSelectedDate(null)
+      setIdx(idx - 1);
+      setSelectedDate(null);
     }
-  }
+  };
   return (
     <CalendarContainer>
       <Header>
@@ -82,21 +82,21 @@ export const Calendar: FC<CalendarProps> = ({
                 .map((_, count) => {
                   return (
                     <Day
-                      key={"pad-day-" + idx + "" + count}
+                      key={'pad-day-' + idx + '' + count}
                       unavailable={false}
                       selected={false}
                     />
-                  )
+                  );
                 })}
               {month.days.map((day, id) => {
-                const date = setDate(month.firstDate, id + 1)
-                const isSelected = isSameDay(selectedDate, date)
+                const date = setDate(month.firstDate, id + 1);
+                const isSelected = isSameDay(selectedDate, date);
                 const available = day.avails.filter(
                   (avail) => !avail.booked
-                ).length
+                ).length;
                 return (
                   <Day
-                    key={idx + "" + id}
+                    key={idx + '' + id}
                     unavailable={!available}
                     selected={isSelected}
                     onClick={() =>
@@ -106,12 +106,12 @@ export const Calendar: FC<CalendarProps> = ({
                   >
                     {id + 1}
                   </Day>
-                )
+                );
               })}
             </Days>
           ))}
         </DaysSlider>
       </DaysViewport>
     </CalendarContainer>
-  )
-}
+  );
+};

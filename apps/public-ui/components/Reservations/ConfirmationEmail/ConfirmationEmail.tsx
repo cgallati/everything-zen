@@ -1,6 +1,6 @@
-import React from "react";
-import { format } from "date-fns";
-import Image from "next/image";
+import React from 'react';
+import { format } from 'date-fns';
+import Image from 'next/image';
 import {
   BG,
   CHSHBR,
@@ -14,7 +14,7 @@ import {
   WelcomeCardBase,
   WelcomeCardContent,
   Frame,
-} from "./ConfirmationEmail.styles";
+} from './ConfirmationEmail.styles';
 
 export type ConfirmationEmailProps = {
   dateTime: Date;
@@ -23,7 +23,7 @@ export type ConfirmationEmailProps = {
 export const ConfirmationEmail: React.FC<ConfirmationEmailProps> = ({
   dateTime,
 }) => {
-  const [date, time] = format(dateTime, "MMMM do, yyyy|h").split("|");
+  const [date, time] = format(dateTime, 'MMMM do, yyyy|h').split('|');
   const timeRange = `${time}:00 - ${parseInt(time) + 3}:00`;
   return (
     <>
@@ -43,7 +43,7 @@ export const ConfirmationEmail: React.FC<ConfirmationEmailProps> = ({
                 <h3>WELCOME ABOARD</h3>
                 <h4>We are thrilled to have you on board Everything Zen!</h4>
                 <h4>
-                  You are scheduled for{" "}
+                  You are scheduled for{' '}
                   <strong>
                     {date} from {timeRange}
                   </strong>

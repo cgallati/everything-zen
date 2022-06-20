@@ -1,7 +1,7 @@
-import { Button, Frame } from "./styles";
-import React from "react";
+import { Button, Frame } from './styles';
+import React from 'react';
 import Image, { StaticImageData } from 'next/image';
-import { useSpringCarousel } from "react-spring-carousel";
+import { useSpringCarousel } from 'react-spring-carousel';
 
 type Image = {
   src: StaticImageData;

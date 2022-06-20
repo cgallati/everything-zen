@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Image, { ImageProps } from "next/image";
+import styled from 'styled-components';
+import Image, { ImageProps } from 'next/image';
 
 export const PageHeading = styled.h1`
   font: normal normal normal 16px/32px Stencilia-A;

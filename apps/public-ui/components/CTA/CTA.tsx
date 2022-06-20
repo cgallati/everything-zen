@@ -5,11 +5,11 @@ import {
   Padding,
   TransparentButton,
   WhiteButton,
-} from "./styles";
-import Link from "next/link";
+} from './styles';
+import Link from 'next/link';
 
 type CTAProps = {
-  variant: "blue" | "white" | "transparent" | "fat" | "bluefat";
+  variant: 'blue' | 'white' | 'transparent' | 'fat' | 'bluefat';
   text?: string;
   route?: string;
   padding?: boolean;
@@ -17,18 +17,18 @@ type CTAProps = {
 
 export const CTA: React.FC<CTAProps> = ({
   variant,
-  text = "BOOK A CHARTER",
-  route = "/reserve",
+  text = 'BOOK A CHARTER',
+  route = '/reserve',
   padding = true,
 }) => {
   const Button =
-    variant === "blue"
+    variant === 'blue'
       ? BlueButton
-      : variant === "white"
+      : variant === 'white'
       ? WhiteButton
-      : variant === "fat"
+      : variant === 'fat'
       ? FatButton
-      : variant === "bluefat"
+      : variant === 'bluefat'
       ? BlueAndFatButton
       : TransparentButton;
   return padding ? (

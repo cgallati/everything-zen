@@ -1,19 +1,20 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 
-export * from "@prisma/client";
+export * from '@prisma/client';
 
 let prisma: PrismaClient;
 
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === 'production') {
   prisma = new PrismaClient({
-    errorFormat: "minimal",
+    errorFormat: 'minimal',
   });
 } else {
-  globalThis["prisma"] = globalThis["prisma"] ||
+  globalThis['prisma'] =
+    globalThis['prisma'] ||
     new PrismaClient({
-      errorFormat: "pretty",
+      errorFormat: 'pretty',
     });
-  prisma = globalThis["prisma"];
+  prisma = globalThis['prisma'];
 }
 
 export default prisma;

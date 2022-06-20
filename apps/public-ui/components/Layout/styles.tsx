@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-const headerHeight = "4rem";
+const headerHeight = '4rem';
 
 export const Hamburger = styled.div`
   float: right;
@@ -32,7 +32,7 @@ export const EZ = styled.h1`
   cursor: pointer;
   letter-spacing: 3px;
   color: #00263a;
-  font: normal normal 600 15px/18px "Title Wave Regular";
+  font: normal normal 600 15px/18px 'Title Wave Regular';
 `;
 
 interface SideBarProps {
@@ -47,7 +47,7 @@ export const SideBar = styled.aside<SideBarProps>`
   top: 0;
   overflow: hidden;
   width: 100vw;
-  height: ${({ open }) => (open ? "calc(100vh - 3rem)" : "0")};
+  height: ${({ open }) => (open ? 'calc(100vh - 3rem)' : '0')};
   //transform: translateY();
   transition: height 0.5s;
 
@@ -70,7 +70,7 @@ export const SideBar = styled.aside<SideBarProps>`
   li {
     position: relative;
     display: block;
-    background: url("/icons/rightarrow.svg") no-repeat left center;
+    background: url('/icons/rightarrow.svg') no-repeat left center;
     background-size: 15px;
     padding-left: 2.5rem;
     margin: 2.2rem 0;
@@ -140,7 +140,7 @@ export const FooterWrapper = styled.footer`
 
 export const UpArrowButton = styled.button`
   display: block;
-  background: url("/icons/up-arrow.svg") no-repeat center;
+  background: url('/icons/up-arrow.svg') no-repeat center;
   background-size: 28px 17px;
   height: 5rem;
   width: 5rem;
@@ -152,7 +152,7 @@ export const UpArrowButton = styled.button`
 type SocialIconProps = {
   href: string;
   bg: string;
-  target: "_blank";
+  target: '_blank';
 };
 export const SocialIcon = styled.a<SocialIconProps>`
   display: block;

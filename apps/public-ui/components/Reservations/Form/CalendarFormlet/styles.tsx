@@ -1,10 +1,10 @@
-import styled from "styled-components"
+import styled from 'styled-components';
 
 export const Formlet = styled.section`
   width: 267px;
   margin: auto;
   padding: 2.5rem 0;
-`
+`;
 
 export const Heading = styled.h1`
   font: normal normal normal 22px/26px Source Sans Pro;
@@ -12,7 +12,7 @@ export const Heading = styled.h1`
   color: #00263a;
   text-align: center;
   margin-bottom: 1.25rem;
-`
+`;
 
 export const SubHeading = styled.h2`
   font: normal normal normal 11px/13px Source Sans Pro;
@@ -20,10 +20,10 @@ export const SubHeading = styled.h2`
   color: #00263a;
   text-align: center;
   margin-bottom: 3rem;
-`
+`;
 
 interface TimeButtonProps {
-  booked: boolean
+  booked: boolean;
 }
 
 export const CharterTimeButton = styled.button<TimeButtonProps>`
@@ -38,13 +38,13 @@ export const CharterTimeButton = styled.button<TimeButtonProps>`
   letter-spacing: 2.12px;
   color: #00263a;
   margin: 0 auto 1.25rem auto;
-  cursor: ${({ booked }) => (booked ? "auto" : "pointer")};;
+  cursor: ${({ booked }) => (booked ? 'auto' : 'pointer')};
   :active {
     background: #00263a;
     color: #fff;
   }
-  opacity: ${({ booked }) => (booked ? ".35" : "1")};
-`
+  opacity: ${({ booked }) => (booked ? '.35' : '1')};
+`;
 
 export const OffSeasonMessage = styled.h4`
   font: normal normal normal 14px/20px Source Sans Pro;
@@ -54,4 +54,4 @@ export const OffSeasonMessage = styled.h4`
   a {
     color: #00263a;
   }
-`
+`;

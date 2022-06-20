@@ -1,6 +1,11 @@
 /* eslint-disable react/display-name */
 import { ReactElement } from 'react';
-import Document, { Html, Head as NextHead, Main, NextScript } from 'next/document';
+import Document, {
+  Html,
+  Head as NextHead,
+  Main,
+  NextScript,
+} from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
 const Head = ({ children }) => (

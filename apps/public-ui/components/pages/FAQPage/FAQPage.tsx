@@ -1,15 +1,15 @@
-import { Page } from "../../Layout/Page"
-import { FAQs } from "./content"
-import { FAQ } from "./FAQ"
-import React, { useState } from "react"
-import { CTA } from "../../CTA/CTA"
-import { Endorsement } from "@components/Endorsement/Endorsement"
+import { Page } from '../../Layout/Page';
+import { FAQs } from './content';
+import { FAQ } from './FAQ';
+import React, { useState } from 'react';
+import { CTA } from '../../CTA/CTA';
+import { Endorsement } from '@components/Endorsement/Endorsement';
 
 export const FAQPage: React.FC = () => {
-  const [expanded, setExpanded] = useState<number | undefined>(undefined)
+  const [expanded, setExpanded] = useState<number | undefined>(undefined);
 
   return (
-    <Page title={"FREQUENTLY ASKED QUESTIONS"}>
+    <Page title={'FREQUENTLY ASKED QUESTIONS'}>
       {FAQs.map((faq, idx) => (
         <FAQ
           key={idx}
@@ -23,9 +23,9 @@ export const FAQPage: React.FC = () => {
         />
       ))}
       <br />
-      <CTA variant={"fat"} text={"CONTACT US"} route={"/contact"} />
-      <CTA variant={"fat"} text={"CHARTERS & RATES"} route={"/charters"} />
+      <CTA variant={'fat'} text={'CONTACT US'} route={'/contact'} />
+      <CTA variant={'fat'} text={'CHARTERS & RATES'} route={'/charters'} />
       <Endorsement />
     </Page>
-  )
-}
+  );
+};

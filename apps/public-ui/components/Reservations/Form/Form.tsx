@@ -1,15 +1,15 @@
-import React, { useState } from "react"
+import React, { useState } from 'react';
 import {
   CalendarFormlet,
   CalendarFormletProps,
-} from "./CalendarFormlet/CalendarFormlet"
-import { InfoFormlet, InfoFormletProps } from "./InfoFormlet/InfoFormlet"
-import { Success } from "./Success"
-import { Loading } from "./Loading"
-import { Availability, Month, PartyType } from "../types"
-import { analyticsEvent } from "../../../lib/analytics"
-import { addMinutes, format } from "date-fns"
-import { ErrorMessage } from "@components/Reservations/Form/Error"
+} from './CalendarFormlet/CalendarFormlet';
+import { InfoFormlet, InfoFormletProps } from './InfoFormlet/InfoFormlet';
+import { Success } from './Success';
+import { Loading } from './Loading';
+import { Availability, Month, PartyType } from '../types';
+import { analyticsEvent } from '../../../lib/analytics';
+import { addMinutes, format } from 'date-fns';
+import { ErrorMessage } from '@components/Reservations/Form/Error';
 
 export enum FormState {
   CALENDAR,
@@ -20,47 +20,47 @@ export enum FormState {
 }
 
 type FormProps = {
-  availability: Month[]
-}
+  availability: Month[];
+};
 
 export const Form: React.FC<FormProps> = ({ availability }) => {
-  const [formState, setFormState] = useState<FormState>(FormState.CALENDAR)
+  const [formState, setFormState] = useState<FormState>(FormState.CALENDAR);
 
-  const [name, setName] = React.useState("")
-  const [phone, setPhone] = React.useState("")
-  const [email, setEmail] = React.useState("")
-  const [partySize, setPartySize] = React.useState<number | "default">(
-    "default"
-  )
-  const [partyType, setPartyType] = React.useState<PartyType | "default">(
-    "default"
-  )
+  const [name, setName] = React.useState('');
+  const [phone, setPhone] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [partySize, setPartySize] = React.useState<number | 'default'>(
+    'default'
+  );
+  const [partyType, setPartyType] = React.useState<PartyType | 'default'>(
+    'default'
+  );
 
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null)
-  const [selectedAvail, setSelectedAvail] = useState<Availability | null>(null)
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [selectedAvail, setSelectedAvail] = useState<Availability | null>(null);
 
   /* info form handlers */
   const handleNameChange: React.ChangeEventHandler<HTMLInputElement> = (e) =>
-    setName(e.target.value)
+    setName(e.target.value);
   const handlePhoneChange: React.ChangeEventHandler<HTMLInputElement> = (e) =>
-    setPhone(e.target.value)
+    setPhone(e.target.value);
   const handleEmailChange: React.ChangeEventHandler<HTMLInputElement> = (e) =>
-    setEmail(e.target.value)
+    setEmail(e.target.value);
 
   /* advance / back handlers */
-  const advanceForm = () => setFormState(FormState.INFO)
-  const goBack = () => setFormState(FormState.CALENDAR)
+  const advanceForm = () => setFormState(FormState.INFO);
+  const goBack = () => setFormState(FormState.CALENDAR);
 
   const submitForm: React.FormEventHandler = async (e) => {
-    e.stopPropagation()
+    e.stopPropagation();
     if (!selectedAvail) {
-      return
+      return;
     }
 
-    setFormState(FormState.SUBMITTING)
-    const { start, length } = selectedAvail
-    await fetch("/api/submitReservation", {
-      method: "PUT",
+    setFormState(FormState.SUBMITTING);
+    const { start, length } = selectedAvail;
+    await fetch('/api/submitReservation', {
+      method: 'PUT',
       body: JSON.stringify({
         data: {
           avail: selectedAvail,
@@ -72,34 +72,34 @@ export const Form: React.FC<FormProps> = ({ availability }) => {
     })
       .then((res) => {
         if (res.ok) {
-          return res
+          return res;
         }
-        throw new Error("Failure submitting reservation.")
+        throw new Error('Failure submitting reservation.');
       })
       .then(() => {
-        fetch("/api/mail/sendConfirmation", {
-          method: "PUT",
+        fetch('/api/mail/sendConfirmation', {
+          method: 'PUT',
           body: JSON.stringify({
             to: email,
-            date: format(start, "MMMM do, yyyy"),
+            date: format(start, 'MMMM do, yyyy'),
             timeRange:
-              format(start, "h:mm") +
-              " - " +
-              format(addMinutes(start, length), "h:mm"),
+              format(start, 'h:mm') +
+              ' - ' +
+              format(addMinutes(start, length), 'h:mm'),
           }),
-        })
+        });
       })
       .then(() =>
         analyticsEvent({
-          action: "purchase",
+          action: 'purchase',
           params: {
-            event_label: "reserve-charter",
+            event_label: 'reserve-charter',
           },
         })
       )
       .then(() => setFormState(FormState.SUCCESS))
-      .catch(() => setFormState(FormState.ERROR))
-  }
+      .catch(() => setFormState(FormState.ERROR));
+  };
 
   const calFormletProps: CalendarFormletProps = {
     availability,
@@ -107,7 +107,7 @@ export const Form: React.FC<FormProps> = ({ availability }) => {
     setSelectedDate,
     advanceForm,
     setSelectedAvail,
-  }
+  };
 
   const infoFormletProps: InfoFormletProps = {
     name,
@@ -123,24 +123,24 @@ export const Form: React.FC<FormProps> = ({ availability }) => {
     submitForm,
     goBack,
     selectedAvail: selectedAvail as Availability,
-  }
+  };
 
   const ActiveFormlet = () => {
     switch (formState) {
       case FormState.CALENDAR:
-        return <CalendarFormlet {...calFormletProps} />
+        return <CalendarFormlet {...calFormletProps} />;
       case FormState.INFO:
-        return <InfoFormlet {...infoFormletProps} />
+        return <InfoFormlet {...infoFormletProps} />;
       case FormState.SUBMITTING:
-        return <Loading />
+        return <Loading />;
       case FormState.SUCCESS:
-        return <Success />
+        return <Success />;
       case FormState.ERROR:
-        return <ErrorMessage />
+        return <ErrorMessage />;
       default:
-        return <h1>INVALID STATE</h1>
+        return <h1>INVALID STATE</h1>;
     }
-  }
+  };
 
-  return ActiveFormlet()
-}
+  return ActiveFormlet();
+};

@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react';
 import {
   Answer,
   BackArrow,
@@ -15,25 +15,25 @@ import {
   SubmitButton,
   TextInput,
   Time,
-} from "./styles"
-import { addMinutes, format } from "date-fns"
-import { Availability, PartyType } from "../../types"
+} from './styles';
+import { addMinutes, format } from 'date-fns';
+import { Availability, PartyType } from '../../types';
 
 export type InfoFormletProps = {
-  name: string
-  email: string
-  phone: string
-  partySize: number | string
-  partyType: PartyType | string
-  submitForm: React.FormEventHandler
-  goBack: () => void
-  handlePhoneChange: React.ChangeEventHandler<HTMLInputElement>
-  handleEmailChange: React.ChangeEventHandler<HTMLInputElement>
-  handleNameChange: React.ChangeEventHandler<HTMLInputElement>
-  setPartySize: React.Dispatch<React.SetStateAction<number | "default">>
-  setPartyType: React.Dispatch<React.SetStateAction<PartyType | "default">>
-  selectedAvail: Availability
-}
+  name: string;
+  email: string;
+  phone: string;
+  partySize: number | string;
+  partyType: PartyType | string;
+  submitForm: React.FormEventHandler;
+  goBack: () => void;
+  handlePhoneChange: React.ChangeEventHandler<HTMLInputElement>;
+  handleEmailChange: React.ChangeEventHandler<HTMLInputElement>;
+  handleNameChange: React.ChangeEventHandler<HTMLInputElement>;
+  setPartySize: React.Dispatch<React.SetStateAction<number | 'default'>>;
+  setPartyType: React.Dispatch<React.SetStateAction<PartyType | 'default'>>;
+  selectedAvail: Availability;
+};
 
 export const InfoFormlet: React.FC<InfoFormletProps> = ({
   name,
@@ -54,24 +54,24 @@ export const InfoFormlet: React.FC<InfoFormletProps> = ({
     !name ||
     !phone ||
     !email ||
-    partySize === "default" ||
-    partyType === "default"
+    partySize === 'default' ||
+    partyType === 'default';
 
-  const { start, length, cost } = selectedAvail
+  const { start, length, cost } = selectedAvail;
   const [startTimeString, endTimeString] = [
-    format(start, "h:mm"),
-    format(addMinutes(start, length), "h:mm"),
-  ]
+    format(start, 'h:mm'),
+    format(addMinutes(start, length), 'h:mm'),
+  ];
   const cruiseTimeStrings = [
     selectedAvail.type,
-    startTimeString + " - " + endTimeString,
-  ]
-  const partySizeOptions = [1, 2, 3, 4, 5, 6]
+    startTimeString + ' - ' + endTimeString,
+  ];
+  const partySizeOptions = [1, 2, 3, 4, 5, 6];
 
   return (
     <Formlet>
       <BackButton onClick={() => goBack()}>
-        <BackArrow src={"/leftarrow.svg"} alt={"back arrow"} />
+        <BackArrow src={'/leftarrow.svg'} alt={'back arrow'} />
         <BackText>CHOOSE A DIFFERENT DATE OR TIME</BackText>
       </BackButton>
       <HR />
@@ -83,7 +83,7 @@ export const InfoFormlet: React.FC<InfoFormletProps> = ({
         <ReservationItem>${cost}</ReservationItem>
       </ItemLine>
       <ReservationDate>
-        {format(start, "EEEE, MMMM do  Y").toUpperCase()}
+        {format(start, 'EEEE, MMMM do  Y').toUpperCase()}
       </ReservationDate>
       <Time>{cruiseTimeStrings[1]}</Time>
       <HR />
@@ -92,7 +92,7 @@ export const InfoFormlet: React.FC<InfoFormletProps> = ({
         value={partySize}
         onChange={(e) => setPartySize(parseInt(e.target.value))}
       >
-        <option disabled value={"default"}>
+        <option disabled value={'default'}>
           CHOOSE AN OPTION
         </option>
         {partySizeOptions.map((option) => (
@@ -106,7 +106,7 @@ export const InfoFormlet: React.FC<InfoFormletProps> = ({
         value={partyType}
         onChange={(e) => setPartyType(e.target.value as PartyType)}
       >
-        <option disabled value={"default"}>
+        <option disabled value={'default'}>
           CHOOSE AN OPTION
         </option>
         {Object.keys(PartyType).map((option) => (
@@ -121,19 +121,19 @@ export const InfoFormlet: React.FC<InfoFormletProps> = ({
         <TextInput
           value={name}
           type="text"
-          placeholder={"FULL NAME"}
+          placeholder={'FULL NAME'}
           onChange={handleNameChange}
         />
         <TextInput
           value={phone}
           type="tel"
-          placeholder={"PHONE NUMBER"}
+          placeholder={'PHONE NUMBER'}
           onChange={handlePhoneChange}
         />
         <TextInput
           value={email}
           type="email"
-          placeholder={"EMAIL"}
+          placeholder={'EMAIL'}
           onChange={handleEmailChange}
         />
         <SubmitButton
@@ -143,7 +143,7 @@ export const InfoFormlet: React.FC<InfoFormletProps> = ({
         />
       </form>
     </Formlet>
-  )
-}
+  );
+};
 
-InfoFormlet.displayName = "InfoFormlet"
+InfoFormlet.displayName = 'InfoFormlet';

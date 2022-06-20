@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface ToggleProps {
   readonly isActive: boolean;
@@ -51,7 +51,7 @@ export const Toggle = styled.button<ToggleProps>`
     left: calc(0.5rem - 1px);
     top: 0;
     transition: transform 0.25s ease-in-out;
-    transform: rotate(${(props) => (props.isActive ? "90" : "0")}deg);
+    transform: rotate(${(props) => (props.isActive ? '90' : '0')}deg);
   }
 
   div:last-child {

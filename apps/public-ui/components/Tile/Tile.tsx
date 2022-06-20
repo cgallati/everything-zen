@@ -4,15 +4,15 @@ import {
   TileFrame,
   TileImgFrame,
   TileText,
-} from "./styles"
-import React from "react"
+} from './styles';
+import React from 'react';
 
 type TileProps = {
-  iconSrc?: string
-  alt?: string
-  text?: string
-  photo?: string
-}
+  iconSrc?: string;
+  alt?: string;
+  text?: string;
+  photo?: string;
+};
 
 export const Tile: React.FC<TileProps> = ({ iconSrc, alt, text, photo }) => {
   if (photo) {
@@ -22,7 +22,7 @@ export const Tile: React.FC<TileProps> = ({ iconSrc, alt, text, photo }) => {
       </a>
     ) : (
       <TileImgFrame src={photo} alt={alt} />
-    )
+    );
   }
 
   return (
@@ -34,5 +34,5 @@ export const Tile: React.FC<TileProps> = ({ iconSrc, alt, text, photo }) => {
         <NarrowTileText>{text}</NarrowTileText>
       )}
     </TileFrame>
-  )
-}
+  );
+};

@@ -1,6 +1,6 @@
-import { Page } from "../../Layout/Page";
-import { Layout } from "../../Layout/Layout";
-import { NextPage } from "next";
+import { Page } from '../../Layout/Page';
+import { Layout } from '../../Layout/Layout';
+import { NextPage } from 'next';
 import {
   AddressFlex,
   ContactInfoCard,
@@ -13,52 +13,52 @@ import {
   Address,
   SneakyAnchor,
   FullWidthImg,
-} from "./styles";
-import { TileGrid } from "../../common.styles";
-import React from "react";
-import { Tile } from "../../Tile/Tile";
+} from './styles';
+import { TileGrid } from '../../common.styles';
+import React from 'react';
+import { Tile } from '../../Tile/Tile';
 
 export const ContactUsPage: NextPage = () => {
   return (
     <Layout>
-      <Page title={"contact us"}>
+      <Page title={'contact us'}>
         <form
-          name={"contact"}
-          id={"contact-form"}
+          name={'contact'}
+          id={'contact-form'}
           method="POST"
           data-netlify="true"
-          style={{ margin: "0 2rem 3.3rem" }}
+          style={{ margin: '0 2rem 3.3rem' }}
         >
           <input type="hidden" name="form-name" value="contact" />
           <FormHeading>GET IN TOUCH</FormHeading>
           <Input
-            type={"text"}
-            name={"name"}
+            type={'text'}
+            name={'name'}
             required={true}
-            placeholder={"NAME"}
+            placeholder={'NAME'}
           />
           <Input
-            type={"email"}
-            name={"email"}
+            type={'email'}
+            name={'email'}
             required={true}
-            placeholder={"EMAIL"}
+            placeholder={'EMAIL'}
           />
           <TextArea
-            name={"message"}
-            form={"contact-form"}
+            name={'message'}
+            form={'contact-form'}
             required={true}
-            placeholder={"MESSAGE"}
+            placeholder={'MESSAGE'}
           />
-          <SubmitButton type={"submit"} value={"SUBMIT"} />
+          <SubmitButton type={'submit'} value={'SUBMIT'} />
         </form>
         <AddressFlex>
           <SneakyAnchor href="tel:+1-843-670-9145">
             <ContactInfoCard>
               <img
-                src={"/icons/phone.svg"}
-                alt={"phone icon"}
-                width={"24px"}
-                height={"24px"}
+                src={'/icons/phone.svg'}
+                alt={'phone icon'}
+                width={'24px'}
+                height={'24px'}
               />
               <ContactTitle>PHONE</ContactTitle>
               <Phone>
@@ -69,16 +69,16 @@ export const ContactUsPage: NextPage = () => {
           </SneakyAnchor>
           <SneakyAnchor
             href={
-              "https://maps.google.com/?q=24 Patriots Point Road, Mount Pleasant, SC"
+              'https://maps.google.com/?q=24 Patriots Point Road, Mount Pleasant, SC'
             }
-            target={"_blank"}
+            target={'_blank'}
           >
             <ContactInfoCard>
               <img
-                src={"/icons/location.svg"}
-                alt={"map pin icon"}
-                width={"22px"}
-                height={"30px"}
+                src={'/icons/location.svg'}
+                alt={'map pin icon'}
+                width={'22px'}
+                height={'30px'}
               />
               <ContactTitle>ADDRESS</ContactTitle>
               <Address>
@@ -89,12 +89,12 @@ export const ContactUsPage: NextPage = () => {
         </AddressFlex>
         <SneakyAnchor
           href={
-            "https://maps.google.com/?q=24 Patriots Point Road, Mount Pleasant, SC"
+            'https://maps.google.com/?q=24 Patriots Point Road, Mount Pleasant, SC'
           }
-          target={"_blank"}
+          target={'_blank'}
         >
           <FullWidthImg
-            src={"/ezlocation.jpg"}
+            src={'/ezlocation.jpg'}
             alt="Aerial view of the Charleston Harbor Marina."
             placeholder="blur"
           />
@@ -102,30 +102,30 @@ export const ContactUsPage: NextPage = () => {
         <TileGrid>
           <div>
             <Tile
-              photo={"/photos/relaxing-on-trampoline.jpg"}
+              photo={'/photos/relaxing-on-trampoline.jpg'}
               iconSrc={
-                "https://www.instagram.com/p/CTOF6e2rPo_/?utm_source=ig_web_copy_link"
+                'https://www.instagram.com/p/CTOF6e2rPo_/?utm_source=ig_web_copy_link'
               }
             />
             <Tile
-              photo={"/photos/sunset-smiles.jpg"}
+              photo={'/photos/sunset-smiles.jpg'}
               iconSrc={
-                "https://www.instagram.com/p/CRy7Ibyh_vo/?utm_source=ig_web_copy_link"
+                'https://www.instagram.com/p/CRy7Ibyh_vo/?utm_source=ig_web_copy_link'
               }
             />
           </div>
           <div>
             <Tile
-              photo={"/photos/kids-at-the-helm.jpg"}
+              photo={'/photos/kids-at-the-helm.jpg'}
               iconSrc={
-                "https://www.instagram.com/p/CRm4FyVh3ut/?utm_source=ig_web_copy_link"
+                'https://www.instagram.com/p/CRm4FyVh3ut/?utm_source=ig_web_copy_link'
               }
             />
 
             <Tile
-              photo={"/photos/cocapts.jpg"}
+              photo={'/photos/cocapts.jpg'}
               iconSrc={
-                "https://www.instagram.com/p/CRc8HFnBgH1/?utm_source=ig_web_copy_link"
+                'https://www.instagram.com/p/CRc8HFnBgH1/?utm_source=ig_web_copy_link'
               }
             />
           </div>

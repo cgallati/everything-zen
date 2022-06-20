@@ -1,24 +1,24 @@
-import { Paragraph } from "../../common.styles";
-import React from "react";
+import { Paragraph } from '../../common.styles';
+import React from 'react';
 import {
   CaviarAndBananasLogo,
   CCCLogo,
   Heading,
   MenuCTA,
   PaddedAnchor,
-} from "./styles";
-import { Page } from "../../Layout/Page";
+} from './styles';
+import { Page } from '../../Layout/Page';
 
 export const CateringPage = () => {
   return (
-    <Page title={"special catering"}>
+    <Page title={'special catering'}>
       <Paragraph>
         To make your catering arrangements, we ask our charter guests to contact
         our partners directly. This will prevent confusion and give you control
         over verification and payment. As always, we are happy to to answer any
         questions or concerns regarding your catering plans for the charter.
       </Paragraph>
-      <CaviarAndBananasLogo src={"/c&b.jpg"} />
+      <CaviarAndBananasLogo src={'/c&b.jpg'} />
       <Heading>FRESH GOURMET-TO-GO CATERING</Heading>
       <Paragraph>
         We believe in making your experience onboard as smooth-sailing as
@@ -29,14 +29,14 @@ export const CateringPage = () => {
       </Paragraph>
       <PaddedAnchor
         href={
-          "https://www.caviarandbananas.com/assets/pdfs/menus/catering/catering_maritime.pdf"
+          'https://www.caviarandbananas.com/assets/pdfs/menus/catering/catering_maritime.pdf'
         }
-        target={"_blank"}
+        target={'_blank'}
         rel="noreferrer"
       >
         <MenuCTA>VIEW MENU</MenuCTA>
       </PaddedAnchor>
-      <CCCLogo src={"/ccc-logo.png"} />
+      <CCCLogo src={'/ccc-logo.png'} />
       <Heading>CHARCUTERIE BOARD HEAVEN</Heading>
       <Paragraph>
         There is nothing more elegant than snacking on a charcuterie board while
@@ -46,8 +46,8 @@ export const CateringPage = () => {
         delicious.
       </Paragraph>
       <PaddedAnchor
-        href={"https://classycheesechic.com/collections"}
-        target={"_blank"}
+        href={'https://classycheesechic.com/collections'}
+        target={'_blank'}
         rel="noreferrer"
       >
         <MenuCTA>VIEW MENU</MenuCTA>

@@ -1,45 +1,45 @@
 export enum PartyType {
-  Couple = "COUPLE",
-  Friends = "FRIENDS",
-  Bachelorette = "BACHELORETTE",
-  Birthday = "BIRTHDAY",
-  Other = "OTHER",
+  Couple = 'COUPLE',
+  Friends = 'FRIENDS',
+  Bachelorette = 'BACHELORETTE',
+  Birthday = 'BIRTHDAY',
+  Other = 'OTHER',
 }
 
 export interface Availability {
-  start: Date
-  length: number
-  cost: number
-  booked: boolean
-  type: string
+  start: Date;
+  length: number;
+  cost: number;
+  booked: boolean;
+  type: string;
 }
 
 export interface Month {
-  firstDate: Date
+  firstDate: Date;
   days: {
-    avails: Availability[]
-  }[]
+    avails: Availability[];
+  }[];
 }
 
 export interface SerializableMonth {
-  firstDate: string
-  firstDateOffsetHours: -4 | -5
+  firstDate: string;
+  firstDateOffsetHours: -4 | -5;
   days: {
-    avails: SerializableAvailability[]
-  }[]
+    avails: SerializableAvailability[];
+  }[];
 }
 
 export interface SerializableAvailability {
-  start: string
-  startOffsetHours: -4 | -5
-  length: number
-  cost: number
-  booked: boolean
-  type: string
+  start: string;
+  startOffsetHours: -4 | -5;
+  length: number;
+  cost: number;
+  booked: boolean;
+  type: string;
 }
 
 export interface Guest {
-  name: string
-  phone: string
-  email: string
+  name: string;
+  phone: string;
+  email: string;
 }

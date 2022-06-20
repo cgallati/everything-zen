@@ -1,6 +1,6 @@
-import { PrismaClient } from "@prisma/client"
+import { PrismaClient } from '@prisma/client';
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 const main = async () => {
   // get all
@@ -31,7 +31,7 @@ const main = async () => {
     1349, 1362, 1363, 1376, 1377, 1390, 1391, 1404, 1405, 1418, 1419, 1432,
     1433, 1446, 1447, 1460, 1461, 1474, 1475, 1488, 1489, 1502, 1503, 1516,
     1517, 1592, 1593, 1606, 1607,
-  ]
+  ];
   // const res = await prisma.availability.deleteMany({
   //   where: {
   //     id: {
@@ -40,13 +40,13 @@ const main = async () => {
   //   },
   // })
   // console.log(res)
-}
+};
 
 main()
   .catch((e) => {
-    console.error(e)
-    process.exit(1)
+    console.error(e);
+    process.exit(1);
   })
   .finally(async () => {
-    await prisma.$disconnect()
-  })
+    await prisma.$disconnect();
+  });

@@ -1,7 +1,7 @@
-import { GetServerSideProps, NextPage } from "next"
-import { Layout } from "@components/Layout/Layout"
-import { NextSeo } from "next-seo"
-import prisma from "@db"
+import { GetServerSideProps, NextPage } from 'next';
+import { Layout } from '@components/Layout/Layout';
+import { NextSeo } from 'next-seo';
+import prisma from '@db';
 import {
   addHours,
   addMonths,
@@ -12,26 +12,26 @@ import {
   getYear,
   isBefore,
   startOfMonth,
-} from "date-fns"
-import { Form } from "@components/Reservations/Form/Form"
+} from 'date-fns';
+import { Form } from '@components/Reservations/Form/Form';
 import {
   Month,
   SerializableAvailability,
   SerializableMonth,
-} from "@components/Reservations/types"
-import { getTimezoneOffset } from "date-fns-tz"
+} from '@components/Reservations/types';
+import { getTimezoneOffset } from 'date-fns-tz';
 
 type ReservePageProps = {
-  availability: SerializableMonth[]
-}
+  availability: SerializableMonth[];
+};
 
 const ReservePage: NextPage<ReservePageProps> = ({
   availability: serializedAvail,
 }) => {
   const getOffsetFromChs = (date: Date, chsOffset: -4 | -5) => {
-    const localOffset = date.getTimezoneOffset() / 60
-    return localOffset + chsOffset
-  }
+    const localOffset = date.getTimezoneOffset() / 60;
+    return localOffset + chsOffset;
+  };
 
   const availability: Month[] = serializedAvail.map((month) => ({
     ...month,
@@ -49,7 +49,7 @@ const ReservePage: NextPage<ReservePageProps> = ({
         ),
       })),
     })),
-  }))
+  }));
 
   return (
     <>
@@ -61,8 +61,8 @@ const ReservePage: NextPage<ReservePageProps> = ({
         <Form {...{ availability }} />
       </Layout>
     </>
-  )
-}
+  );
+};
 
 type IndexedAvailability = {
   // year
@@ -70,10 +70,10 @@ type IndexedAvailability = {
     // month
     [key: number]: {
       // date
-      [key: number]: SerializableAvailability[]
-    }
-  }
-}
+      [key: number]: SerializableAvailability[];
+    };
+  };
+};
 
 export const getServerSideProps: GetServerSideProps = async (_) => {
   const avails = await prisma.availability.findMany({
@@ -83,7 +83,7 @@ export const getServerSideProps: GetServerSideProps = async (_) => {
       },
     },
     orderBy: {
-      start: "asc",
+      start: 'asc',
     },
     include: {
       event: {
@@ -99,68 +99,68 @@ export const getServerSideProps: GetServerSideProps = async (_) => {
         },
       },
     },
-  })
+  });
 
   // clean up query data for quick consumption
-  const indexedAvails: IndexedAvailability = {}
+  const indexedAvails: IndexedAvailability = {};
   avails.forEach((avail) => {
-    const year = getYear(avail.start)
-    const month = getMonth(avail.start)
-    const date = getDate(avail.start)
-    indexedAvails[year] = indexedAvails[year] ? indexedAvails[year] : {}
+    const year = getYear(avail.start);
+    const month = getMonth(avail.start);
+    const date = getDate(avail.start);
+    indexedAvails[year] = indexedAvails[year] ? indexedAvails[year] : {};
     indexedAvails[year][month] = indexedAvails[year][month]
       ? indexedAvails[year][month]
-      : {}
+      : {};
     indexedAvails[year][month][date] = indexedAvails[year][month][date]
       ? indexedAvails[year][month][date]
-      : []
+      : [];
     const todayRef: SerializableAvailability[] =
-      indexedAvails[year][month][date]
+      indexedAvails[year][month][date];
     const normalizedAvail: SerializableAvailability = {
       start: avail.start.toString(),
       length: avail.type.duration,
       cost: avail.type.cost,
       booked: !!avail.event,
-      type: avail.type.type === "CHARTER" ? "DAYTIME" : "SUNSET",
-      startOffsetHours: (getTimezoneOffset("America/New_York", avail.start) /
+      type: avail.type.type === 'CHARTER' ? 'DAYTIME' : 'SUNSET',
+      startOffsetHours: (getTimezoneOffset('America/New_York', avail.start) /
         (1_000 * 60 * 60)) as -4 | -5,
-    }
-    todayRef.push(normalizedAvail)
-  })
+    };
+    todayRef.push(normalizedAvail);
+  });
 
   // build up and return calendar availability props
-  let months: SerializableMonth[] = []
+  let months: SerializableMonth[] = [];
   let monthCursor = startOfMonth(
     avails.find((avail) => !avail.event)?.start || new Date()
-  )
-  const lastDate = endOfMonth(avails[avails.length - 1]?.start || new Date())
+  );
+  const lastDate = endOfMonth(avails[avails.length - 1]?.start || new Date());
   while (isBefore(monthCursor, lastDate)) {
-    const days = []
-    const daysInMonth = getDaysInMonth(monthCursor)
+    const days = [];
+    const daysInMonth = getDaysInMonth(monthCursor);
     for (let i = 1; i <= daysInMonth; i++) {
       const availsToday =
-        indexedAvails[getYear(monthCursor)]?.[getMonth(monthCursor)]?.[i] || []
+        indexedAvails[getYear(monthCursor)]?.[getMonth(monthCursor)]?.[i] || [];
       days.push({
         avails: availsToday,
-      })
+      });
     }
 
     months.push({
       firstDate: monthCursor.toString(),
       firstDateOffsetHours: (getTimezoneOffset(
-        "America/New_York",
+        'America/New_York',
         monthCursor
       ) /
         (1_000 * 60 * 60)) as -4 | -5,
       days,
-    })
-    monthCursor = addMonths(monthCursor, 1)
+    });
+    monthCursor = addMonths(monthCursor, 1);
   }
   return {
     props: {
       availability: months,
     },
-  }
-}
+  };
+};
 
-export default ReservePage
+export default ReservePage;

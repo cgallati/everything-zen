@@ -1,27 +1,27 @@
-import { Page } from "../../Layout/Page";
+import { Page } from '../../Layout/Page';
 import {
   ImageSection,
   Paragraph,
   ResponsiveSubheading,
   Subheading,
   SubheadingAndFriend,
-} from "../../common.styles";
-import React from "react";
-import friends0 from "@photos/friends0.jpg";
-import friends1 from "@photos/friends1.jpg";
-import friends2 from "@photos/friends2.jpg";
-import friends3 from "@photos/friends3.jpg";
-import friends4 from "@photos/friends4.jpg";
-import friends5 from "@photos/friends5.jpg";
-import sunset1 from "@photos/sunset1.jpg";
-import { BigTile } from "../../Tile/BigTile";
-import { TileList } from "./styles";
-import { Gallery } from "../../Gallery/Gallery";
-import { CTA } from "../../CTA/CTA";
+} from '../../common.styles';
+import React from 'react';
+import friends0 from '@photos/friends0.jpg';
+import friends1 from '@photos/friends1.jpg';
+import friends2 from '@photos/friends2.jpg';
+import friends3 from '@photos/friends3.jpg';
+import friends4 from '@photos/friends4.jpg';
+import friends5 from '@photos/friends5.jpg';
+import sunset1 from '@photos/sunset1.jpg';
+import { BigTile } from '../../Tile/BigTile';
+import { TileList } from './styles';
+import { Gallery } from '../../Gallery/Gallery';
+import { CTA } from '../../CTA/CTA';
 
 export const SpecialOccasionsPage = () => {
   return (
-    <Page title={"special occasions"}>
+    <Page title={'special occasions'}>
       <Paragraph>
         Charleston is one of the most famous locations for celebrations and
         special occasions. Our sailing tour is bound to be the perfect setting
@@ -64,38 +64,38 @@ export const SpecialOccasionsPage = () => {
       </Paragraph>
       <TileList>
         <BigTile
-          iconSrc={"/icons/flutes.svg"}
-          iconAlt={"Wine flutes toasting."}
-          title={"ROMANTIC SUNSETS"}
+          iconSrc={'/icons/flutes.svg'}
+          iconAlt={'Wine flutes toasting.'}
+          title={'ROMANTIC SUNSETS'}
           body={
-            "Enjoy a spectacular sunset on the water with your loved one as you take in views of Charleston Harbor."
+            'Enjoy a spectacular sunset on the water with your loved one as you take in views of Charleston Harbor.'
           }
         />
         <BigTile
-          iconSrc={"/icons/bikini.svg"}
-          iconAlt={"Bikini swimsuit."}
-          title={"BACHELORETTE PARTIES"}
+          iconSrc={'/icons/bikini.svg'}
+          iconAlt={'Bikini swimsuit.'}
+          title={'BACHELORETTE PARTIES'}
           body={
-            "Sailing on a modern catamaran with ample seating creates the perfect setting for celebrating with friends."
+            'Sailing on a modern catamaran with ample seating creates the perfect setting for celebrating with friends.'
           }
         />
         <BigTile
-          iconSrc={"/icons/sun.svg"}
-          iconAlt={"Full sun."}
-          title={"FAMILY AND FRIENDS"}
+          iconSrc={'/icons/sun.svg'}
+          iconAlt={'Full sun.'}
+          title={'FAMILY AND FRIENDS'}
           body={
-            "Whether its family or friends, your time on board will create the most memorable experiences together."
+            'Whether its family or friends, your time on board will create the most memorable experiences together.'
           }
         />
       </TileList>
       <Gallery
         images={[
-          { src: friends0, alt: "" },
-          { src: friends1, alt: "" },
-          { src: friends2, alt: "" },
-          { src: friends3, alt: "" },
-          { src: friends4, alt: "" },
-          { src: friends5, alt: "" },
+          { src: friends0, alt: '' },
+          { src: friends1, alt: '' },
+          { src: friends2, alt: '' },
+          { src: friends3, alt: '' },
+          { src: friends4, alt: '' },
+          { src: friends5, alt: '' },
         ]}
         startingIndex={1}
       />
@@ -117,8 +117,8 @@ export const SpecialOccasionsPage = () => {
         charter guests focus on having the best time possible while you are on
         board.
       </Paragraph>
-      <CTA variant={"fat"} text={"CATERING"} route={"/catering"} />
-      <CTA variant={"fat"} text={"CHARTERS & RATES"} route={"/charters"} />
+      <CTA variant={'fat'} text={'CATERING'} route={'/catering'} />
+      <CTA variant={'fat'} text={'CHARTERS & RATES'} route={'/charters'} />
       <SubheadingAndFriend>
         <Subheading>CHARTER WITH US</Subheading>
         <img
@@ -135,7 +135,7 @@ export const SpecialOccasionsPage = () => {
         party to assure everyone on board is having a relaxing and care-free
         time.
       </Paragraph>
-      <CTA variant={"bluefat"} />
+      <CTA variant={'bluefat'} />
     </Page>
   );
 };

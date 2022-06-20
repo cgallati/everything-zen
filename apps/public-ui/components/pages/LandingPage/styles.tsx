@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components';
 
 export const WithBackground = styled.div`
   position: relative;
@@ -9,7 +9,7 @@ export const WithBackground = styled.div`
   .bg-image {
     z-index: -1;
   }
-`
+`;
 
 export const Heading = styled.h1`
   text-align: center;
@@ -20,7 +20,7 @@ export const Heading = styled.h1`
   font: normal normal normal 14px/17px Source Sans Pro;
   letter-spacing: 2.88px;
   color: #ffffff;
-`
+`;
 
 export const PositionedCTA = styled.button`
   display: block;
@@ -47,15 +47,15 @@ export const PositionedCTA = styled.button`
     color: #00263a;
     background: white;
   }
-`
+`;
 
 export const LocationHeading = styled.h3`
   text-align: center;
   margin: 2rem auto;
   letter-spacing: 3.32px;
   color: #001d2c;
-  font-family: "Stencilia-A", sans-serif;
+  font-family: 'Stencilia-A', sans-serif;
   font-size: 16px;
   line-height: 2.2rem;
   font-weight: normal;
-`
+`;

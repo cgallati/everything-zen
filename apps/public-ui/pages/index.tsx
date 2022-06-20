@@ -1,6 +1,6 @@
-import { LandingPage } from "@components/pages/LandingPage/LandingPage"
-import { Layout } from "@components/Layout/Layout"
-import { NextPage } from "next"
+import { LandingPage } from '@components/pages/LandingPage/LandingPage';
+import { Layout } from '@components/Layout/Layout';
+import { NextPage } from 'next';
 
 export const Home: NextPage = () => {
   return (
@@ -9,7 +9,7 @@ export const Home: NextPage = () => {
         <LandingPage />
       </Layout>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

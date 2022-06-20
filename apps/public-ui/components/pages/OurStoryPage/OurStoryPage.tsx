@@ -1,4 +1,4 @@
-import { Page } from "../../Layout/Page";
+import { Page } from '../../Layout/Page';
 import {
   ImageSection,
   Paragraph,
@@ -6,27 +6,27 @@ import {
   Subheading,
   SubheadingAndFriend,
   TileGrid,
-} from "../../common.styles";
-import toddKathy from "@photos/toddAndKathy.jpg";
-import React from "react";
-import { InstaHeading } from "./styles";
-import friends3 from "@photos/friends3.jpg";
-import friends5 from "@photos/friends5.jpg";
-import testimonial1 from "@testimonials/Testimonial_1.png";
-import testimonial2 from "@testimonials/Testimonial_2.png";
-import testimonial3 from "@testimonials/Testimonial_3.png";
-import testimonial4 from "@testimonials/Testimonial_4.png";
-import testimonialPic1 from "@testimonials/bw-testimonial0.jpg";
-import testimonialPic2 from "@testimonials/bw-testimonial1.jpg";
-import testimonialPic3 from "@testimonials/bw-testimonial2.jpg";
+} from '../../common.styles';
+import toddKathy from '@photos/toddAndKathy.jpg';
+import React from 'react';
+import { InstaHeading } from './styles';
+import friends3 from '@photos/friends3.jpg';
+import friends5 from '@photos/friends5.jpg';
+import testimonial1 from '@testimonials/Testimonial_1.png';
+import testimonial2 from '@testimonials/Testimonial_2.png';
+import testimonial3 from '@testimonials/Testimonial_3.png';
+import testimonial4 from '@testimonials/Testimonial_4.png';
+import testimonialPic1 from '@testimonials/bw-testimonial0.jpg';
+import testimonialPic2 from '@testimonials/bw-testimonial1.jpg';
+import testimonialPic3 from '@testimonials/bw-testimonial2.jpg';
 
-import { Gallery } from "../../Gallery/Gallery";
-import { Tile } from "../../Tile/Tile";
-import { CTA } from "../../CTA/CTA";
+import { Gallery } from '../../Gallery/Gallery';
+import { Tile } from '../../Tile/Tile';
+import { CTA } from '../../CTA/CTA';
 
 export const OurStoryPage = () => {
   return (
-    <Page title={"our story"}>
+    <Page title={'our story'}>
       <Paragraph>
         After years of sailing around the Caribbean & Southeast with family and
         friends, Captain Todd Gallati believes that the experience of sailing
@@ -82,13 +82,13 @@ export const OurStoryPage = () => {
       </Paragraph>
       <Gallery
         images={[
-          { src: testimonial1, alt: "" },
-          { src: testimonialPic3, alt: "" },
-          { src: testimonial2, alt: "" },
-          { src: testimonialPic2, alt: "" },
-          { src: testimonial3, alt: "" },
-          { src: testimonialPic1, alt: "" },
-          { src: testimonial4, alt: "" },
+          { src: testimonial1, alt: '' },
+          { src: testimonialPic3, alt: '' },
+          { src: testimonial2, alt: '' },
+          { src: testimonialPic2, alt: '' },
+          { src: testimonial3, alt: '' },
+          { src: testimonialPic1, alt: '' },
+          { src: testimonial4, alt: '' },
         ]}
       />
       <ResponsiveSubheading>JOIN THE SAILING EXPERIENCE</ResponsiveSubheading>
@@ -101,37 +101,37 @@ export const OurStoryPage = () => {
         feel the harbor breeze while you experience sailing in one of the most
         historic harbors of our nation!
       </Paragraph>
-      <CTA variant={"bluefat"} />
-      <InstaHeading href={"https://www.instagram.com/everythingzensailing/"}>
+      <CTA variant={'bluefat'} />
+      <InstaHeading href={'https://www.instagram.com/everythingzensailing/'}>
         JOIN OUR STORY ON INSTAGRAM
       </InstaHeading>
       <TileGrid>
         <div>
           <Tile
-            photo={"/photos/relaxing-on-trampoline.jpg"}
+            photo={'/photos/relaxing-on-trampoline.jpg'}
             iconSrc={
-              "https://www.instagram.com/p/CTOF6e2rPo_/?utm_source=ig_web_copy_link"
+              'https://www.instagram.com/p/CTOF6e2rPo_/?utm_source=ig_web_copy_link'
             }
           />
           <Tile
-            photo={"/photos/sunset-smiles.jpg"}
+            photo={'/photos/sunset-smiles.jpg'}
             iconSrc={
-              "https://www.instagram.com/p/CRy7Ibyh_vo/?utm_source=ig_web_copy_link"
+              'https://www.instagram.com/p/CRy7Ibyh_vo/?utm_source=ig_web_copy_link'
             }
           />
         </div>
         <div>
           <Tile
-            photo={"/photos/kids-at-the-helm.jpg"}
+            photo={'/photos/kids-at-the-helm.jpg'}
             iconSrc={
-              "https://www.instagram.com/p/CRm4FyVh3ut/?utm_source=ig_web_copy_link"
+              'https://www.instagram.com/p/CRm4FyVh3ut/?utm_source=ig_web_copy_link'
             }
           />
 
           <Tile
-            photo={"/photos/cocapts.jpg"}
+            photo={'/photos/cocapts.jpg'}
             iconSrc={
-              "https://www.instagram.com/p/CRc8HFnBgH1/?utm_source=ig_web_copy_link"
+              'https://www.instagram.com/p/CRc8HFnBgH1/?utm_source=ig_web_copy_link'
             }
           />
         </div>

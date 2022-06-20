@@ -1,29 +1,29 @@
-import Image from "next/image"
-import Link from "next/link"
+import Image from 'next/image';
+import Link from 'next/link';
 import {
   Heading,
   LocationHeading,
   PositionedCTA,
   WithBackground,
-} from "./styles"
-import React from "react"
-import { useWindowSize } from "@hooks/useWindowSize"
-import mobileBG from "@photos/bg-m.jpg"
-import desktopBG from "@photos/bg-d.jpg"
-import boat0 from "@photos/boat0.jpg"
-import boat1 from "@photos/boat1.jpg"
-import boat2 from "@photos/boat2.jpg"
-import boat3 from "@photos/boat3.jpg"
-import boat4 from "@photos/boat4.jpg"
-import boat5 from "@photos/boat5.jpg"
-import boat6 from "@photos/boat6.jpg"
-import boat7 from "@photos/boat7.jpg"
-import boat8 from "@photos/boat8.jpg"
-import boat9 from "@photos/boat9.jpg"
-import boat10 from "@photos/boat10.jpg"
-import boat11 from "@photos/boat11.jpg"
-import boat12 from "@photos/boat12.jpg"
-import boat13 from "@photos/boat13.jpg"
+} from './styles';
+import React from 'react';
+import { useWindowSize } from '@hooks/useWindowSize';
+import mobileBG from '@photos/bg-m.jpg';
+import desktopBG from '@photos/bg-d.jpg';
+import boat0 from '@photos/boat0.jpg';
+import boat1 from '@photos/boat1.jpg';
+import boat2 from '@photos/boat2.jpg';
+import boat3 from '@photos/boat3.jpg';
+import boat4 from '@photos/boat4.jpg';
+import boat5 from '@photos/boat5.jpg';
+import boat6 from '@photos/boat6.jpg';
+import boat7 from '@photos/boat7.jpg';
+import boat8 from '@photos/boat8.jpg';
+import boat9 from '@photos/boat9.jpg';
+import boat10 from '@photos/boat10.jpg';
+import boat11 from '@photos/boat11.jpg';
+import boat12 from '@photos/boat12.jpg';
+import boat13 from '@photos/boat13.jpg';
 import {
   ContentSection,
   ImageSection,
@@ -32,23 +32,23 @@ import {
   ResponsiveSubheading,
   Subheading,
   SubheadingAndFriend,
-} from "../../common.styles"
-import { CTA } from "../../CTA/CTA"
-import { Gallery } from "../../Gallery/Gallery"
-import { Footer } from "../../Layout/Footer"
-import { Endorsement } from "@components/Endorsement/Endorsement"
+} from '../../common.styles';
+import { CTA } from '../../CTA/CTA';
+import { Gallery } from '../../Gallery/Gallery';
+import { Footer } from '../../Layout/Footer';
+import { Endorsement } from '@components/Endorsement/Endorsement';
 
 export const LandingPage: React.FC = () => {
-  const { width } = useWindowSize()
+  const { width } = useWindowSize();
 
-  const imgSrc = (width || 500) <= 480 ? mobileBG : desktopBG
+  const imgSrc = (width || 500) <= 480 ? mobileBG : desktopBG;
 
   return (
     <>
       <WithBackground>
         <Image
-          className={"bg-image"}
-          alt={"background image; a catamaran under sail from above."}
+          className={'bg-image'}
+          alt={'background image; a catamaran under sail from above.'}
           src={imgSrc}
           layout="fill"
           objectFit="cover"
@@ -57,7 +57,7 @@ export const LandingPage: React.FC = () => {
           priority={true}
         />
         <Heading>WELCOME ABOARD YOUR 40’ CATAMARAN</Heading>
-        <Link href={"/reserve"}>
+        <Link href={'/reserve'}>
           <PositionedCTA>BOOK A CHARTER</PositionedCTA>
         </Link>
       </WithBackground>
@@ -127,40 +127,40 @@ export const LandingPage: React.FC = () => {
         </Paragraph>
         <Gallery
           images={[
-            { src: boat0, alt: "" },
-            { src: boat1, alt: "" },
-            { src: boat2, alt: "" },
-            { src: boat3, alt: "" },
-            { src: boat4, alt: "" },
+            { src: boat0, alt: '' },
+            { src: boat1, alt: '' },
+            { src: boat2, alt: '' },
+            { src: boat3, alt: '' },
+            { src: boat4, alt: '' },
             {
               src: boat5,
               alt: "Everything Zen sails along Charleston's Low Battery.",
             },
-            { src: boat6, alt: "" },
-            { src: boat7, alt: "" },
+            { src: boat6, alt: '' },
+            { src: boat7, alt: '' },
             {
               src: boat8,
               alt: "Everything Zen's spacious and open aft seating and galley.",
             },
-            { src: boat9, alt: "" },
+            { src: boat9, alt: '' },
             {
               src: boat10,
-              alt: "A bottle of wine and glasses on the aft table.",
+              alt: 'A bottle of wine and glasses on the aft table.',
             },
-            { src: boat11, alt: "" },
-            { src: boat12, alt: "" },
-            { src: boat13, alt: "" },
+            { src: boat11, alt: '' },
+            { src: boat12, alt: '' },
+            { src: boat13, alt: '' },
           ]}
           startingIndex={4}
         />
-        <MapScale src={"/icons/scale.svg"} />
-        <CTA variant={"fat"} text={"CHARTERS & RATES"} route={"/charters"} />
+        <MapScale src={'/icons/scale.svg'} />
+        <CTA variant={'fat'} text={'CHARTERS & RATES'} route={'/charters'} />
         <CTA
-          variant={"fat"}
-          text={"SPECIAL OCCASIONS"}
-          route={"/special-occasions"}
+          variant={'fat'}
+          text={'SPECIAL OCCASIONS'}
+          route={'/special-occasions'}
         />
-        <CTA variant={"fat"} text={"OUR STORY"} route={"/story"} />
+        <CTA variant={'fat'} text={'OUR STORY'} route={'/story'} />
         <LocationHeading>
           LOCATED AT
           <br />
@@ -173,10 +173,10 @@ export const LandingPage: React.FC = () => {
           USS Yorktown. Experience one of our nation’s most historic harbors up
           close and in person!
         </Paragraph>
-        <CTA variant={"bluefat"} />
+        <CTA variant={'bluefat'} />
         <Endorsement />
       </ContentSection>
       <Footer />
     </>
-  )
-}
+  );
+};

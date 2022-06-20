@@ -1,5 +1,5 @@
-import { BodyText, BigTileText, BigTileFrame, SizedIcon } from "./styles";
-import React from "react";
+import { BodyText, BigTileText, BigTileFrame, SizedIcon } from './styles';
+import React from 'react';
 
 type BigTileProps = {
   iconSrc: string;

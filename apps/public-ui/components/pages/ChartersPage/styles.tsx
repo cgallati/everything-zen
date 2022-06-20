@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { TileGrid } from "../../common.styles";
+import styled from 'styled-components';
+import { TileGrid } from '../../common.styles';
 
 export const LiferingIcon = styled.img`
   height: 40px;
@@ -68,11 +68,11 @@ export const CharterCard = styled.div`
   max-width: 350px;
   box-sizing: border-box;
   h4 {
-    font: normal normal normal 42px/42px "Title Wave Regular";
+    font: normal normal normal 42px/42px 'Title Wave Regular';
     letter-spacing: 3.15px;
     margin: 0;
     @media (min-width: 650px) {
-      font: normal normal normal 38px/40px "Title Wave Regular";
+      font: normal normal normal 38px/40px 'Title Wave Regular';
       letter-spacing: 3px;
     }
   }

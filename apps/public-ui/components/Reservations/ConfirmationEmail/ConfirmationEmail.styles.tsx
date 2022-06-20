@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const BG = styled.table`
   background: #fff;
@@ -13,7 +13,7 @@ export const Heading = styled.h1`
   text-align: center;
   letter-spacing: 3.66px;
   color: #001d2c;
-  font: normal normal normal 24px/28px "Title Wave Regular", serif;
+  font: normal normal normal 24px/28px 'Title Wave Regular', serif;
   margin: 2.25rem 0 0 0;
 `;
 
@@ -116,7 +116,7 @@ export const CHSHBR = styled.img`
 
 export const Signature = styled.h6`
   letter-spacing: 1.2px;
-  font-family: "Title Wave Regular", serif;
+  font-family: 'Title Wave Regular', serif;
   color: #001d2c;
   font-size: 14px;
   line-height: 16px;
@@ -127,7 +127,7 @@ export const Stencil = styled.div`
   margin: 0.5rem auto;
   letter-spacing: 2.41px;
   color: #001d2c;
-  font-family: "Stencilia-A", sans-serif;
+  font-family: 'Stencilia-A', sans-serif;
   font-size: 16px;
   line-height: 20px;
 `;
