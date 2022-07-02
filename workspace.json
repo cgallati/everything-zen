@@ -4,7 +4,9 @@
   "projects": {
     "admin-ui": "apps/admin-ui",
     "admin-ui-e2e": "apps/admin-ui-e2e",
+    "data-access": "libs/data-access",
     "public-ui": "apps/public-ui",
-    "public-ui-e2e": "apps/public-ui-e2e"
+    "public-ui-e2e": "apps/public-ui-e2e",
+    "ui-components": "libs/ui-components"
   }
 }

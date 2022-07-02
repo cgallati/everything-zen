@@ -1,7 +1,12 @@
 import { GetServerSideProps, NextPage } from 'next';
-import { Layout } from '@components/Layout/Layout';
+import { Layout } from '../components/Layout';
+import {
+  Month,
+  SerializableAvailability,
+  SerializableMonth,
+} from '@everything-zen/ui-components';
 import { NextSeo } from 'next-seo';
-import prisma from '@db';
+import prisma from '@everything-zen/data-access';
 import {
   addHours,
   addMonths,
@@ -13,13 +18,8 @@ import {
   isBefore,
   startOfMonth,
 } from 'date-fns';
-import { Form } from '@components/Reservations/Form/Form';
-import {
-  Month,
-  SerializableAvailability,
-  SerializableMonth,
-} from '@components/Reservations/types';
 import { getTimezoneOffset } from 'date-fns-tz';
+import { Form } from '../components/Form';
 
 type ReservePageProps = {
   availability: SerializableMonth[];
@@ -129,7 +129,7 @@ export const getServerSideProps: GetServerSideProps = async (_) => {
   });
 
   // build up and return calendar availability props
-  let months: SerializableMonth[] = [];
+  const months: SerializableMonth[] = [];
   let monthCursor = startOfMonth(
     avails.find((avail) => !avail.event)?.start || new Date()
   );

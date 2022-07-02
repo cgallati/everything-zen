@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
-import { Layout } from '@components/Layout/Layout';
-import { ChartersPage } from '@components/pages/ChartersPage/ChartersPage';
+import { Layout } from '../components/Layout';
+import { ChartersPage } from '../components/ChartersPage/ChartersPage';
 
 export const Charters: NextPage = () => {
   return (
