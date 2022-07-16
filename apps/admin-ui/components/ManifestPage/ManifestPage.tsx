@@ -20,7 +20,10 @@ export const ManifestPage: FC<ManifestPageProps> = ({ reservations }) => {
         ) : (
           <List>
             {reservations.map((reservation) => (
-              <Reservation {...reservation} key={reservation.time.getTime()} />
+              <Reservation
+                {...reservation}
+                key={(reservation.time as Date).getTime()}
+              />
             ))}
           </List>
         )}

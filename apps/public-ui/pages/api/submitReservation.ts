@@ -1,8 +1,8 @@
-import prisma from "@db"
-import { NextApiRequest, NextApiResponse } from "next"
+import prisma from '@everything-zen/data-access';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const { avail, guest, partySize, partyType } = JSON.parse(req.body).data
+  const { avail, guest, partySize, partyType } = JSON.parse(req.body).data;
   const event = await prisma.event.create({
     data: {
       start: avail.start,
@@ -16,7 +16,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       },
       type: {
         connect: {
-          type: "CHARTER",
+          type: 'CHARTER',
         },
       },
       party: {
@@ -25,6 +25,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         },
       },
     },
-  })
-  res.status(200).json(event)
-}
+  });
+  res.status(200).json(event);
+};

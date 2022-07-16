@@ -44,6 +44,20 @@
         }
       ]
     },
+    "start": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "prisma studio --schema ./src/prisma/schema.prisma",
+        "cwd": "libs/data-access"
+      },
+      "dependsOn": [
+        {
+          "projects": "self",
+          "target": "make"
+        }
+      ]
+    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": [
