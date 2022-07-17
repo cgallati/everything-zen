@@ -13,7 +13,7 @@ import {
 } from './styles';
 import { getHeaders, getMonthStartPad } from './utils';
 import { isSameDay, setDate } from 'date-fns';
-import { Month } from '@ui';
+import { Month } from '../types';
 
 export interface CalendarProps {
   months: Month[];

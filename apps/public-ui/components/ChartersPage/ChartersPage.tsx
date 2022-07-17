@@ -5,7 +5,10 @@ import {
   ResponsiveSubheading,
   Subheading,
   SubheadingAndFriend,
-} from '../../common.styles';
+  Gallery,
+  Tile,
+  CTA,
+} from '@everything-zen/ui-components';
 import {
   CharterCard,
   CharterCardSection,
@@ -16,26 +19,23 @@ import {
   PaddedTileGrid,
   WhatToExpect,
 } from './styles';
-import { Gallery } from '../../Gallery/Gallery';
 import React, { FC } from 'react';
-import { Tile } from '../../Tile/Tile';
-import { CTA } from '../../CTA/CTA';
-import { Footer } from '../../Layout/Footer';
+import { Footer } from '../Layout/Footer';
 import { NextSeo } from 'next-seo';
-import boat0 from '@photos/boat0.jpg';
-import boat1 from '@photos/boat1.jpg';
-import boat2 from '@photos/boat2.jpg';
-import boat3 from '@photos/boat3.jpg';
-import boat4 from '@photos/boat4.jpg';
-import boat5 from '@photos/boat5.jpg';
-import boat6 from '@photos/boat6.jpg';
-import boat7 from '@photos/boat7.jpg';
-import boat8 from '@photos/boat8.jpg';
-import boat9 from '@photos/boat9.jpg';
-import boat10 from '@photos/boat10.jpg';
-import boat11 from '@photos/boat11.jpg';
-import boat12 from '@photos/boat12.jpg';
-import boat13 from '@photos/boat13.jpg';
+import boat0 from '../../public/photos/boat0.jpg';
+import boat1 from '../../public/photos/boat1.jpg';
+import boat2 from '../../public/photos/boat2.jpg';
+import boat3 from '../../public/photos/boat3.jpg';
+import boat4 from '../../public/photos/boat4.jpg';
+import boat5 from '../../public/photos/boat5.jpg';
+import boat6 from '../../public/photos/boat6.jpg';
+import boat7 from '../../public/photos/boat7.jpg';
+import boat8 from '../../public/photos/boat8.jpg';
+import boat9 from '../../public/photos/boat9.jpg';
+import boat10 from '../../public/photos/boat10.jpg';
+import boat11 from '../../public/photos/boat11.jpg';
+import boat12 from '../../public/photos/boat12.jpg';
+import boat13 from '../../public/photos/boat13.jpg';
 
 export const ChartersPage: FC = () => {
   return (
@@ -60,7 +60,7 @@ export const ChartersPage: FC = () => {
             <h6>5:30PM - 8:00PM</h6>
           </CharterCard>
           <CharterCard>
-            <h4> </h4>
+            <h4></h4>
             <h5>EXTENDED SAILS AND SPECIAL EVENTS</h5>
             <p>CONTACT FOR ARRANGEMENTS</p>
           </CharterCard>

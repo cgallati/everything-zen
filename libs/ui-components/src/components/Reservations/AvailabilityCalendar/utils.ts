@@ -1,6 +1,6 @@
 import { addMonths, format, getDay, setDate, subMonths } from 'date-fns';
 import { getTimezoneOffset } from 'date-fns-tz';
-import { Month } from '@components/Reservations/types';
+import { Month } from '../types';
 
 export const getHeaders = (months: Month[]): string[] => {
   const headers: string[] = [format(subMonths(months[0].firstDate, 1), 'MMMM')];

@@ -29,9 +29,11 @@ export const Reservation: React.FC<Charter> = ({
   const [cancelled, setCancelled] = React.useState<boolean>(false);
   const [error, setError] = React.useState<boolean>(false);
 
-  const date = format(time, 'MMMM do, yyyy');
+  const date = format(time as Date, 'MMMM do, yyyy');
   const timeRange =
-    format(time, 'h:mm') + ' - ' + format(addMinutes(time, duration), 'h:mm');
+    format(time as Date, 'h:mm') +
+    ' - ' +
+    format(addMinutes(time as Date, duration), 'h:mm');
   let formattedPhone: string;
   try {
     formattedPhone = new phoneNumberFormatter(guest.phone).format({

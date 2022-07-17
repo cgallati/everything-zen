@@ -11,11 +11,6 @@
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "paths": {
-      "@ui": [
-        "libs/ui-components/src/index.ts"
-      ]
-    }
   },
   "files": [],
   "include": [],

@@ -7,6 +7,7 @@
     "start:admin": "nx serve admin-ui",
     "start:all": "nx run-many --target=serve --all",
     "build": "nx build",
+    "build:admin": "nx build admin-ui",
     "test": "nx test",
     "format": "nx format:write"
   },

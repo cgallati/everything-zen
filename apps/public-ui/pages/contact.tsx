@@ -1,4 +1,4 @@
-import { ContactUsPage } from '../components/pages/ContactUsPage/ContactUsPage';
+import { ContactUsPage } from '../components/ContactUsPage/ContactUsPage';
 import { NextPage } from 'next';
 
 const Contact: NextPage = () => {

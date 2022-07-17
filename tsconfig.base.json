@@ -26,9 +26,6 @@
       ],
       "@everything-zen/ui-components": [
         "libs/ui-components/src/index.ts"
-      ],
-      "@testimonials/*": [
-        "apps/public-ui/public/testimonials/*"
       ]
     }
   },

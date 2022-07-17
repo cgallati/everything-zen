@@ -1,13 +1,8 @@
 import { NextPage } from 'next';
-import { SpecialOccasionsPage } from '../components/pages/SpecialOccasionsPage/SpecialOccasionsPage';
-import { Layout } from '../components/Layout/Layout';
+import { SpecialOccasionsPage } from '../components/SpecialOccasionsPage/SpecialOccasionsPage';
 
 const SpecialOccasions: NextPage = () => {
-  return (
-    <Layout>
-      <SpecialOccasionsPage />
-    </Layout>
-  );
+  return <SpecialOccasionsPage />;
 };
 
 export default SpecialOccasions;

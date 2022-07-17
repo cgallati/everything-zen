@@ -1,5 +1,4 @@
-import { Page } from '../../Layout/Page';
-import { Layout } from '../../Layout/Layout';
+import { Layout, Page } from '../Layout/';
 import { NextPage } from 'next';
 import {
   AddressFlex,
@@ -14,9 +13,8 @@ import {
   SneakyAnchor,
   FullWidthImg,
 } from './styles';
-import { TileGrid } from '../../common.styles';
+import { TileGrid, Tile } from '@everything-zen/ui-components';
 import React from 'react';
-import { Tile } from '../../Tile/Tile';
 
 export const ContactUsPage: NextPage = () => {
   return (

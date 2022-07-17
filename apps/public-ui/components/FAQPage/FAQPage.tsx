@@ -1,8 +1,9 @@
-import { Page } from '../../Layout/Page';
+import { Page } from '../Layout';
 import { FAQs } from './content';
 import { FAQ } from './FAQ';
 import React, { useState } from 'react';
-import { CTA, Endorsement } from '@ui';
+import { CTA, Endorsement } from '@everything-zen/ui-components';
+import expertiseSVG from '../../public/expertise-charters-2022.svg';
 
 export const FAQPage: React.FC = () => {
   const [expanded, setExpanded] = useState<number | undefined>(undefined);
@@ -24,7 +25,7 @@ export const FAQPage: React.FC = () => {
       <br />
       <CTA variant={'fat'} text={'CONTACT US'} route={'/contact'} />
       <CTA variant={'fat'} text={'CHARTERS & RATES'} route={'/charters'} />
-      <Endorsement />
+      <Endorsement img={expertiseSVG} />
     </Page>
   );
 };
