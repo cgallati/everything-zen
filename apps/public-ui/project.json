@@ -2,6 +2,9 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/public-ui",
   "projectType": "application",
+  "implicitDependencies": [
+    "data-access"
+  ],
   "targets": {
     "build": {
       "executor": "@nrwl/next:build",
@@ -13,12 +16,6 @@
         "root": "apps/public-ui",
         "outputPath": "dist/apps/public-ui"
       },
-      "dependsOn": [
-        {
-          "target": "generate",
-          "projects": "self"
-        }
-      ],
       "configurations": {
         "development": {},
         "production": {}
