@@ -1,0 +1,83 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/data-access/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "make": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "npx prisma generate --schema ./src/prisma/schema.prisma",
+        "cwd": "libs/data-access"
+      }
+    },
+    "seedLookups": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "ts-node --compiler-options {\\\"module\\\":\\\"CommonJS\\\"} src/prisma/seedLookups.ts",
+        "cwd": "libs/data-access"
+      },
+      "dependsOn": [
+        {
+          "projects": "self",
+          "target": "make"
+        }
+      ]
+    },
+    "seed": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "ts-node --compiler-options {\\\"module\\\":\\\"CommonJS\\\"} src/prisma/seed.ts",
+        "cwd": "libs/data-access"
+      },
+      "dependsOn": [
+        {
+          "projects": "self",
+          "target": "seedLookups"
+        },
+        {
+          "projects": "self",
+          "target": "make"
+        }
+      ]
+    },
+    "start": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "prisma studio --schema ./src/prisma/schema.prisma",
+        "cwd": "libs/data-access"
+      },
+      "dependsOn": [
+        {
+          "projects": "self",
+          "target": "make"
+        }
+      ]
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "libs/data-access/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/libs/data-access"
+      ],
+      "options": {
+        "jestConfig": "libs/data-access/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

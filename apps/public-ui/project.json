@@ -68,14 +68,6 @@
           "apps/public-ui/**/*.{ts,tsx,js,jsx}"
         ]
       }
-    },
-    "generate": {
-      "builder": "@nrwl/workspace:run-commands",
-      "outputs": [],
-      "options": {
-        "command": "npx prisma generate --schema ./prisma/schema.prisma",
-        "cwd": "apps/public-ui"
-      }
     }
   },
   "tags": []
