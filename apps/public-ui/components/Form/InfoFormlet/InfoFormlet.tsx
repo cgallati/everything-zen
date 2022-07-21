@@ -25,7 +25,7 @@ export type InfoFormletProps = {
   phone: string;
   partySize: number | string;
   partyType: PartyType | string;
-  submitForm: React.FormEventHandler;
+  advanceForm: () => void;
   goBack: () => void;
   handlePhoneChange: React.ChangeEventHandler<HTMLInputElement>;
   handleEmailChange: React.ChangeEventHandler<HTMLInputElement>;
@@ -41,7 +41,7 @@ export const InfoFormlet: React.FC<InfoFormletProps> = ({
   email,
   partySize,
   partyType,
-  submitForm,
+  advanceForm,
   goBack,
   handleNameChange,
   handleEmailChange,
@@ -117,31 +117,32 @@ export const InfoFormlet: React.FC<InfoFormletProps> = ({
       </Answer>
       <HR />
       <ContactHeader>CONTACT</ContactHeader>
-      <form onSubmit={submitForm}>
-        <TextInput
-          value={name}
-          type="text"
-          placeholder={'FULL NAME'}
-          onChange={handleNameChange}
-        />
-        <TextInput
-          value={phone}
-          type="tel"
-          placeholder={'PHONE NUMBER'}
-          onChange={handlePhoneChange}
-        />
-        <TextInput
-          value={email}
-          type="email"
-          placeholder={'EMAIL'}
-          onChange={handleEmailChange}
-        />
-        <SubmitButton
-          type="submit"
-          value="COMPLETE RESERVATION"
-          disabled={submitDisabled}
-        />
-      </form>
+      {/*<form onSubmit={advanceForm}>*/}
+      <TextInput
+        value={name}
+        type="text"
+        placeholder={'FULL NAME'}
+        onChange={handleNameChange}
+      />
+      <TextInput
+        value={phone}
+        type="tel"
+        placeholder={'PHONE NUMBER'}
+        onChange={handlePhoneChange}
+      />
+      <TextInput
+        value={email}
+        type="email"
+        placeholder={'EMAIL'}
+        onChange={handleEmailChange}
+      />
+      <SubmitButton
+        type="submit"
+        value="CONTINUE"
+        disabled={submitDisabled}
+        onClick={advanceForm}
+      />
+      {/*</form>*/}
     </Formlet>
   );
 };

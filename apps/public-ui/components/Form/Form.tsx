@@ -10,10 +10,16 @@ import { Availability, Month, PartyType } from '@everything-zen/ui-components';
 // import { analyticsEvent } from '../../../lib/analytics';
 import { addMinutes, format } from 'date-fns';
 import { ErrorMessage } from './Error';
+import {
+  PaymentFormlet,
+  PaymentFormletProps,
+} from './PaymentFormlet/PaymentFormlet';
 
+// the order matters, because of advanceForm and goBack
 export enum FormState {
   CALENDAR,
   INFO,
+  PAYMENT,
   SUBMITTING,
   SUCCESS,
   ERROR,
@@ -48,8 +54,14 @@ export const Form: React.FC<FormProps> = ({ availability }) => {
     setEmail(e.target.value);
 
   /* advance / back handlers */
-  const advanceForm = () => setFormState(FormState.INFO);
-  const goBack = () => setFormState(FormState.CALENDAR);
+  const advanceForm = () => {
+    const currentIndex = Object.keys(FormState).indexOf(formState.toString());
+    setFormState(FormState[FormState[currentIndex + 1]]);
+  };
+  const goBack = () => {
+    const currentIndex = Object.keys(FormState).indexOf(formState.toString());
+    setFormState(FormState[FormState[currentIndex - 1]]);
+  };
 
   const submitForm: React.FormEventHandler = async (e) => {
     e.stopPropagation();
@@ -120,6 +132,12 @@ export const Form: React.FC<FormProps> = ({ availability }) => {
     handleEmailChange,
     setPartySize,
     setPartyType,
+    advanceForm,
+    goBack,
+    selectedAvail: selectedAvail as Availability,
+  };
+
+  const paymentFormletProps: PaymentFormletProps = {
     submitForm,
     goBack,
     selectedAvail: selectedAvail as Availability,
@@ -131,6 +149,8 @@ export const Form: React.FC<FormProps> = ({ availability }) => {
         return <CalendarFormlet {...calFormletProps} />;
       case FormState.INFO:
         return <InfoFormlet {...infoFormletProps} />;
+      case FormState.PAYMENT:
+        return <PaymentFormlet {...paymentFormletProps} />;
       case FormState.SUBMITTING:
         return <Loading />;
       case FormState.SUCCESS:
