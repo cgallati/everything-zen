@@ -37,7 +37,7 @@ import {
   Endorsement,
 } from '@everything-zen/ui-components';
 import { Footer } from '../Layout/Footer';
-import { useWindowSize } from '../../hooks/useWindowSize';
+import { useWindowSize } from 'usehooks-ts';
 
 export const LandingPage: React.FC = () => {
   const { width } = useWindowSize();
