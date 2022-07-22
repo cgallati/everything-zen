@@ -5,36 +5,37 @@ import {
   BackText,
   Formlet,
   HR,
-  SubmitButton,
-} from './styles';
+  Prompt,
+} from '../styles';
 import { Availability } from '@everything-zen/ui-components';
-import { Elements, PaymentElement } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
+import { usePaymentIntent } from '../../../hooks/usePaymentIntent';
+import { StripeForm } from './StripeForm';
 
 export type PaymentFormletProps = {
   submitForm: React.FormEventHandler;
   goBack: () => void;
+  name: string;
+  phone: string;
+  email: string;
   selectedAvail: Availability;
 };
-
-const stripePromise = loadStripe(
-  'pk_test_51LEZWKHtNq32I60wP9...OP8H0zW9R00ynQmR9Ll'
-);
 
 export const PaymentFormlet: React.FC<PaymentFormletProps> = ({
   submitForm,
   goBack,
   selectedAvail,
+  name,
+  phone,
+  email,
 }) => {
-  const submitDisabled = true;
-  const options = {
-    // passing the client secret obtained in step 2
-    clientSecret: '{{CLIENT_SECRET}}',
-    // Fully customizable with appearance API.
+  const { secret, error } = usePaymentIntent(name, phone, email, selectedAvail);
+  const stripeOptions = {
+    clientSecret: secret,
     appearance: {
       /*...*/
     },
   };
+  if (error) return <p> error</p>;
 
   return (
     <Formlet>
@@ -43,18 +44,9 @@ export const PaymentFormlet: React.FC<PaymentFormletProps> = ({
         <BackText>CHOOSE A DIFFERENT DATE OR TIME</BackText>
       </BackButton>
       <HR />
+      <Prompt>Hold your res</Prompt>
       <form onSubmit={submitForm}>
-        <Elements stripe={stripePromise} options={options}>
-          <form>
-            <PaymentElement />
-            <button>Submit</button>
-          </form>
-        </Elements>
-        <SubmitButton
-          type="submit"
-          value="COMPLETE RESERVATION"
-          disabled={submitDisabled}
-        />
+        <StripeForm options={stripeOptions} />
       </form>
     </Formlet>
   );

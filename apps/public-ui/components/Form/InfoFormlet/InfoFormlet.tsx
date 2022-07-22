@@ -1,23 +1,25 @@
 import React from 'react';
 import {
   Answer,
-  BackArrow,
-  BackButton,
-  BackText,
   ContactHeader,
-  Formlet,
-  HR,
   ItemLine,
-  Prompt,
   ReservationDate,
   ReservationHeader,
   ReservationItem,
-  SubmitButton,
   TextInput,
   Time,
 } from './styles';
 import { addMinutes, format } from 'date-fns';
 import { Availability, PartyType } from '@everything-zen/ui-components';
+import {
+  BackArrow,
+  BackButton,
+  BackText,
+  Formlet,
+  HR,
+  Prompt,
+  SubmitButton,
+} from '../styles';
 
 export type InfoFormletProps = {
   name: string;

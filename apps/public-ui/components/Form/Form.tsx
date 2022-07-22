@@ -140,6 +140,9 @@ export const Form: React.FC<FormProps> = ({ availability }) => {
   const paymentFormletProps: PaymentFormletProps = {
     submitForm,
     goBack,
+    name,
+    phone,
+    email,
     selectedAvail: selectedAvail as Availability,
   };
 
