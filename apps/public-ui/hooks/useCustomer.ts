@@ -1,5 +1,4 @@
 import { useFetch, useLocalStorage, useSessionStorage } from 'usehooks-ts';
-import { useEffect, useState } from 'react';
 
 const stringifyCustomer = (customer: Omit<Customer, 'id'>) =>
   JSON.stringify(customer);
