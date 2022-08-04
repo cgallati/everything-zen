@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import { Availability } from '@everything-zen/ui-components';
+import useSWR from 'swr';
 
 export interface PaymentIntentInput {
   name: string;
@@ -10,6 +10,21 @@ export interface PaymentIntentInput {
 }
 
 const stringifyBody = (body: PaymentIntentInput) => JSON.stringify(body);
+const fetcher = (key: string, data: PaymentIntentInput) =>
+  fetch('api/paymentIntent', {
+    method: 'PUT',
+    body: stringifyBody({ ...data }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then((res) => res.json());
+const canFetch = ({
+  name,
+  phone,
+  amount,
+  description,
+  email,
+}: PaymentIntentInput) => name && phone && amount && description && email;
 
 export const usePaymentIntent = (
   name: string,
@@ -17,33 +32,18 @@ export const usePaymentIntent = (
   email: string,
   avail: Availability
 ) => {
-  const [data, setData] = useState(undefined);
-  const [error, setError] = useState(undefined);
   const { cost, start } = avail;
+  const payload = {
+    name,
+    phone,
+    email,
+    amount: cost * 100,
+    description: start.toString(),
+  };
+  const { data } = useSWR(
+    canFetch({ ...payload }) && ['api/paymentIntent', payload],
+    (url) => fetcher(url, payload)
+  );
 
-  useEffect(() => {
-    if (name && phone && email && cost && !data) {
-      // TODO useSWR and queries to dedupe this
-      fetch('api/paymentIntent', {
-        method: 'PUT',
-        body: stringifyBody({
-          name,
-          phone,
-          email,
-          amount: cost * 100,
-          description: start.toString(),
-        }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-        .then((r) => r.json())
-        .then((response) => {
-          setData(response);
-        })
-        .catch(setError);
-    }
-  }, [name, phone, email, cost, start, data, setData]);
-
-  return { secret: data?.secret, error };
+  return { secret: data?.secret };
 };

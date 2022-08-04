@@ -1,14 +1,5 @@
 import styled from 'styled-components';
 
-export const ReservationHeader = styled.h2`
-  margin-left: 2rem;
-  margin-top: 1.5rem;
-  font: normal normal normal 11px/13px Source Sans Pro;
-  letter-spacing: 2.2px;
-  color: #00263a;
-  opacity: 0.5;
-`;
-
 export const ItemLine = styled.div`
   display: flex;
   justify-content: space-between;
@@ -51,14 +42,6 @@ export const Answer = styled.select`
   font: normal normal normal 10px/12px Source Sans Pro;
   letter-spacing: 2px;
   padding-left: 0.5rem;
-`;
-
-export const ContactHeader = styled.h2`
-  margin-left: 2rem;
-  margin-top: 1.25rem;
-  font: normal normal normal 15px/18px Source Sans Pro;
-  letter-spacing: 3px;
-  color: #00263a;
 `;
 
 export const TextInput = styled.input`

@@ -1,10 +1,8 @@
 import React from 'react';
 import {
   Answer,
-  ContactHeader,
   ItemLine,
   ReservationDate,
-  ReservationHeader,
   ReservationItem,
   TextInput,
   Time,
@@ -18,7 +16,9 @@ import {
   Formlet,
   HR,
   Prompt,
+  SubtleHeader,
   SubmitButton,
+  HeavyHeader,
 } from '../styles';
 
 export type InfoFormletProps = {
@@ -77,7 +77,7 @@ export const InfoFormlet: React.FC<InfoFormletProps> = ({
         <BackText>CHOOSE A DIFFERENT DATE OR TIME</BackText>
       </BackButton>
       <HR />
-      <ReservationHeader>YOU ARE RESERVING</ReservationHeader>
+      <SubtleHeader>YOU ARE RESERVING</SubtleHeader>
       <ItemLine>
         <ReservationItem>
           {length / 60} HOUR {cruiseTimeStrings[0]} CRUISE
@@ -118,8 +118,7 @@ export const InfoFormlet: React.FC<InfoFormletProps> = ({
         ))}
       </Answer>
       <HR />
-      <ContactHeader>CONTACT</ContactHeader>
-      {/*<form onSubmit={advanceForm}>*/}
+      <HeavyHeader>CONTACT</HeavyHeader>
       <TextInput
         value={name}
         type="text"

@@ -66,3 +66,18 @@ export const SubmitButton = styled.input`
     opacity: 0.25;
   }
 `;
+export const SubtleHeader = styled.h2`
+  margin-left: 2rem;
+  margin-top: 1.5rem;
+  font: normal normal normal 11px/13px Source Sans Pro;
+  letter-spacing: 2.2px;
+  color: #00263a;
+  opacity: 0.5;
+`;
+export const HeavyHeader = styled.h2`
+  margin-left: 2rem;
+  margin-top: 1.25rem;
+  font: normal normal normal 15px/18px Source Sans Pro;
+  letter-spacing: 3px;
+  color: #00263a;
+`;

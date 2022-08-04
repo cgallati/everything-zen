@@ -7,13 +7,14 @@ import { InfoFormlet, InfoFormletProps } from './InfoFormlet/InfoFormlet';
 import { Success } from './Success';
 import { Loading } from './Loading';
 import { Availability, Month, PartyType } from '@everything-zen/ui-components';
-// import { analyticsEvent } from '../../../lib/analytics';
 import { addMinutes, format } from 'date-fns';
 import { ErrorMessage } from './Error';
 import {
   PaymentFormlet,
   PaymentFormletProps,
 } from './PaymentFormlet/PaymentFormlet';
+
+import { usePaymentIntent } from '../../hooks/usePaymentIntent';
 
 // the order matters, because of advanceForm and goBack
 export enum FormState {
@@ -30,20 +31,24 @@ type FormProps = {
 };
 
 export const Form: React.FC<FormProps> = ({ availability }) => {
-  const [formState, setFormState] = useState<FormState>(FormState.CALENDAR);
+  const [formState, setFormState] = useState<FormState>(FormState.INFO);
 
-  const [name, setName] = React.useState('');
-  const [phone, setPhone] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [partySize, setPartySize] = React.useState<number | 'default'>(
-    'default'
-  );
+  const [name, setName] = React.useState('Chad Test');
+  const [phone, setPhone] = React.useState('1234567890');
+  const [email, setEmail] = React.useState('chad@chad.com');
+  const [partySize, setPartySize] = React.useState<number | 'default'>(1);
   const [partyType, setPartyType] = React.useState<PartyType | 'default'>(
-    'default'
+    PartyType.Other
   );
 
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const [selectedAvail, setSelectedAvail] = useState<Availability | null>(null);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
+  const [selectedAvail, setSelectedAvail] = useState<Availability | null>({
+    start: new Date(),
+    length: 150,
+    cost: 650,
+    booked: false,
+    type: 'SUNSET CHARTER',
+  });
 
   /* info form handlers */
   const handleNameChange: React.ChangeEventHandler<HTMLInputElement> = (e) =>
