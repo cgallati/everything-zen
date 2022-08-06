@@ -11,7 +11,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       partyType: partyType.toUpperCase(),
       availability: {
         connect: {
-          start: avail.start,
+          id: avail.id
         },
       },
       type: {

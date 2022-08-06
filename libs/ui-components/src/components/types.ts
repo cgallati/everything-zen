@@ -7,6 +7,7 @@ export enum PartyType {
 }
 
 export interface Availability {
+  id: number;
   start: Date;
   length: number;
   cost: number;
@@ -45,6 +46,7 @@ export interface SerializableMonth {
 }
 
 export interface SerializableAvailability {
+  id: number;
   start: string;
   startOffsetHours: -4 | -5;
   length: number;

@@ -93,6 +93,7 @@ export const getServerSideProps: GetServerSideProps = async (_) => {
       },
       type: {
         select: {
+          id: true,
           type: true,
           cost: true,
           duration: true,
@@ -117,6 +118,7 @@ export const getServerSideProps: GetServerSideProps = async (_) => {
     const todayRef: SerializableAvailability[] =
       indexedAvails[year][month][date];
     const normalizedAvail: SerializableAvailability = {
+      id: avail.id,
       start: avail.start.toString(),
       length: avail.type.duration,
       cost: avail.type.cost,
