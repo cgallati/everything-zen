@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Sitemap = () => {
   return null;
 };
@@ -7,6 +5,7 @@ const Sitemap = () => {
 export const getServerSideProps = async ({ res }) => {
   const BASE_URL = 'https://ezsailingcharters.com';
 
+  // Only added base URL and paths with content
   const paths = [
     '',
     'charters',
