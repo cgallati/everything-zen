@@ -24,6 +24,7 @@ export const getServerSideProps = async ({ res }) => {
       </url>`
   );
 
+  // Important that there isn't a newline or space before XML declaration tag
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
