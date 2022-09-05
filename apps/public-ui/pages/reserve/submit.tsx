@@ -1,13 +1,25 @@
 import { GetServerSideProps, NextPage } from 'next';
 import prisma from '@everything-zen/data-access';
-import { PartyType, Subheading } from '@everything-zen/ui-components';
+import {
+  getConfirmationEmailHTMLString,
+  getConfirmationEmailText,
+  PartyType,
+  Subheading,
+} from '@everything-zen/ui-components';
 import { Success } from '../../components/Form/Success';
 import { addMinutes, format } from 'date-fns';
-import { analyticsEvent } from '../../lib/analytics';
+import { transporter } from '../../config/mail';
 
 interface SubmitReservationPageProps {
   ok: boolean;
 }
+
+const DOMAIN = 'ezsailingcharters.com';
+
+const defaultMessageData = {
+  from: `"Everything Zen Sailing Charters" no-reply@${DOMAIN}`,
+  subject: 'Your Charter Confirmation',
+};
 
 const SubmitReservationPage: NextPage<SubmitReservationPageProps> = ({
   ok,
@@ -81,17 +93,27 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   });
 
   if (event) {
-    fetch('/api/mail/sendConfirmation', {
-      method: 'PUT',
-      body: JSON.stringify({
+    if (process.env.SEND_EMAILS !== 'NO') {
+      const date = format(start, 'MMMM do, yyyy');
+      const timeRange =
+        format(start, 'h:mm') +
+        ' - ' +
+        format(addMinutes(start, type.duration), 'h:mm');
+      const data = {
+        ...defaultMessageData,
         to: email,
-        date: format(start, 'MMMM do, yyyy'),
-        timeRange:
-          format(start, 'h:mm') +
-          ' - ' +
-          format(addMinutes(start, type.duration), 'h:mm'),
-      }),
-    });
+        bcc: ['tggallati@gmail.com', `todd@${DOMAIN}`],
+        text: getConfirmationEmailText({ date, timeRange }),
+        replyTo: `todd@${DOMAIN}`,
+        html: getConfirmationEmailHTMLString({ date, timeRange }),
+      };
+      transporter(process.env.ZOHO_PW)
+        .sendMail(data)
+        .then(() => console.log('Success sending email to ' + email))
+        .catch((e) => {
+          console.error('Failure sending email to' + email + '. ' + e);
+        });
+    }
     // analyticsEvent({
     //       action: 'purchase',
     //       params: {
