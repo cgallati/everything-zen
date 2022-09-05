@@ -10,9 +10,8 @@ interface SubmitReservationPageProps {
 }
 
 const SubmitReservationPage: NextPage<SubmitReservationPageProps> = ({
-                                                                       ok,
-                                                                     }) => {
-
+  ok,
+}) => {
   if (ok) {
     return <Success />;
   } else {
@@ -46,7 +45,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       event: true,
     },
   });
-  const { event: existingEvent, start, type } = avail
+  const { event: existingEvent, start, type } = avail;
   if (existingEvent) {
     return {
       props: {
@@ -54,7 +53,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       },
     };
   }
-
 
   const event = await prisma.event.create({
     data: {
@@ -91,7 +89,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         timeRange:
           format(start, 'h:mm') +
           ' - ' +
-          format(addMinutes(start, length), 'h:mm'),
+          format(addMinutes(start, type.duration), 'h:mm'),
       }),
     });
     // analyticsEvent({
@@ -108,9 +106,9 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   } else {
     return {
       props: {
-        ok: false
-      }
-    }
+        ok: false,
+      },
+    };
   }
 };
 

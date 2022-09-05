@@ -25,7 +25,6 @@ export const StripeForm: React.FC<{
   };
 
   const handleSubmit = async (event) => {
-    console.log(submitPayload.toString());
     event.stopPropagation();
     setProcessing(true);
     setDisabled(true);
