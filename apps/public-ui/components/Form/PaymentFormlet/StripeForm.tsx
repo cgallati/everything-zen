@@ -35,8 +35,8 @@ export const StripeForm: React.FC<{
       confirmParams: {
         return_url: `${
           // does not work on localhost without tunneling a port out
-          window.location.host
-        }/reserve/submit/?${submitPayload.toString()}`,
+          window.location.href
+        }/submit/?${submitPayload.toString()}`,
       },
     });
     error && setError(error.message);
