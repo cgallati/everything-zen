@@ -17,7 +17,6 @@ export const StripeForm: React.FC<{
   const elements = useElements();
 
   const [error, setError] = useState('');
-  const [processing, setProcessing] = useState(false);
   const [disabled, setDisabled] = useState(true);
 
   const handleChange = async (event: StripePaymentElementChangeEvent) => {
@@ -26,7 +25,6 @@ export const StripeForm: React.FC<{
 
   const handleSubmit = async (event) => {
     event.stopPropagation();
-    setProcessing(true);
     setDisabled(true);
     const { error } = await stripe.confirmSetup({
       elements,
@@ -54,7 +52,6 @@ export const StripeForm: React.FC<{
         value="COMPLETE RESERVATION"
         disabled={disabled}
       />
-      {processing && <Paragraph>Processing....</Paragraph>}
       {error && <Paragraph>{error}</Paragraph>}
     </PaymentForm>
   );
