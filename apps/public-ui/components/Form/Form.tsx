@@ -29,7 +29,7 @@ type FormProps = {
 };
 
 export const Form: React.FC<FormProps> = ({ availability }) => {
-  const [formState, setFormState] = useState<FormState>(FormState.INFO);
+  const [formState, setFormState] = useState<FormState>(FormState.CALENDAR);
 
   const [name, setName] = React.useState('');
   const [phone, setPhone] = React.useState('');
@@ -41,15 +41,8 @@ export const Form: React.FC<FormProps> = ({ availability }) => {
     'default'
   );
 
-  const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
-  const [selectedAvail, setSelectedAvail] = useState<Availability | null>({
-    id: 50000003,
-    start: new Date(),
-    length: 150,
-    cost: 650,
-    booked: false,
-    type: 'SUNSET CHARTER',
-  });
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [selectedAvail, setSelectedAvail] = useState<Availability | null>(null);
 
   /* info form handlers */
   const handleNameChange: React.ChangeEventHandler<HTMLInputElement> = (e) =>
