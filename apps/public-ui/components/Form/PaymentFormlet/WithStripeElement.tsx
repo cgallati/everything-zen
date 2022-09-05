@@ -2,7 +2,9 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import { ReactElement } from 'react';
 
-const stripePromise = loadStripe(process.env.STRIPE_KEY);
+const stripePromise = loadStripe(
+  'pk_test_51LEZWKHtNq32I60wP9HTIh2gTjHJpBufxd06EU6GsxxXOT08OgpZ4UMdkHzjmPdVf540hrkqTWQWx9SOP8H0zW9R00ynQmR9Ll'
+);
 
 export const WithStripeElement: React.FC<{
   secret: string;
