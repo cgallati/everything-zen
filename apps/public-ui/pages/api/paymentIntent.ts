@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 import { PaymentIntentInput } from '../../hooks/usePaymentIntent';
 
-const stripe = new Stripe(process.env.STRIPE_KEY, {
+const stripe = new Stripe(process.env.STRIPE_SECRET, {
   apiVersion: '2020-08-27',
 });
 
