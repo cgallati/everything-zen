@@ -8,6 +8,7 @@ export const Prompt = styled.h3`
   color: #00263a;
 `;
 export const Formlet = styled.section`
+  position: relative;
   max-width: 415px;
   margin: 0 auto;
   padding: 1.5rem 0 2rem 0;

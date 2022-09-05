@@ -14,8 +14,6 @@ import {
   PaymentFormletProps,
 } from './PaymentFormlet/PaymentFormlet';
 
-import { usePaymentIntent } from '../../hooks/usePaymentIntent';
-
 // the order matters, because of advanceForm and goBack
 export enum FormState {
   CALENDAR,
@@ -33,16 +31,19 @@ type FormProps = {
 export const Form: React.FC<FormProps> = ({ availability }) => {
   const [formState, setFormState] = useState<FormState>(FormState.INFO);
 
-  const [name, setName] = React.useState('Chad Test');
-  const [phone, setPhone] = React.useState('1234567890');
-  const [email, setEmail] = React.useState('chad@chad.com');
-  const [partySize, setPartySize] = React.useState<number | 'default'>(1);
+  const [name, setName] = React.useState('');
+  const [phone, setPhone] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [partySize, setPartySize] = React.useState<number | 'default'>(
+    'default'
+  );
   const [partyType, setPartyType] = React.useState<PartyType | 'default'>(
-    PartyType.Other
+    'default'
   );
 
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
   const [selectedAvail, setSelectedAvail] = useState<Availability | null>({
+    id: 50000003,
     start: new Date(),
     length: 150,
     cost: 650,
@@ -68,55 +69,15 @@ export const Form: React.FC<FormProps> = ({ availability }) => {
     setFormState(FormState[FormState[currentIndex - 1]]);
   };
 
-  const submitForm: React.FormEventHandler = async (e) => {
-    e.stopPropagation();
-    if (!selectedAvail) {
-      return;
-    }
-
-    setFormState(FormState.SUBMITTING);
-    const { start, length } = selectedAvail;
-    await fetch('/api/submitReservation', {
-      method: 'PUT',
-      body: JSON.stringify({
-        data: {
-          avail: selectedAvail,
-          guest: { name, phone, email },
-          partySize,
-          partyType,
-        },
-      }),
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res;
-        }
-        throw new Error('Failure submitting reservation.');
-      })
-      .then(() => {
-        fetch('/api/mail/sendConfirmation', {
-          method: 'PUT',
-          body: JSON.stringify({
-            to: email,
-            date: format(start, 'MMMM do, yyyy'),
-            timeRange:
-              format(start, 'h:mm') +
-              ' - ' +
-              format(addMinutes(start, length), 'h:mm'),
-          }),
-        });
-      })
-      // .then(() =>
-      //   analyticsEvent({
-      //     action: 'purchase',
-      //     params: {
-      //       event_label: 'reserve-charter',
-      //     },
-      //   })
-      // )
-      .then(() => setFormState(FormState.SUCCESS))
-      .catch(() => setFormState(FormState.ERROR));
-  };
+  // TODO: Memoize this?
+  const submitPayload = new URLSearchParams({
+    name,
+    phone,
+    email,
+    avail: selectedAvail?.id.toString(),
+    partySize: partySize?.toString(),
+    partyType: partyType?.toString(),
+  });
 
   const calFormletProps: CalendarFormletProps = {
     availability,
@@ -143,7 +104,7 @@ export const Form: React.FC<FormProps> = ({ availability }) => {
   };
 
   const paymentFormletProps: PaymentFormletProps = {
-    submitForm,
+    submitPayload,
     goBack,
     name,
     phone,

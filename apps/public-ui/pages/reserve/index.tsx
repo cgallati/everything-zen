@@ -1,5 +1,5 @@
 import { GetServerSideProps, NextPage } from 'next';
-import { Layout } from '../components/Layout';
+import { Layout } from '../../components/Layout';
 import {
   Month,
   SerializableAvailability,
@@ -19,7 +19,7 @@ import {
   startOfMonth,
 } from 'date-fns';
 import { getTimezoneOffset } from 'date-fns-tz';
-import { Form } from '../components/Form';
+import { Form } from '../../components/Form';
 
 type ReservePageProps = {
   availability: SerializableMonth[];
@@ -93,6 +93,7 @@ export const getServerSideProps: GetServerSideProps = async (_) => {
       },
       type: {
         select: {
+          id: true,
           type: true,
           cost: true,
           duration: true,
@@ -117,6 +118,7 @@ export const getServerSideProps: GetServerSideProps = async (_) => {
     const todayRef: SerializableAvailability[] =
       indexedAvails[year][month][date];
     const normalizedAvail: SerializableAvailability = {
+      id: avail.id,
       start: avail.start.toString(),
       length: avail.type.duration,
       cost: avail.type.cost,

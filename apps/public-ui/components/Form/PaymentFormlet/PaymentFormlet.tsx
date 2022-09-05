@@ -7,14 +7,18 @@ import {
   HR,
   HeavyHeader,
 } from '../styles';
-import { Availability, Paragraph } from '@everything-zen/ui-components';
+import {
+  Availability,
+  Paragraph,
+  Subheading,
+} from '@everything-zen/ui-components';
 import { usePaymentIntent } from '../../../hooks/usePaymentIntent';
 import { StripeForm } from './StripeForm';
-import { ObscuringLoader, PaymentForm } from './styles';
+import { DisclaimerText, ObscuringLoader, PolicyHeading } from './styles';
 import { WithStripeElement } from './WithStripeElement';
 
 export type PaymentFormletProps = {
-  submitForm: React.FormEventHandler;
+  submitPayload: URLSearchParams;
   goBack: () => void;
   name: string;
   phone: string;
@@ -23,16 +27,15 @@ export type PaymentFormletProps = {
 };
 
 export const PaymentFormlet: React.FC<PaymentFormletProps> = ({
-  submitForm,
+  submitPayload,
   goBack,
   selectedAvail,
   name,
   phone,
   email,
 }) => {
-  const [isReady, setIsReady] = useState<boolean>(false);
   const { secret } = usePaymentIntent(name, phone, email, selectedAvail);
-
+  const [isReady, setIsReady] = useState<boolean>(false);
   return (
     <WithStripeElement secret={secret}>
       <Formlet>
@@ -40,26 +43,30 @@ export const PaymentFormlet: React.FC<PaymentFormletProps> = ({
           <BackArrow src={'/leftarrow.svg'} alt={'back arrow'} />
           <BackText>CHOOSE A DIFFERENT DATE OR TIME</BackText>
         </BackButton>
-        <HR />
-        <HeavyHeader>HOLD YOUR RESERVATION</HeavyHeader>
-        <br />
-        <Paragraph>
-          {/* eslint-disable react/no-unescaped-entities */}
-          To hold your charter reservation, please submit a valid payment
-          method. You will not be charged until after your charter and will be
-          able to provide an alternate payment method at that time.
-          <br />
-          Cancellations can be made up until 24 hours before your charter.
-          Failure to cancel before this time will result in the full charter
-          amount being charged to the payment method on file.
-        </Paragraph>
-        <PaymentForm onSubmit={submitForm}>
-          {!isReady && <ObscuringLoader />}
-          {secret && <StripeForm setIsReady={() => setIsReady(true)} />}
-        </PaymentForm>
+        {!secret && <ObscuringLoader />}
+        {secret && (
+          <>
+            <HR />
+            <br />
+            <HeavyHeader>HOLD YOUR RESERVATION</HeavyHeader>
+            <DisclaimerText>
+              {/* eslint-disable react/no-unescaped-entities */}
+              To hold your charter reservation, please submit a valid payment
+              method. You will not be charged until after your charter and will
+              be able to provide an alternate payment method at that time.
+            </DisclaimerText>
+            <HeavyHeader>CANCELLATION POLICY</HeavyHeader>
+            <DisclaimerText>
+              Cancellations can be made up until 24 hours before your charter.
+              Failure to cancel before this time will result in the full charter
+              amount being charged to the payment method on file.
+            </DisclaimerText>
+            <br />
+            <br />
+            <StripeForm setIsReady={setIsReady} submitPayload={submitPayload} />
+          </>
+        )}
       </Formlet>
     </WithStripeElement>
   );
 };
-
-PaymentFormlet.displayName = 'PaymentFormlet';

@@ -1,5 +1,3 @@
-import { usePaymentIntent } from '../../../hooks/usePaymentIntent';
-import { Availability } from '@everything-zen/ui-components';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import { ReactElement } from 'react';
