@@ -6,7 +6,7 @@ export interface PaymentIntentInput {
   email: string;
 }
 
-const fetcher = (key: string, data: PaymentIntentInput) =>
+const fetcher = (data: PaymentIntentInput) =>
   fetch('api/paymentIntent', {
     method: 'PUT',
     body: JSON.stringify(data),
@@ -14,9 +14,6 @@ const fetcher = (key: string, data: PaymentIntentInput) =>
       'Content-Type': 'application/json',
     },
   }).then((res) => res.json());
-
-const canFetch = ({ name, phone, email }: PaymentIntentInput) =>
-  name && phone && email;
 
 export const usePaymentIntent = (
   name: string,
@@ -28,9 +25,8 @@ export const usePaymentIntent = (
     phone,
     email,
   };
-  const { data } = useSWR(
-    canFetch(payload) && ['api/paymentIntent', payload],
-    (url) => fetcher(url, payload)
+  const { data } = useSWR(['api/paymentIntent', payload], () =>
+    fetcher(payload)
   );
 
   return { secret: data?.secret };
