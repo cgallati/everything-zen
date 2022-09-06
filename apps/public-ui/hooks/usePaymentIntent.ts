@@ -1,47 +1,35 @@
-import { Availability } from '@everything-zen/ui-components';
 import useSWR from 'swr';
 
 export interface PaymentIntentInput {
   name: string;
   phone: string;
   email: string;
-  amount: number;
-  description: string;
 }
 
-const stringifyBody = (body: PaymentIntentInput) => JSON.stringify(body);
 const fetcher = (key: string, data: PaymentIntentInput) =>
   fetch('api/paymentIntent', {
     method: 'PUT',
-    body: stringifyBody({ ...data }),
+    body: JSON.stringify(data),
     headers: {
       'Content-Type': 'application/json',
     },
   }).then((res) => res.json());
-const canFetch = ({
-  name,
-  phone,
-  amount,
-  description,
-  email,
-}: PaymentIntentInput) => name && phone && amount && description && email;
+
+const canFetch = ({ name, phone, email }: PaymentIntentInput) =>
+  name && phone && email;
 
 export const usePaymentIntent = (
   name: string,
   phone: string,
-  email: string,
-  avail: Availability
+  email: string
 ) => {
-  const { cost, start } = avail;
   const payload = {
     name,
     phone,
     email,
-    amount: cost * 100,
-    description: start.toString(),
   };
   const { data } = useSWR(
-    canFetch({ ...payload }) && ['api/paymentIntent', payload],
+    canFetch(payload) && ['api/paymentIntent', payload],
     (url) => fetcher(url, payload)
   );
 

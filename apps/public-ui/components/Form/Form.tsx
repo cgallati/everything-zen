@@ -7,7 +7,6 @@ import { InfoFormlet, InfoFormletProps } from './InfoFormlet/InfoFormlet';
 import { Success } from './Success';
 import { Loading } from './Loading';
 import { Availability, Month, PartyType } from '@everything-zen/ui-components';
-import { addMinutes, format } from 'date-fns';
 import { ErrorMessage } from './Error';
 import {
   PaymentFormlet,
@@ -102,7 +101,6 @@ export const Form: React.FC<FormProps> = ({ availability }) => {
     name,
     phone,
     email,
-    selectedAvail: selectedAvail as Availability,
   };
 
   const ActiveFormlet = () => {

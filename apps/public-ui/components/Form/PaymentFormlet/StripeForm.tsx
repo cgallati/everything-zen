@@ -4,15 +4,14 @@ import {
   useStripe,
 } from '@stripe/react-stripe-js';
 import { SubmitButton } from '../styles';
-import React, { Dispatch, SetStateAction, useState } from 'react';
+import React, { useState } from 'react';
 import { Paragraph } from '@everything-zen/ui-components';
 import { PaymentForm } from './styles';
 import { StripePaymentElementChangeEvent } from '@stripe/stripe-js';
 
 export const StripeForm: React.FC<{
   submitPayload: URLSearchParams;
-  setIsReady: Dispatch<SetStateAction<boolean>>;
-}> = ({ submitPayload, setIsReady }) => {
+}> = ({ submitPayload }) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -40,13 +39,7 @@ export const StripeForm: React.FC<{
 
   return (
     <PaymentForm onSubmit={handleSubmit}>
-      <PaymentElement
-        onReady={(element) => {
-          console.log({ element });
-          setIsReady(true);
-        }}
-        onChange={handleChange}
-      />
+      <PaymentElement onChange={handleChange} />
       <SubmitButton
         type="submit"
         value="COMPLETE RESERVATION"

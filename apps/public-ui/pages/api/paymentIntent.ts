@@ -26,18 +26,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     customer = await stripe.customers.create({ name, email, phone });
   }
 
-  // create or update, depending on if we found an intent
   const intent = await stripe.setupIntents
     .create({
       customer: customer.id,
       usage: 'off_session',
-      // amount,
-      // currency: 'usd',
-      // automatic_payment_methods: {
-      //   enabled: true,
-      // },
-      // description,
-      // receipt_email: customer.email,
     })
     .catch((error) => {
       console.error(

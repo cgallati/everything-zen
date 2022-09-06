@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   BackArrow,
   BackButton,
@@ -7,14 +7,9 @@ import {
   HR,
   HeavyHeader,
 } from '../styles';
-import {
-  Availability,
-  Paragraph,
-  Subheading,
-} from '@everything-zen/ui-components';
 import { usePaymentIntent } from '../../../hooks/usePaymentIntent';
 import { StripeForm } from './StripeForm';
-import { DisclaimerText, ObscuringLoader, PolicyHeading } from './styles';
+import { DisclaimerText, ObscuringLoader } from './styles';
 import { WithStripeElement } from './WithStripeElement';
 
 export type PaymentFormletProps = {
@@ -23,19 +18,16 @@ export type PaymentFormletProps = {
   name: string;
   phone: string;
   email: string;
-  selectedAvail: Availability;
 };
 
 export const PaymentFormlet: React.FC<PaymentFormletProps> = ({
   submitPayload,
   goBack,
-  selectedAvail,
   name,
   phone,
   email,
 }) => {
-  const { secret } = usePaymentIntent(name, phone, email, selectedAvail);
-  const [isReady, setIsReady] = useState<boolean>(false);
+  const { secret } = usePaymentIntent(name, phone, email);
   return (
     <WithStripeElement secret={secret}>
       <Formlet>
@@ -63,7 +55,7 @@ export const PaymentFormlet: React.FC<PaymentFormletProps> = ({
             </DisclaimerText>
             <br />
             <br />
-            <StripeForm setIsReady={setIsReady} submitPayload={submitPayload} />
+            <StripeForm submitPayload={submitPayload} />
           </>
         )}
       </Formlet>
