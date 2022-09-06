@@ -19,7 +19,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { data: customers } = await stripe.customers.search({
     query: `email:"${email}"`,
   });
-  console.log(customers);
   let customer = customers[0];
 
   if (!customer) {

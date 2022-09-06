@@ -107,7 +107,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         replyTo: `todd@${DOMAIN}`,
         html: getConfirmationEmailHTMLString({ date, timeRange }),
       };
-      transporter(process.env.ZOHO_PW)
+      await transporter(process.env.ZOHO_PW)
         .sendMail(data)
         .then(() => console.log('Success sending email to ' + email))
         .catch((e) => {
