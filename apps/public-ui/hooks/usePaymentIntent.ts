@@ -1,4 +1,5 @@
 import useSWR from 'swr';
+import { useState } from 'react';
 
 export interface PaymentIntentInput {
   name: string;
@@ -25,9 +26,6 @@ export const usePaymentIntent = (
     phone,
     email,
   };
-  const { data } = useSWR(['api/paymentIntent', payload], () =>
-    fetcher(payload)
-  );
-
+  const { data } = useSWR('api/paymentIntent', () => fetcher(payload));
   return { secret: data?.secret };
 };
