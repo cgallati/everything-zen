@@ -7,10 +7,10 @@ import {
   HR,
   HeavyHeader,
 } from '../styles';
-import { usePaymentIntent } from '../../../hooks/usePaymentIntent';
 import { StripeForm } from './StripeForm';
 import { DisclaimerText, ObscuringLoader } from './styles';
 import { WithStripeElement } from './WithStripeElement';
+import useSWR from 'swr';
 
 export type PaymentFormletProps = {
   submitPayload: URLSearchParams;
@@ -27,7 +27,20 @@ export const PaymentFormlet: React.FC<PaymentFormletProps> = ({
   phone,
   email,
 }) => {
-  const { secret } = usePaymentIntent(name, phone, email);
+  const { data } = useSWR('api/paymentIntent', () =>
+    fetch('api/paymentIntent', {
+      method: 'PUT',
+      body: JSON.stringify({
+        name,
+        phone,
+        email,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then((res) => res.json())
+  );
+  const secret = data?.secret;
   return (
     <WithStripeElement secret={secret}>
       <Formlet>
