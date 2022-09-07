@@ -58,13 +58,16 @@ export const PaymentFormlet: React.FC<PaymentFormletProps> = ({
               {/* eslint-disable react/no-unescaped-entities */}
               To hold your charter reservation, please submit a valid payment
               method. You will not be charged until after your charter and will
-              be able to provide an alternate payment method at that time.
+              be able to provide an alternate payment method at that time if you
+              wish.
             </DisclaimerText>
             <HeavyHeader>CANCELLATION POLICY</HeavyHeader>
             <DisclaimerText>
-              Cancellations can be made up until 24 hours before your charter.
-              Failure to cancel before this time will result in the full charter
-              amount being charged to the payment method on file.
+              Charter guest may cancel up to 48 hours before the charter at no
+              cost. Cancellations by the guest with less than 48 hours notice
+              will result in the full charter amount being charged to the
+              payment method on file. Cancellations made by the Captain for
+              weather reasons will not result in a charge to the customer.
             </DisclaimerText>
             <br />
             <br />
