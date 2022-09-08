@@ -46,7 +46,7 @@ export const PaymentFormlet: React.FC<PaymentFormletProps> = ({
       <Formlet>
         <BackButton onClick={() => goBack()}>
           <BackArrow src={'/leftarrow.svg'} alt={'back arrow'} />
-          <BackText>CHOOSE A DIFFERENT DATE OR TIME</BackText>
+          <BackText>EDIT CHARTER</BackText>
         </BackButton>
         {!secret && <ObscuringLoader />}
         {secret && (
