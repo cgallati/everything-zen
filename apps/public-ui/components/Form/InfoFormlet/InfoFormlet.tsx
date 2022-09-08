@@ -1,23 +1,25 @@
 import React from 'react';
 import {
   Answer,
-  BackArrow,
-  BackButton,
-  BackText,
-  ContactHeader,
-  Formlet,
-  HR,
   ItemLine,
-  Prompt,
   ReservationDate,
-  ReservationHeader,
   ReservationItem,
-  SubmitButton,
   TextInput,
   Time,
 } from './styles';
 import { addMinutes, format } from 'date-fns';
 import { Availability, PartyType } from '@everything-zen/ui-components';
+import {
+  BackArrow,
+  BackButton,
+  BackText,
+  Formlet,
+  HR,
+  Prompt,
+  SubtleHeader,
+  SubmitButton,
+  HeavyHeader,
+} from '../styles';
 
 export type InfoFormletProps = {
   name: string;
@@ -25,7 +27,7 @@ export type InfoFormletProps = {
   phone: string;
   partySize: number | string;
   partyType: PartyType | string;
-  submitForm: React.FormEventHandler;
+  advanceForm: () => void;
   goBack: () => void;
   handlePhoneChange: React.ChangeEventHandler<HTMLInputElement>;
   handleEmailChange: React.ChangeEventHandler<HTMLInputElement>;
@@ -41,7 +43,7 @@ export const InfoFormlet: React.FC<InfoFormletProps> = ({
   email,
   partySize,
   partyType,
-  submitForm,
+  advanceForm,
   goBack,
   handleNameChange,
   handleEmailChange,
@@ -75,7 +77,7 @@ export const InfoFormlet: React.FC<InfoFormletProps> = ({
         <BackText>CHOOSE A DIFFERENT DATE OR TIME</BackText>
       </BackButton>
       <HR />
-      <ReservationHeader>YOU ARE RESERVING</ReservationHeader>
+      <SubtleHeader>YOU ARE RESERVING</SubtleHeader>
       <ItemLine>
         <ReservationItem>
           {length / 60} HOUR {cruiseTimeStrings[0]} CRUISE
@@ -116,32 +118,32 @@ export const InfoFormlet: React.FC<InfoFormletProps> = ({
         ))}
       </Answer>
       <HR />
-      <ContactHeader>CONTACT</ContactHeader>
-      <form onSubmit={submitForm}>
-        <TextInput
-          value={name}
-          type="text"
-          placeholder={'FULL NAME'}
-          onChange={handleNameChange}
-        />
-        <TextInput
-          value={phone}
-          type="tel"
-          placeholder={'PHONE NUMBER'}
-          onChange={handlePhoneChange}
-        />
-        <TextInput
-          value={email}
-          type="email"
-          placeholder={'EMAIL'}
-          onChange={handleEmailChange}
-        />
-        <SubmitButton
-          type="submit"
-          value="COMPLETE RESERVATION"
-          disabled={submitDisabled}
-        />
-      </form>
+      <HeavyHeader>CONTACT</HeavyHeader>
+      <TextInput
+        value={name}
+        type="text"
+        placeholder={'FULL NAME'}
+        onChange={handleNameChange}
+      />
+      <TextInput
+        value={phone}
+        type="tel"
+        placeholder={'PHONE NUMBER'}
+        onChange={handlePhoneChange}
+      />
+      <TextInput
+        value={email}
+        type="email"
+        placeholder={'EMAIL'}
+        onChange={handleEmailChange}
+      />
+      <SubmitButton
+        type="submit"
+        value="CONTINUE"
+        disabled={submitDisabled}
+        onClick={advanceForm}
+      />
+      {/*</form>*/}
     </Formlet>
   );
 };
