@@ -1,5 +1,5 @@
 import { GetServerSideProps, NextPage } from 'next';
-import { Layout } from '../components/Layout';
+import { Layout } from '../../components/Layout';
 import {
   Month,
   SerializableAvailability,
@@ -19,7 +19,7 @@ import {
   startOfMonth,
 } from 'date-fns';
 import { getTimezoneOffset } from 'date-fns-tz';
-import { Form } from '../components/Form';
+import { Form } from '../../components/Form';
 
 type ReservePageProps = {
   availability: SerializableMonth[];
