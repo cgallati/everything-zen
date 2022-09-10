@@ -7,6 +7,8 @@ import { InfoFormlet, InfoFormletProps } from './InfoFormlet/InfoFormlet';
 import { Success } from './Success';
 import { Loading } from './Loading';
 import { Availability, Month, PartyType } from '@everything-zen/ui-components';
+// import { analyticsEvent } from '../../../lib/analytics';
+import { addMinutes, format } from 'date-fns';
 import { ErrorMessage } from './Error';
 import {
   PaymentFormlet,
@@ -43,6 +45,8 @@ export const Form: React.FC<FormProps> = ({ availability }) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedAvail, setSelectedAvail] = useState<Availability | null>(null);
 
+  const [secret, setSecret] = useState<string>('');
+
   /* info form handlers */
   const handleNameChange: React.ChangeEventHandler<HTMLInputElement> = (e) =>
     setName(e.target.value);
@@ -50,6 +54,7 @@ export const Form: React.FC<FormProps> = ({ availability }) => {
     setPhone(e.target.value);
   const handleEmailChange: React.ChangeEventHandler<HTMLInputElement> = (e) =>
     setEmail(e.target.value);
+
 
   /* advance / back handlers */
   const advanceForm = () => {
@@ -61,7 +66,6 @@ export const Form: React.FC<FormProps> = ({ availability }) => {
     setFormState(FormState[FormState[currentIndex - 1]]);
   };
 
-  // TODO: Memoize this?
   const submitPayload = new URLSearchParams({
     name,
     phone,
@@ -101,6 +105,8 @@ export const Form: React.FC<FormProps> = ({ availability }) => {
     name,
     phone,
     email,
+    secret,
+    setSecret
   };
 
   const ActiveFormlet = () => {

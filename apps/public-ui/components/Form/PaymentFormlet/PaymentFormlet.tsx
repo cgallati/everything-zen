@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import {
   BackArrow,
   BackButton,
@@ -18,17 +18,22 @@ export type PaymentFormletProps = {
   name: string;
   phone: string;
   email: string;
+  secret: string;
+  setSecret: Dispatch<SetStateAction<string>>;
 };
 
 export const PaymentFormlet: React.FC<PaymentFormletProps> = ({
-  submitPayload,
-  goBack,
-  name,
-  phone,
-  email,
-}) => {
-  const { data } = useSWR('api/paymentIntent', () =>
-    fetch('api/paymentIntent', {
+                                                                submitPayload,
+                                                                goBack,
+                                                                name,
+                                                                phone,
+                                                                email,
+                                                                secret,
+                                                                setSecret,
+                                                              }) => {
+  const shouldFetch = !secret;
+  useSWR(shouldFetch && 'api/setupIntent', () =>
+    fetch('api/setupIntent', {
       method: 'PUT',
       body: JSON.stringify({
         name,
@@ -38,9 +43,12 @@ export const PaymentFormlet: React.FC<PaymentFormletProps> = ({
       headers: {
         'Content-Type': 'application/json',
       },
-    }).then((res) => res.json())
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setSecret(data.secret);
+      })
   );
-  const secret = data?.secret;
   return (
     <WithStripeElement secret={secret}>
       <Formlet>
