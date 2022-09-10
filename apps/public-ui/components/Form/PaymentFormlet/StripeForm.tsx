@@ -11,7 +11,12 @@ import { StripePaymentElementChangeEvent } from '@stripe/stripe-js';
 
 export const StripeForm: React.FC<{
   submitPayload: URLSearchParams;
-}> = ({ submitPayload }) => {
+  secret: string;
+}> = ({ submitPayload, secret }) => {
+  const RETURN_HOST =
+    window?.location.hostname === 'localhost'
+      ? 'google.com'
+      : 'ezsailingcharters.com';
   const stripe = useStripe();
   const elements = useElements();
 
@@ -22,6 +27,9 @@ export const StripeForm: React.FC<{
     setDisabled(!event.complete);
   };
 
+  console.log(
+    `https://${RETURN_HOST}/reserve/submit/?${submitPayload.toString()}`
+  );
   const handleSubmit = async (event) => {
     event.stopPropagation();
     setDisabled(true);
@@ -29,9 +37,7 @@ export const StripeForm: React.FC<{
       elements,
       redirect: 'always',
       confirmParams: {
-        return_url: `https://${
-          window.location.host
-        }/reserve/submit/?${submitPayload.toString()}`,
+        return_url: `https://${RETURN_HOST}/reserve/submit/?${submitPayload.toString()}`,
       },
     });
     error && setError(error.message);

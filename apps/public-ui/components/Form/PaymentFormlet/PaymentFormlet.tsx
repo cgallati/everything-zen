@@ -23,14 +23,14 @@ export type PaymentFormletProps = {
 };
 
 export const PaymentFormlet: React.FC<PaymentFormletProps> = ({
-                                                                submitPayload,
-                                                                goBack,
-                                                                name,
-                                                                phone,
-                                                                email,
-                                                                secret,
-                                                                setSecret,
-                                                              }) => {
+  submitPayload,
+  goBack,
+  name,
+  phone,
+  email,
+  secret,
+  setSecret,
+}) => {
   const shouldFetch = !secret;
   useSWR(shouldFetch && 'api/setupIntent', () =>
     fetch('api/setupIntent', {
@@ -79,7 +79,7 @@ export const PaymentFormlet: React.FC<PaymentFormletProps> = ({
             </DisclaimerText>
             <br />
             <br />
-            <StripeForm submitPayload={submitPayload} />
+            <StripeForm submitPayload={submitPayload} secret={secret} />
           </>
         )}
       </Formlet>

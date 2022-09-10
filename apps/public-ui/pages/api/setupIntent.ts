@@ -38,6 +38,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     .create({
       customer: customer.id,
       usage: 'off_session',
+      payment_method_types: ['card'],
     })
     .catch((error) => {
       console.error(
