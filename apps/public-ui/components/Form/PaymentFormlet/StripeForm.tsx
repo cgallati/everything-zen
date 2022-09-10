@@ -27,9 +27,6 @@ export const StripeForm: React.FC<{
     setDisabled(!event.complete);
   };
 
-  console.log(
-    `https://${RETURN_HOST}/reserve/submit/?${submitPayload.toString()}`
-  );
   const handleSubmit = async (event) => {
     event.stopPropagation();
     setDisabled(true);
