@@ -113,8 +113,8 @@ export const Form: React.FC<FormProps> = ({ availability }) => {
 
   return (
     <Formlet>
-      <Heading>PRIVATE CHARTER</Heading>
-      <SubHeading>HARBOR SAIL | 6 PASSENGERS MAX</SubHeading>
+      <Heading>RESERVE A CHARTER</Heading>
+      <SubHeading>CREATE RESERVATIONS AND TIME OFF</SubHeading>
       <Calendar
         months={availability}
         idx={monthIdx}
