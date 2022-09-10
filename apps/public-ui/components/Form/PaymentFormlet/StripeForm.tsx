@@ -44,12 +44,13 @@ export const StripeForm: React.FC<{
   };
 
   return (
-    <PaymentForm onSubmit={handleSubmit}>
+    <PaymentForm>
       <PaymentElement onChange={handleChange} />
       <SubmitButton
         type="submit"
         value="COMPLETE RESERVATION"
         disabled={disabled}
+        onClick={handleSubmit}
       />
       {error && <Paragraph>{error}</Paragraph>}
     </PaymentForm>

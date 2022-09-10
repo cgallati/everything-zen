@@ -2,7 +2,7 @@ import styled, { keyframes } from 'styled-components';
 import React from 'react';
 import { Paragraph } from '@everything-zen/ui-components';
 
-export const PaymentForm = styled.form`
+export const PaymentForm = styled.div`
   width: 100%;
   min-height: 400px;
 `;
