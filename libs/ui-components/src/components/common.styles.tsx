@@ -63,6 +63,7 @@ export const SubheadingAndFriend = styled.div`
     flex-grow: 1;
     margin: 0;
   }
+
   > img {
     flex-grow: 0;
   }
@@ -106,6 +107,7 @@ export const TileGrid = styled.section`
   @media (min-width: 1000px) {
     flex-direction: row;
   }
+
   > div {
     display: flex;
     justify-content: center;
@@ -116,4 +118,10 @@ export const TileGrid = styled.section`
 export const MapScale = styled(ResponsiveImg)`
   width: 50%;
   max-width: 250px;
+`;
+
+export const Formlet = styled.section`
+  width: 267px;
+  margin: auto;
+  padding: 2.5rem 0;
 `;

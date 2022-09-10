@@ -143,7 +143,6 @@ export const InfoFormlet: React.FC<InfoFormletProps> = ({
         disabled={submitDisabled}
         onClick={advanceForm}
       />
-      {/*</form>*/}
     </Formlet>
   );
 };
