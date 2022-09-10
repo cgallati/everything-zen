@@ -6,6 +6,7 @@ import { fetchAndFormatAvailability } from '@everything-zen/data-access';
 import { addHours } from 'date-fns';
 import { Form } from '../components/Form';
 import { SerializableMonth } from '../../../libs/data-access/src/types';
+import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 
 type ReservePageProps = {
   availability: SerializableMonth[];
@@ -50,14 +51,16 @@ const ReservePage: NextPage<ReservePageProps> = ({
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (_) => {
-  const months = await fetchAndFormatAvailability();
+export const getServerSideProps: GetServerSideProps = withPageAuthRequired({
+  getServerSideProps: async (_) => {
+    const months = await fetchAndFormatAvailability();
 
-  return {
-    props: {
-      availability: months,
-    },
-  };
-};
+    return {
+      props: {
+        availability: months,
+      },
+    };
+  },
+});
 
 export default ReservePage;
