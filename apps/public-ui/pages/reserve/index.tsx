@@ -1,16 +1,12 @@
 import { GetServerSideProps, NextPage } from 'next';
 import { Layout } from '../../components/Layout';
-import {
-  Month,
-} from '@everything-zen/ui-components';
+import { Month } from '@everything-zen/ui-components';
 import { NextSeo } from 'next-seo';
 import { fetchAndFormatAvailability } from '@everything-zen/data-access';
-import {
-  addHours,
-
-} from 'date-fns';
+import { addHours, getDaysInMonth, getMonth, getYear } from 'date-fns';
 import { Form } from '../../components/Form';
 import { SerializableMonth } from '../../../../libs/data-access/src/types';
+import { getTimezoneOffset } from 'date-fns-tz';
 
 type ReservePageProps = {
   availability: SerializableMonth[];
@@ -56,7 +52,25 @@ const ReservePage: NextPage<ReservePageProps> = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async (_) => {
-  const months = await fetchAndFormatAvailability()
+  // const months = await fetchAndFormatAvailability();
+
+  // rebuild calendar data structure without avails
+  const date = new Date();
+  const days = [];
+  const daysInMonth = getDaysInMonth(date);
+  for (let i = 1; i <= daysInMonth; i++) {
+    days.push({
+      avails: [],
+    });
+  }
+  const months: SerializableMonth[] = [
+    {
+      firstDate: date.toString(),
+      firstDateOffsetHours: (getTimezoneOffset('America/New_York', date) /
+        (1_000 * 60 * 60)) as -4 | -5,
+      days,
+    },
+  ];
 
   return {
     props: {
