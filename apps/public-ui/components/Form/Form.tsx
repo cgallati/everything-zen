@@ -8,7 +8,6 @@ import { Success } from './Success';
 import { Loading } from './Loading';
 import { Availability, Month, PartyType } from '@everything-zen/ui-components';
 // import { analyticsEvent } from '../../../lib/analytics';
-import { addMinutes, format } from 'date-fns';
 import { ErrorMessage } from './Error';
 import {
   PaymentFormlet,
@@ -54,7 +53,6 @@ export const Form: React.FC<FormProps> = ({ availability }) => {
     setPhone(e.target.value);
   const handleEmailChange: React.ChangeEventHandler<HTMLInputElement> = (e) =>
     setEmail(e.target.value);
-
 
   /* advance / back handlers */
   const advanceForm = () => {
@@ -106,7 +104,7 @@ export const Form: React.FC<FormProps> = ({ availability }) => {
     phone,
     email,
     secret,
-    setSecret
+    setSecret,
   };
 
   const ActiveFormlet = () => {

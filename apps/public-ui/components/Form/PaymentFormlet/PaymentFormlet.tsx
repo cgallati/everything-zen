@@ -1,16 +1,10 @@
-import React, { Dispatch, SetStateAction, useState } from 'react';
-import {
-  BackArrow,
-  BackButton,
-  BackText,
-  Formlet,
-  HR,
-  HeavyHeader,
-} from '../styles';
+import React, { Dispatch, SetStateAction } from 'react';
+import { BackArrow, BackButton, BackText, Formlet } from '../styles';
 import { StripeForm } from './StripeForm';
 import { DisclaimerText, ObscuringLoader } from './styles';
 import { WithStripeElement } from './WithStripeElement';
 import useSWR from 'swr';
+import { HeavyHeader, HR } from '@everything-zen/ui-components';
 
 export type PaymentFormletProps = {
   submitPayload: URLSearchParams;

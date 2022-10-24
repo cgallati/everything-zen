@@ -7,19 +7,15 @@ import {
   Formlet,
   Month,
   PartyType,
+  FormletHeading,
+  FormletSubHeading,
+  HR,
+  HeavyHeader,
+  SubtleHeader,
+  SubmitButton,
 } from '@everything-zen/ui-components';
 
-import {
-  Heading,
-  SubHeading,
-} from '../../../public-ui/components/Form/CalendarFormlet/styles';
 import { addMinutes, format, getDate } from 'date-fns';
-import {
-  HeavyHeader,
-  HR,
-  SubmitButton,
-  SubtleHeader,
-} from '../../../public-ui/components/Form/styles';
 import {
   Answer,
   ItemLine,
@@ -113,8 +109,8 @@ export const Form: React.FC<FormProps> = ({ availability }) => {
 
   return (
     <Formlet>
-      <Heading>RESERVE A CHARTER</Heading>
-      <SubHeading>CREATE RESERVATIONS AND TIME OFF</SubHeading>
+      <FormletHeading>RESERVE A CHARTER</FormletHeading>
+      <FormletSubHeading>CREATE RESERVATIONS AND TIME OFF</FormletSubHeading>
       <Calendar
         months={availability}
         idx={monthIdx}

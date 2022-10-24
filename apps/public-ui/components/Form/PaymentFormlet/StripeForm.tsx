@@ -3,9 +3,8 @@ import {
   useElements,
   useStripe,
 } from '@stripe/react-stripe-js';
-import { SubmitButton } from '../styles';
 import React, { useState } from 'react';
-import { Paragraph } from '@everything-zen/ui-components';
+import { Paragraph, SubmitButton } from '@everything-zen/ui-components';
 import { PaymentForm } from './styles';
 import { StripePaymentElementChangeEvent } from '@stripe/stripe-js';
 
