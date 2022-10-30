@@ -1,12 +1,15 @@
 import { GetServerSideProps, NextPage } from 'next';
-import { Layout } from '../components/Layout';
-import { Month } from '@everything-zen/ui-components';
+import { AdminLayout } from '../components/AdminLayout';
 import { NextSeo } from 'next-seo';
-import { fetchAndFormatAvailability } from '@everything-zen/data-access';
-import { addHours } from 'date-fns';
-import { Form } from '../components/Form';
-import { SerializableMonth } from '../../../libs/data-access/src/types';
+import {
+  fetchAndFormatAvailability,
+  SerializableMonth,
+  // deserializeAvailability,
+} from '@everything-zen/data-access';
+import { ReserveForm } from '../components/Forms';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
+import { Month } from '@everything-zen/ui-components';
+import { addHours } from 'date-fns';
 
 type ReservePageProps = {
   availability: SerializableMonth[];
@@ -15,6 +18,7 @@ type ReservePageProps = {
 const ReservePage: NextPage<ReservePageProps> = ({
   availability: serializedAvail,
 }) => {
+  // const availability = deserializeAvailability(serializedAvail);
   const getOffsetFromChs = (date: Date, chsOffset: -4 | -5) => {
     const localOffset = date.getTimezoneOffset() / 60;
     return localOffset + chsOffset;
@@ -44,9 +48,9 @@ const ReservePage: NextPage<ReservePageProps> = ({
         title="Reservations"
         description="Reserve your private Charleston Harbor cruise today."
       />
-      <Layout>
-        <Form {...{ availability }} />
-      </Layout>
+      <AdminLayout>
+        <ReserveForm {...{ availability }} />
+      </AdminLayout>
     </>
   );
 };

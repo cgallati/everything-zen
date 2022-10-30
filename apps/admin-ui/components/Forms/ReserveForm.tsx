@@ -30,7 +30,7 @@ type FormProps = {
   availability: Month[];
 };
 
-export const Form: React.FC<FormProps> = ({ availability }) => {
+export const ReserveForm: React.FC<FormProps> = ({ availability }) => {
   const [submitText, setSubmitText] = React.useState('SUBMIT');
   const [name, setName] = React.useState('OFF');
   const [phone, setPhone] = React.useState('8436709145');

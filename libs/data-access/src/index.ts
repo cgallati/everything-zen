@@ -1,3 +1,4 @@
+export * from './types';
 import prisma from './prisma';
 import {
   addMonths,
