@@ -3,14 +3,13 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const payload = JSON.parse(req.body);
-  const { type, id, cost, duration } = payload.eventType as EventType;
+  const { id, cost, duration } = payload.eventType as EventType;
   await prisma.eventType
     .update({
       where: {
         id,
       },
       data: {
-        type,
         cost,
         duration,
       },

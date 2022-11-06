@@ -15,8 +15,6 @@ export const EditableCharterCard: FC<{ charter: EventType }> = ({
   charter,
 }) => {
   const router = useRouter();
-
-  const [charterName, setCharterName] = useState<string>(charter.type);
   const [charterCost, setCharterCost] = useState<number>(charter.cost);
   const [charterDuration, setCharterDuration] = useState<number>(
     charter.duration
@@ -27,16 +25,13 @@ export const EditableCharterCard: FC<{ charter: EventType }> = ({
 
   const resetEditingState = () => {
     setIsEditing(false);
-    setCharterName(charter.type);
     setCharterCost(charter.cost);
     setCharterDuration(charter.duration);
   };
 
   const saveDisabled =
-    charterName === charter.type &&
     charterCost === charter.cost &&
     charterDuration === charterDuration &&
-    !!charterName &&
     !!charterDuration &&
     !!charterCost;
 
@@ -48,7 +43,6 @@ export const EditableCharterCard: FC<{ charter: EventType }> = ({
       body: JSON.stringify({
         eventType: {
           id: charter.id,
-          type: charterName,
           cost: charterCost,
           duration: charterDuration,
         },
@@ -90,9 +84,7 @@ export const EditableCharterCard: FC<{ charter: EventType }> = ({
           <h2>EDIT CHARTER</h2>
           <label>NAME</label>
           <input
-            value={charterName}
             disabled={true} // some logic depends on this value
-            onChange={(e) => setCharterName(e.target.value)}
           />
           <label>COST</label>
           <input
