@@ -81,11 +81,7 @@ export const EditableCharterCard: FC<{ charter: EventType }> = ({
         contentLabel="Cancel Charter Confirmation"
       >
         <EditForm>
-          <h2>EDIT CHARTER</h2>
-          <label>NAME</label>
-          <input
-            disabled={true} // some logic depends on this value
-          />
+          <h2>{charter.type}</h2>
           <label>COST</label>
           <input
             value={charterCost}
