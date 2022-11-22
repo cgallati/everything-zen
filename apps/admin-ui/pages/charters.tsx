@@ -3,14 +3,14 @@ import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 import { GetServerSideProps } from 'next';
 import React, { FC } from 'react';
 import prisma, { EventType } from '@everything-zen/data-access';
-import { Layout } from '../components/Layout';
+import { AdminLayout } from '../components/AdminLayout';
 import { ManageChartersPage } from '../components/ManageChartersPage/ManageChartersPage';
 
 const CharterPage: FC<{ charters: EventType[] }> = ({ charters }) => {
   return (
-    <Layout>
+    <AdminLayout>
       <ManageChartersPage charters={charters} />
-    </Layout>
+    </AdminLayout>
   );
 };
 
