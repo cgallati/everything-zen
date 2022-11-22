@@ -18,6 +18,7 @@ import {
 } from './types';
 
 export default prisma;
+export * from './types';
 
 export const fetchAndFormatAvailability = async () => {
   const avails = await prisma.availability.findMany({
