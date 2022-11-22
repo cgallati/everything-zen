@@ -27,4 +27,4 @@ export type IndexedAvailability = {
   };
 };
 
-export { EventType } from '@prisma/client';
+export type { EventType } from '@prisma/client';
