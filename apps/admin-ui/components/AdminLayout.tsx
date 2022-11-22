@@ -5,6 +5,7 @@ const menuItems: MenuItem[] = [
   { label: 'MANAGE AVAILABILITY', relRoute: '/availability' },
   { label: 'BOOK A CHARTER', relRoute: '/reserve' },
   { label: 'MANIFEST', relRoute: '/' },
+  { label: 'CHARTER TYPES', relRoute: '/charters' },
 ];
 export const AdminLayout: React.FC<{ children: ReactNode }> = ({
   children,

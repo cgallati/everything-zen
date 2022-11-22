@@ -102,13 +102,6 @@ export const SpecialOccasionsPage = () => {
           ]}
           startingIndex={1}
         />
-        <ResponsiveSubheading>LARGE PARTY ACCOMMODATIONS</ResponsiveSubheading>
-        <Paragraph>
-          You can have up to 6 people in your party, with the ability to make
-          accommodations to book a separate charter vessel if you require more
-          space. Parties interested in booking a separate charter vessel should
-          contact us prior to booking for possible arrangements.
-        </Paragraph>
         <ResponsiveSubheading>
           SPECIAL CATERING FOR THE CHARTER
         </ResponsiveSubheading>
