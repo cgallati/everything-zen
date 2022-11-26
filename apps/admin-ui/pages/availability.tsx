@@ -34,7 +34,6 @@ const AvailabilityPage: NextPage<AvailabilityPageProps> = ({
 export const getServerSideProps: GetServerSideProps = withPageAuthRequired({
   getServerSideProps: async (_) => {
     const months = await fetchAndFormatAvailability();
-
     return {
       props: {
         availability: months,

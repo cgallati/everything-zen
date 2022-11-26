@@ -38,6 +38,13 @@ export const CalendarFormlet: React.FC<CalendarFormletProps> = ({
     advanceForm();
   };
 
+  const handleDateClick = (
+    date: Date,
+    _: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    setSelectedDate(date);
+  };
+
   return (
     <Formlet>
       <FormletHeading>PRIVATE CHARTER</FormletHeading>
@@ -46,13 +53,15 @@ export const CalendarFormlet: React.FC<CalendarFormletProps> = ({
         months={availability}
         idx={monthIdx}
         setIdx={setMonthIdx}
-        {...{ selectedDate, setSelectedDate }}
+        clearDateSelections={() => setSelectedDate(null)}
+        selectedDate={selectedDate}
+        handleDateClick={handleDateClick}
       />
       <CharterTimeButtons
         availDay={
           availability[monthIdx].days[getDate(selectedDate) - 1]?.avails || []
         }
-        handleCharterSelection={handleCharterSelection}
+        setSelectedAvail={handleCharterSelection}
       />
     </Formlet>
   );

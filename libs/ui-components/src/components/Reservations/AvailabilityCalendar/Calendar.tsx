@@ -26,7 +26,7 @@ export interface CalendarProps {
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void;
   clearDateSelections: () => void;
-  allowAllSelections: boolean;
+  allowAllSelections?: boolean;
 }
 
 export const Calendar: FC<CalendarProps> = ({
