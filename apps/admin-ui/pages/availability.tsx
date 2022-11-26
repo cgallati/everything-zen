@@ -21,8 +21,8 @@ const AvailabilityPage: NextPage<AvailabilityPageProps> = ({
   return (
     <>
       <NextSeo
-        title="Reservations"
-        description="Reserve your private Charleston Harbor cruise today."
+        title="Availability"
+        description="Manage charter availability."
       />
       <AdminLayout>
         <AvailabilityForm {...{ availability }} />

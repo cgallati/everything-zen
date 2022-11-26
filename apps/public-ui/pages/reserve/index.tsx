@@ -54,24 +54,6 @@ const ReservePage: NextPage<ReservePageProps> = ({
 export const getServerSideProps: GetServerSideProps = async (_) => {
   const months = await fetchAndFormatAvailability();
 
-  // rebuild calendar data structure without avails
-  // const date = new Date();
-  // const days = [];
-  // const daysInMonth = getDaysInMonth(date);
-  // for (let i = 1; i <= daysInMonth; i++) {
-  //   days.push({
-  //     avails: [],
-  //   });
-  // }
-  // const months: SerializableMonth[] = [
-  //   {
-  //     firstDate: date.toString(),
-  //     firstDateOffsetHours: (getTimezoneOffset('America/New_York', date) /
-  //       (1_000 * 60 * 60)) as -4 | -5,
-  //     days,
-  //   },
-  // ];
-
   return {
     props: {
       availability: months,

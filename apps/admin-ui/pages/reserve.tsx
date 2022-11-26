@@ -4,7 +4,6 @@ import { NextSeo } from 'next-seo';
 import {
   fetchAndFormatAvailability,
   SerializableMonth,
-  // deserializeAvailability,
 } from '@everything-zen/data-access';
 import { ReserveForm } from '../components/Forms';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
@@ -18,6 +17,7 @@ type ReservePageProps = {
 const ReservePage: NextPage<ReservePageProps> = ({
   availability: serializedAvail,
 }) => {
+  // todo: untangle prisma client from this dep so we don't have to duplicate the util below
   // const availability = deserializeAvailability(serializedAvail);
   const getOffsetFromChs = (date: Date, chsOffset: -4 | -5) => {
     const localOffset = date.getTimezoneOffset() / 60;

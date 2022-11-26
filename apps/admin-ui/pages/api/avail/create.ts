@@ -1,8 +1,6 @@
 import prisma from '@everything-zen/data-access';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { setDate, setDay, setHours, setMinutes } from 'date-fns';
-import { getChsOffset } from '../../../../../libs/ui-components/src/components/Reservations/AvailabilityCalendar/utils';
-import { getTimezoneOffset } from 'date-fns-tz';
+import { setHours, setMinutes } from 'date-fns';
 
 const getStartTimeDate = (
   month: string,
@@ -10,15 +8,9 @@ const getStartTimeDate = (
   year: string,
   startTime: string
 ) => {
-  console.log({ month, day, year });
   const date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
   const [startHour, startMin] = startTime.split(':');
-  console.log({
-    newStartDate: date,
-    startHour,
-  });
   const hourDate = setHours(date, parseInt(startHour));
-  console.log({ hourDate });
   return setMinutes(hourDate, parseInt(startMin));
 };
 
