@@ -6,105 +6,101 @@ import {
   CharterTimeButtons,
   Formlet,
   Month,
-  PartyType,
   FormletHeading,
-  FormletSubHeading,
   HR,
-  HeavyHeader,
   SubtleHeader,
-  SubmitButton,
 } from '@everything-zen/ui-components';
+import Modal from 'react-modal';
 
-import { addMinutes, format, getDate } from 'date-fns';
-import {
-  Answer,
-  ItemLine,
-  Prompt,
-  ReservationDate,
-  ReservationItem,
-  TextInput,
-  Time,
-} from './styles';
+import { format, getDate, isBefore } from 'date-fns';
+import { AddAvailForm, AvailsButton } from './styles';
+import { modalStyles } from '../ManifestPage/styles';
 
 type FormProps = {
   availability: Month[];
 };
 
 export const AvailabilityForm: React.FC<FormProps> = ({ availability }) => {
-  const [submitText, setSubmitText] = React.useState('SUBMIT');
-  const [name, setName] = React.useState('OFF');
-  const [phone, setPhone] = React.useState('8436709145');
-  const [email, setEmail] = React.useState('tggallati@gmail.com');
-  const [partySize, setPartySize] = React.useState<number>(1);
-  const [partyType, setPartyType] = React.useState<PartyType>(PartyType.Other);
-
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [selectedEndDate, setSelectedEndDate] = useState<Date | null>(null);
   const [selectedAvail, setSelectedAvail] = useState<Availability | null>(null);
   const [monthIdx, setMonthIdx] = useState<number>(0);
+  const [isAdding, setIsAdding] = useState<boolean>(false);
 
-  /* info form handlers */
-  const handleNameChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setName(e.target.value);
-    setSubmitText('SUBMIT');
-  };
-  const handlePhoneChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setPhone(e.target.value);
-    setSubmitText('SUBMIT');
-  };
-  const handleEmailChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setEmail(e.target.value);
-    setSubmitText('SUBMIT');
-  };
-
-  const submitDisabled = !name || !phone || !email || submitText === 'ERROR';
-
-  const { start, length, cost } = selectedAvail || {
-    start: new Date(),
-    length: 150,
-    cost: undefined,
-  };
-  const [startTimeString, endTimeString] = [
-    format(start, 'h:mm'),
-    format(addMinutes(start, length), 'h:mm'),
-  ];
-  const cruiseTimeStrings = [
-    selectedAvail?.type,
-    startTimeString + ' - ' + endTimeString,
-  ];
-  const partySizeOptions = [1, 2, 3, 4, 5, 6];
-
-  const handleDateChange = (date: Date) => {
+  const handleDateClick = (
+    date: Date,
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    if (selectedDate === date) {
+      setSelectedDate(null);
+      setSelectedAvail(undefined);
+    }
+    if (e.shiftKey) {
+      if (isBefore(date, selectedDate)) {
+        setSelectedDate(null);
+        setSelectedAvail(undefined);
+      } else {
+        setSelectedEndDate(date);
+        setSelectedAvail(undefined);
+      }
+      return;
+    }
     setSelectedDate(date);
+    setSelectedEndDate(null);
     setSelectedAvail(undefined);
   };
 
-  const submitForm: React.FormEventHandler = async (e) => {
+  const handleCancelClick = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     e.stopPropagation();
-    setSubmitText('SUBMITTING');
-    if (!selectedAvail) {
-      return;
-    }
+    setIsAdding(false);
+  };
 
-    // setFormState(FormState.SUBMITTING);
-    await fetch('/api/submitReservation', {
+  const handleDeleteSingle = async () => {
+    await fetch('/api/avail/delete', {
       method: 'PUT',
       body: JSON.stringify({
-        data: {
-          avail: selectedAvail,
-          guest: { name, phone, email },
-          partySize,
-          partyType,
-        },
+        avails: [selectedAvail.id],
       }),
     })
       .then((res) => {
         if (res.ok) {
           return res;
         }
-        throw new Error('Failure submitting reservation.');
+        throw new Error('Failure deleting single avail');
       })
-      .then(() => window.location.reload())
-      .catch(() => setSubmitText('ERROR'));
+      .then(() => window.location.reload());
+  };
+
+  const handleDeleteAll = async () => {
+    const startDate = getDate(selectedDate) - 1;
+    const endDate = selectedEndDate ? getDate(selectedEndDate) - 1 : undefined;
+    let avails: Availability[] = [];
+    for (let i = startDate; i <= (endDate ? endDate : startDate); i++) {
+      avails.push(...(availability[monthIdx].days[i]?.avails || []));
+    }
+
+    await fetch('/api/avail/delete', {
+      method: 'PUT',
+      body: JSON.stringify({
+        avails: avails.map(({ id }) => id),
+      }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res;
+        }
+        throw new Error('Failure deleting avails');
+      })
+      .then(() => window.location.reload());
+  };
+
+  const submitForm: React.FormEventHandler = async (e) => {
+    e.stopPropagation();
+    if (!selectedAvail) {
+      return;
+    }
   };
 
   return (
@@ -115,70 +111,86 @@ export const AvailabilityForm: React.FC<FormProps> = ({ availability }) => {
         idx={monthIdx}
         setIdx={setMonthIdx}
         selectedDate={selectedDate}
-        setSelectedDate={handleDateChange}
+        selectedEndDate={selectedEndDate}
+        handleDateClick={handleDateClick}
+        clearDateSelections={() => {
+          setSelectedDate(null);
+          setSelectedEndDate(null);
+        }}
+        allowAllSelections={true}
       />
       <CharterTimeButtons
         availDay={
           availability[monthIdx].days[getDate(selectedDate) - 1]?.avails || []
         }
-        handleCharterSelection={setSelectedAvail}
+        selected={selectedAvail}
+        setSelectedAvail={setSelectedAvail}
       />
+      {selectedDate && (
+        <AvailsButton onClick={() => setIsAdding(true)}>
+          ADD AVAILABILITY
+        </AvailsButton>
+      )}
       <HR />
       {selectedAvail && (
         <>
-          <SubtleHeader>YOU ARE RESERVING</SubtleHeader>
-          <ItemLine>
-            <ReservationItem>
-              {length / 60} HOUR {cruiseTimeStrings[0]} CRUISE
-            </ReservationItem>
-            <ReservationItem>${cost}</ReservationItem>
-          </ItemLine>
-          <ReservationDate>
-            {format(start, 'EEEE, MMMM do  Y').toUpperCase()}
-          </ReservationDate>
-          <Time>{cruiseTimeStrings[1]}</Time>
+          <SubtleHeader>DELETE SELECTED AVAILABILITY</SubtleHeader>
+          <AvailsButton onClick={handleDeleteSingle}>
+            DELETE SINGLE
+          </AvailsButton>
           <HR />
-          <Prompt>PARTY SIZE</Prompt>
-          <Answer
-            value={partySize}
-            onChange={(e) => setPartySize(parseInt(e.target.value))}
-          >
-            <option disabled value={'default'}>
-              CHOOSE AN OPTION
-            </option>
-            {partySizeOptions.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </Answer>
-          <Prompt>PARTY TYPE</Prompt>
-          <Answer
-            value={partyType}
-            onChange={(e) => setPartyType(e.target.value as PartyType)}
-          >
-            <option disabled value={'default'}>
-              CHOOSE AN OPTION
-            </option>
-            {Object.keys(PartyType).map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </Answer>
-          <HR />
-          <HeavyHeader>INFO</HeavyHeader>
-          <TextInput value={name} type="text" onChange={handleNameChange} />
-          <TextInput value={phone} type="tel" onChange={handlePhoneChange} />
-          <TextInput value={email} type="email" onChange={handleEmailChange} />
-          <SubmitButton
-            type="submit"
-            value={submitText}
-            disabled={submitDisabled}
-            onClick={submitForm}
-          />
         </>
       )}
+      {selectedDate && (
+        <>
+          <SubtleHeader>WARNING: DELETE ALL</SubtleHeader>
+          <AvailsButton onClick={handleDeleteAll}>DELETE ALL</AvailsButton>
+        </>
+      )}
+      <Modal
+        isOpen={isAdding}
+        style={modalStyles}
+        contentLabel="Add Availability"
+      >
+        <AddAvailForm action={'/api/avail/create'} method="POST">
+          <h2>Range</h2>
+          <label>Start Date*</label>
+          <input
+            type={'date'}
+            name={'startDate'}
+            defaultValue={
+              selectedDate ? format(selectedDate, 'yyyy-MM-dd') : ''
+            }
+          />
+          <br />
+          <label>End Date</label>
+          <input
+            type={'date'}
+            name={'endDate'}
+            defaultValue={
+              selectedEndDate ? format(selectedEndDate, 'yyyy-MM-dd') : ''
+            }
+          />
+          <br />
+          <h2>Details</h2>
+          <label>Start Time*</label>
+          <input
+            type={'time'}
+            defaultValue={'13:00'}
+            step={900}
+            name={'startTime'}
+          />
+          <label>Charter Type</label>
+          <select name={'type'}>
+            <option>CHARTER</option>
+            <option>SUNSET CHARTER</option>
+          </select>
+          <input type={'submit'} />
+          <button onClick={handleCancelClick}>CANCEL</button>
+        </AddAvailForm>
+      </Modal>
     </Formlet>
   );
 };
+
+Modal.setAppElement('#__next');

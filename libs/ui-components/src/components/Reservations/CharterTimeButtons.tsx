@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 interface TimeButtonProps {
   booked: boolean;
+  isSelected?: boolean;
 }
 
 const CharterTimeButton = styled.button<TimeButtonProps>`
@@ -26,13 +27,29 @@ const CharterTimeButton = styled.button<TimeButtonProps>`
     color: #fff;
   }
 
+  ${({ isSelected }) =>
+    isSelected &&
+    `
+    background: #00263a;
+    color: #fff;
+  `}
+
   opacity: ${({ booked }) => (booked ? '.35' : '1')};
 `;
 
 export const CharterTimeButtons: FC<{
   availDay: Availability[];
-  handleCharterSelection: (arg0: Availability) => void;
-}> = ({ availDay, handleCharterSelection }) => {
+  setSelectedAvail: React.Dispatch<React.SetStateAction<Availability | null>>;
+  selected?: Availability;
+}> = ({ availDay, setSelectedAvail, selected }) => {
+  const handleButtonClick = (avail: Availability) => {
+    if (selected && selected.id === avail.id) {
+      setSelectedAvail(null);
+    } else {
+      setSelectedAvail(avail);
+    }
+  };
+
   return (
     <>
       {availDay.map((avail) => (
@@ -40,7 +57,8 @@ export const CharterTimeButtons: FC<{
           key={avail.start.toTimeString()}
           booked={avail.booked}
           disabled={avail.booked}
-          onClick={() => handleCharterSelection(avail)}
+          onClick={() => handleButtonClick(avail)}
+          isSelected={selected && selected.id === avail.id}
         >
           <strong>{format(avail.start, 'h:mm')}</strong> {avail.length / 60}{' '}
           HOUR {avail.type} CRUISE

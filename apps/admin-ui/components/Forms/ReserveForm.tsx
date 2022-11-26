@@ -116,13 +116,14 @@ export const ReserveForm: React.FC<FormProps> = ({ availability }) => {
         idx={monthIdx}
         setIdx={setMonthIdx}
         selectedDate={selectedDate}
-        setSelectedDate={handleDateChange}
+        handleDateClick={handleDateChange}
+        clearDateSelections={() => setSelectedDate(null)}
       />
       <CharterTimeButtons
         availDay={
           availability[monthIdx].days[getDate(selectedDate) - 1]?.avails || []
         }
-        handleCharterSelection={setSelectedAvail}
+        setSelectedAvail={setSelectedAvail}
       />
       <HR />
       {selectedAvail && (

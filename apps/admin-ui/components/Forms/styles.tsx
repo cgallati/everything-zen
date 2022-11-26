@@ -70,3 +70,74 @@ export const Prompt = styled.h3`
   letter-spacing: 2px;
   color: #00263a;
 `;
+
+export const AvailsButton = styled.button`
+  display: block;
+  background: #fff;
+  width: 234px;
+  height: 43px;
+  box-shadow: 0px 1px 3px #00000066;
+  border-radius: 3px;
+  border: none;
+  font: normal normal 300 11px/13px Source Sans Pro;
+  letter-spacing: 2.12px;
+  color: #00263a;
+  margin: 0 auto 1.25rem auto;
+
+  cursor: pointer;
+
+  :active {
+    background: #00263a;
+    color: #fff;
+  }
+`;
+
+export const AddAvailForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  font: normal normal 300 11px/13px Source Sans Pro;
+  padding: 0.5rem 1.5rem;
+  color: #00263a;
+
+  h2 {
+    font-size: 20px;
+    line-height: 16px;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  input {
+    margin-bottom: 0.5rem;
+    color: #00263a;
+    border: #00263a solid 1px;
+    border-radius: 3px;
+  }
+
+  label {
+    margin-bottom: 0.25rem;
+  }
+
+  button {
+    background-color: #00263a;
+    display: block;
+    padding: 0.5rem 1rem;
+    letter-spacing: 2px;
+    color: white;
+    cursor: pointer;
+    border: #00263a solid 1px;
+    border-radius: 3px;
+    margin: 1rem auto 0.5rem;
+    width: 100%;
+
+    :disabled {
+      cursor: not-allowed;
+      background-color: lightgrey;
+      color: #00263a;
+    }
+
+    :last-of-type {
+      background-color: white;
+      color: #00263a;
+    }
+  }
+`;
