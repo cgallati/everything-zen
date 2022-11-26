@@ -19,11 +19,6 @@ export const EditForm = styled.form`
     color: #00263a;
     border: #00263a solid 1px;
     border-radius: 3px;
-
-    :first-of-type {
-      background: lightgrey;
-      cursor: not-allowed;
-    }
   }
 
   label {

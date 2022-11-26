@@ -1,4 +1,4 @@
-import React, { Dispatch, FC, SetStateAction } from 'react';
+import React, { Dispatch, FC, MouseEventHandler, SetStateAction } from 'react';
 import {
   CalendarContainer,
   Day,
@@ -20,7 +20,13 @@ export interface CalendarProps {
   idx: number;
   setIdx: Dispatch<number>;
   selectedDate: Date;
-  setSelectedDate: Dispatch<SetStateAction<Date | null>>;
+  selectedEndDate?: Date;
+  handleDateClick: (
+    date: Date,
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => void;
+  clearDateSelections: () => void;
+  allowAllSelections?: boolean;
 }
 
 export const Calendar: FC<CalendarProps> = ({
@@ -28,7 +34,10 @@ export const Calendar: FC<CalendarProps> = ({
   idx,
   setIdx,
   selectedDate,
-  setSelectedDate,
+  selectedEndDate,
+  handleDateClick,
+  clearDateSelections,
+  allowAllSelections = false,
 }) => {
   const headers = getHeaders(months);
   const handleMonthClick = (index: number) => {
@@ -36,10 +45,10 @@ export const Calendar: FC<CalendarProps> = ({
       return;
     } else if (index === idx + 2) {
       setIdx(idx + 1);
-      setSelectedDate(null);
+      clearDateSelections();
     } else {
       setIdx(idx - 1);
-      setSelectedDate(null);
+      clearDateSelections();
     }
   };
   return (
@@ -87,7 +96,9 @@ export const Calendar: FC<CalendarProps> = ({
                 })}
               {month.days.map((day, id) => {
                 const date = setDate(month.firstDate, id + 1);
-                const isSelected = isSameDay(selectedDate, date);
+                const isSelected =
+                  isSameDay(selectedDate, date) ||
+                  (selectedEndDate ? isSameDay(selectedEndDate, date) : false);
                 const available = day.avails.filter(
                   (avail) => !avail.booked
                 ).length;
@@ -96,9 +107,9 @@ export const Calendar: FC<CalendarProps> = ({
                     key={idx + '' + id}
                     unavailable={!available}
                     selected={isSelected}
-                    onClick={() =>
-                      available &&
-                      setSelectedDate(setDate(month.firstDate, id + 1))
+                    onClick={(e) =>
+                      (allowAllSelections || available) &&
+                      handleDateClick(setDate(month.firstDate, id + 1), e)
                     }
                   >
                     {id + 1}

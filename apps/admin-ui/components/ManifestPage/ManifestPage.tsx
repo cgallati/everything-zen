@@ -7,11 +7,11 @@ import {
 import React, { FC } from 'react';
 import { HR, List } from './styles';
 import { Reservation } from './Reservation';
-import { Layout } from '../Layout';
+import { AdminLayout } from '../AdminLayout';
 
 export const ManifestPage: FC<ManifestPageProps> = ({ reservations }) => {
   return (
-    <Layout>
+    <AdminLayout>
       <PageHeading>MANIFEST</PageHeading>
       <HR />
       <ContentSection>
@@ -28,7 +28,7 @@ export const ManifestPage: FC<ManifestPageProps> = ({ reservations }) => {
           </List>
         )}
       </ContentSection>
-    </Layout>
+    </AdminLayout>
   );
 };
 

@@ -31,7 +31,7 @@ export const EditableCharterCard: FC<{ charter: EventType }> = ({
 
   const saveDisabled =
     charterCost === charter.cost &&
-    charterDuration === charterDuration &&
+    charterDuration === charter.duration &&
     !!charterDuration &&
     !!charterCost;
 
@@ -51,7 +51,6 @@ export const EditableCharterCard: FC<{ charter: EventType }> = ({
       .then(async () => {
         setIsEditing(false);
         router.reload();
-        // await setTimeout(() => router.reload(), 1);
       })
       .catch((e) => {
         console.error(e);
@@ -85,12 +84,12 @@ export const EditableCharterCard: FC<{ charter: EventType }> = ({
           <label>COST</label>
           <input
             value={charterCost}
-            onChange={(e) => setCharterCost(parseInt(e.target.value))}
+            onChange={(e) => setCharterCost(parseInt(e.target.value) || 0)}
           />
           <label>DURATION (MINS)</label>
           <input
             value={charterDuration}
-            onChange={(e) => setCharterDuration(parseInt(e.target.value))}
+            onChange={(e) => setCharterDuration(parseInt(e.target.value) || 0)}
           />
           <button onClick={(e) => save(e)} disabled={saveDisabled}>
             SAVE

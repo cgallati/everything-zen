@@ -7,19 +7,15 @@ import {
   Formlet,
   Month,
   PartyType,
+  FormletHeading,
+  FormletSubHeading,
+  HR,
+  HeavyHeader,
+  SubtleHeader,
+  SubmitButton,
 } from '@everything-zen/ui-components';
 
-import {
-  Heading,
-  SubHeading,
-} from '../../../public-ui/components/Form/CalendarFormlet/styles';
 import { addMinutes, format, getDate } from 'date-fns';
-import {
-  HeavyHeader,
-  HR,
-  SubmitButton,
-  SubtleHeader,
-} from '../../../public-ui/components/Form/styles';
 import {
   Answer,
   ItemLine,
@@ -34,7 +30,7 @@ type FormProps = {
   availability: Month[];
 };
 
-export const Form: React.FC<FormProps> = ({ availability }) => {
+export const ReserveForm: React.FC<FormProps> = ({ availability }) => {
   const [submitText, setSubmitText] = React.useState('SUBMIT');
   const [name, setName] = React.useState('OFF');
   const [phone, setPhone] = React.useState('8436709145');
@@ -113,20 +109,21 @@ export const Form: React.FC<FormProps> = ({ availability }) => {
 
   return (
     <Formlet>
-      <Heading>RESERVE A CHARTER</Heading>
-      <SubHeading>CREATE RESERVATIONS AND TIME OFF</SubHeading>
+      <FormletHeading>RESERVE A CHARTER</FormletHeading>
+      <FormletSubHeading>CREATE RESERVATIONS AND TIME OFF</FormletSubHeading>
       <Calendar
         months={availability}
         idx={monthIdx}
         setIdx={setMonthIdx}
         selectedDate={selectedDate}
-        setSelectedDate={handleDateChange}
+        handleDateClick={handleDateChange}
+        clearDateSelections={() => setSelectedDate(null)}
       />
       <CharterTimeButtons
         availDay={
           availability[monthIdx].days[getDate(selectedDate) - 1]?.avails || []
         }
-        handleCharterSelection={setSelectedAvail}
+        setSelectedAvail={setSelectedAvail}
       />
       <HR />
       {selectedAvail && (

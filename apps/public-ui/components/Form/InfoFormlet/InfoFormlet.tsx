@@ -8,17 +8,15 @@ import {
   Time,
 } from './styles';
 import { addMinutes, format } from 'date-fns';
-import { Availability, PartyType } from '@everything-zen/ui-components';
+import { Availability, HeavyHeader, HR, PartyType, SubmitButton, SubtleHeader } from '@everything-zen/ui-components';
 import {
   BackArrow,
   BackButton,
   BackText,
   Formlet,
-  HR,
   Prompt,
-  SubtleHeader,
-  SubmitButton,
-  HeavyHeader,
+
+
 } from '../styles';
 
 export type InfoFormletProps = {
@@ -38,20 +36,20 @@ export type InfoFormletProps = {
 };
 
 export const InfoFormlet: React.FC<InfoFormletProps> = ({
-  name,
-  phone,
-  email,
-  partySize,
-  partyType,
-  advanceForm,
-  goBack,
-  handleNameChange,
-  handleEmailChange,
-  handlePhoneChange,
-  setPartyType,
-  setPartySize,
-  selectedAvail,
-}) => {
+                                                          name,
+                                                          phone,
+                                                          email,
+                                                          partySize,
+                                                          partyType,
+                                                          advanceForm,
+                                                          goBack,
+                                                          handleNameChange,
+                                                          handleEmailChange,
+                                                          handlePhoneChange,
+                                                          setPartyType,
+                                                          setPartySize,
+                                                          selectedAvail,
+                                                        }) => {
   const submitDisabled =
     !name ||
     !phone ||
