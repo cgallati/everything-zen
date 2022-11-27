@@ -45,19 +45,19 @@ export const ChartersPage: FC = () => {
         <Heading>CHARTERS & RATES</Heading>
         <MainDetails>
           6 PASSENGERS MAX
-          <span />3 HOURS
+          <span />2 1/2 HOURS
         </MainDetails>
         <ResponsiveSubheading>TIMES MAY VARY SEASONALLY</ResponsiveSubheading>
         <CharterCardSection>
           <CharterCard>
             <h4>$675</h4>
             <h5>AFTERNOON CRUISE</h5>
-            <h6>2:00PM - 4:30PM</h6>
+            {/*<h6>2:00PM - 4:30PM</h6>*/}
           </CharterCard>
           <CharterCard>
             <h4>$750</h4>
             <h5>SUNSET CRUISE</h5>
-            <h6>5:30PM - 8:00PM</h6>
+            {/*<h6>5:30PM - 8:00PM</h6>*/}
           </CharterCard>
           <CharterCard>
             <h4></h4>
@@ -66,7 +66,11 @@ export const ChartersPage: FC = () => {
           </CharterCard>
         </CharterCardSection>
         <CTAPadding>
-          <CTA variant="bluefat" padding={false} />
+          <CTA
+            variant="bluefat"
+            padding={false}
+            text={'SEE CALENDAR FOR TIMES'}
+          />
         </CTAPadding>
         <WhatToExpect>WHAT TO EXPECT WHILE SAILING</WhatToExpect>
         <Paragraph>

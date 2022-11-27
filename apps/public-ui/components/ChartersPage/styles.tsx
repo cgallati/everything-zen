@@ -56,7 +56,7 @@ export const CharterCardSection = styled.section`
 export const CharterCard = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: 0 0 3.2rem;
   font: normal normal normal 11px/19px Source Sans Pro;
   letter-spacing: 2.2px;
