@@ -2,24 +2,25 @@ const Sitemap = () => {
   return null;
 };
 
-export const getServerSideProps = async ({ res }) => {
+export const getStaticProps = async ({ res }) => {
   const BASE_URL = 'https://ezsailingcharters.com';
 
   // Only added base URL and paths with content
   const paths = [
-    '',
-    'charters',
-    'special-occasions',
-    'story',
-    'faq',
-    'catering',
+    ['', '2023-01-01'],
+    ['charters', '2023-01-01'],
+    ['special-occasions', '2023-01-01'],
+    ['story', '2023-01-01'],
+    ['faq', '2023-01-01'],
+    ['catering', '2023-01-01'],
+    ['reserve', new Date().toISOString()]
   ];
 
   const urls = paths.map(
     (path) =>
       `<url>
-        <loc>${BASE_URL}/${path}</loc>
-        <lastmod>${new Date().toISOString()}</lastmod>
+        <loc>${BASE_URL}/${path[0]}</loc>
+        <lastmod>${path[1]}</lastmod>
       </url>`
   );
 
@@ -29,7 +30,7 @@ export const getServerSideProps = async ({ res }) => {
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-                http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+                http://www.gsitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     ${urls.join('')}
     </urlset>
   `;
