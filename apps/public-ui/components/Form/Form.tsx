@@ -8,12 +8,17 @@ import { Success } from './Success';
 import { Loading } from './Loading';
 import { Availability, Month, PartyType } from '@everything-zen/ui-components';
 // import { analyticsEvent } from '../../../lib/analytics';
-import { addMinutes, format } from 'date-fns';
 import { ErrorMessage } from './Error';
+import {
+  PaymentFormlet,
+  PaymentFormletProps,
+} from './PaymentFormlet/PaymentFormlet';
 
+// the order matters, because of advanceForm and goBack
 export enum FormState {
   CALENDAR,
   INFO,
+  PAYMENT,
   SUBMITTING,
   SUCCESS,
   ERROR,
@@ -39,6 +44,8 @@ export const Form: React.FC<FormProps> = ({ availability }) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedAvail, setSelectedAvail] = useState<Availability | null>(null);
 
+  const [secret, setSecret] = useState<string>('');
+
   /* info form handlers */
   const handleNameChange: React.ChangeEventHandler<HTMLInputElement> = (e) =>
     setName(e.target.value);
@@ -48,58 +55,23 @@ export const Form: React.FC<FormProps> = ({ availability }) => {
     setEmail(e.target.value);
 
   /* advance / back handlers */
-  const advanceForm = () => setFormState(FormState.INFO);
-  const goBack = () => setFormState(FormState.CALENDAR);
-
-  const submitForm: React.FormEventHandler = async (e) => {
-    e.stopPropagation();
-    if (!selectedAvail) {
-      return;
-    }
-
-    setFormState(FormState.SUBMITTING);
-    const { start, length } = selectedAvail;
-    await fetch('/api/submitReservation', {
-      method: 'PUT',
-      body: JSON.stringify({
-        data: {
-          avail: selectedAvail,
-          guest: { name, phone, email },
-          partySize,
-          partyType,
-        },
-      }),
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res;
-        }
-        throw new Error('Failure submitting reservation.');
-      })
-      .then(() => {
-        fetch('/api/mail/sendConfirmation', {
-          method: 'PUT',
-          body: JSON.stringify({
-            to: email,
-            date: format(start, 'MMMM do, yyyy'),
-            timeRange:
-              format(start, 'h:mm') +
-              ' - ' +
-              format(addMinutes(start, length), 'h:mm'),
-          }),
-        });
-      })
-      // .then(() =>
-      //   analyticsEvent({
-      //     action: 'purchase',
-      //     params: {
-      //       event_label: 'reserve-charter',
-      //     },
-      //   })
-      // )
-      .then(() => setFormState(FormState.SUCCESS))
-      .catch(() => setFormState(FormState.ERROR));
+  const advanceForm = () => {
+    const currentIndex = Object.keys(FormState).indexOf(formState.toString());
+    setFormState(FormState[FormState[currentIndex + 1]]);
   };
+  const goBack = () => {
+    const currentIndex = Object.keys(FormState).indexOf(formState.toString());
+    setFormState(FormState[FormState[currentIndex - 1]]);
+  };
+
+  const submitPayload = new URLSearchParams({
+    name,
+    phone,
+    email,
+    avail: selectedAvail?.id.toString(),
+    partySize: partySize?.toString(),
+    partyType: partyType?.toString(),
+  });
 
   const calFormletProps: CalendarFormletProps = {
     availability,
@@ -120,9 +92,19 @@ export const Form: React.FC<FormProps> = ({ availability }) => {
     handleEmailChange,
     setPartySize,
     setPartyType,
-    submitForm,
+    advanceForm,
     goBack,
     selectedAvail: selectedAvail as Availability,
+  };
+
+  const paymentFormletProps: PaymentFormletProps = {
+    submitPayload,
+    goBack,
+    name,
+    phone,
+    email,
+    secret,
+    setSecret,
   };
 
   const ActiveFormlet = () => {
@@ -131,6 +113,8 @@ export const Form: React.FC<FormProps> = ({ availability }) => {
         return <CalendarFormlet {...calFormletProps} />;
       case FormState.INFO:
         return <InfoFormlet {...infoFormletProps} />;
+      case FormState.PAYMENT:
+        return <PaymentFormlet {...paymentFormletProps} />;
       case FormState.SUBMITTING:
         return <Loading />;
       case FormState.SUCCESS:

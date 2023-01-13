@@ -14,12 +14,10 @@
       }
     },
     {
-      "files": ["*.ts", "*.tsx"],
-      "rules": {}
-    },
-    {
-      "files": ["*.js", "*.jsx"],
-      "rules": {}
+      "files": ["**/api/**.ts"],
+      "rules": {
+        "import/no-anonymous-default-export": 0
+      }
     }
   ],
   "env": {

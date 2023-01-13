@@ -1,8 +1,15 @@
-import { CharterTimeButton, Formlet, Heading, SubHeading } from './styles';
-import React, { Dispatch, FC, useState } from 'react';
-import { format, getDate } from 'date-fns';
+import React, { Dispatch, useState } from 'react';
+import { getDate } from 'date-fns';
 // import { analyticsEvent } from '../../../../lib/analytics';
-import { Calendar, Availability, Month } from '@everything-zen/ui-components';
+import {
+  Calendar,
+  Availability,
+  Month,
+  CharterTimeButtons,
+  Formlet,
+  FormletHeading,
+  FormletSubHeading,
+} from '@everything-zen/ui-components';
 
 export type CalendarFormletProps = {
   availability: Month[];
@@ -31,40 +38,30 @@ export const CalendarFormlet: React.FC<CalendarFormletProps> = ({
     advanceForm();
   };
 
-  const CharterTimeButtons: FC<{ availDay: Availability[] }> = ({
-    availDay,
-  }) => {
-    return (
-      <>
-        {availDay.map((avail) => (
-          <CharterTimeButton
-            key={avail.start.toTimeString()}
-            booked={avail.booked}
-            disabled={avail.booked}
-            onClick={() => handleCharterSelection(avail)}
-          >
-            <strong>{format(avail.start, 'h:mm')}</strong> {avail.length / 60}{' '}
-            HOUR {avail.type} CRUISE
-          </CharterTimeButton>
-        ))}
-      </>
-    );
+  const handleDateClick = (
+    date: Date,
+    _: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    setSelectedDate(date);
   };
 
   return (
     <Formlet>
-      <Heading>PRIVATE CHARTER</Heading>
-      <SubHeading>HARBOR SAIL | 6 PASSENGERS MAX</SubHeading>
+      <FormletHeading>PRIVATE CHARTER</FormletHeading>
+      <FormletSubHeading>HARBOR SAIL | 6 PASSENGERS MAX</FormletSubHeading>
       <Calendar
         months={availability}
         idx={monthIdx}
         setIdx={setMonthIdx}
-        {...{ selectedDate, setSelectedDate }}
+        clearDateSelections={() => setSelectedDate(null)}
+        selectedDate={selectedDate}
+        handleDateClick={handleDateClick}
       />
       <CharterTimeButtons
         availDay={
           availability[monthIdx].days[getDate(selectedDate) - 1]?.avails || []
         }
+        setSelectedAvail={handleCharterSelection}
       />
     </Formlet>
   );

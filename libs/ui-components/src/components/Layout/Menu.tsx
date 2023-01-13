@@ -3,7 +3,12 @@ import { SideBar } from './styles';
 import { NextRouter, useRouter } from 'next/router';
 import { ReactNode } from 'react';
 
-type MenuItem = {
+type NavLinkProps = {
+  relRoute: string;
+  children?: ReactNode;
+  router: NextRouter;
+};
+export type MenuItem = {
   label: string;
   relRoute: string;
 };
@@ -11,26 +16,10 @@ type MenuItem = {
 type MenuProps = {
   isOpen: boolean;
   setIsOpen: React.Dispatch<boolean>;
+  menuItems: MenuItem[];
 };
 
-type NavLinkProps = {
-  relRoute: string;
-  children?: ReactNode;
-  router: NextRouter;
-};
-
-const menuItems: MenuItem[] = [
-  { label: 'BOOK A CHARTER', relRoute: '/reserve' },
-  { label: 'CHARTERS & RATES', relRoute: '/charters' },
-  { label: 'SPECIAL OCCASIONS', relRoute: '/special-occasions' },
-  { label: 'OUR STORY', relRoute: '/story' },
-  { label: 'FAQ', relRoute: '/faq' },
-  { label: 'CONTACT US', relRoute: '/contact' },
-  { label: 'CATERING', relRoute: '/catering' },
-  { label: 'HOME', relRoute: '/' },
-];
-
-export const Menu: React.FC<MenuProps> = ({ isOpen, setIsOpen }) => {
+export const Menu: React.FC<MenuProps> = ({ isOpen, setIsOpen, menuItems }) => {
   const router = useRouter();
 
   const handleItemClick = (route: string) => (_: any) => {

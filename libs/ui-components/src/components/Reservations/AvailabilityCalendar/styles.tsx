@@ -23,7 +23,7 @@ export const MonthSlider = styled.div<{ offset: number }>`
 `;
 
 interface SlidingProps {
-  current?: Boolean;
+  current?: boolean;
 }
 
 export const MonthName = styled.button<SlidingProps>`
@@ -45,6 +45,7 @@ export const WeekHeader = styled.div`
   justify-content: space-around;
   width: 228px;
   height: 2.25rem;
+
   h4 {
     font: normal normal normal 11px/14px Source Sans Pro, sans-serif;
     color: #00263a;

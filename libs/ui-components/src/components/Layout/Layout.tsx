@@ -2,10 +2,13 @@ import { Body, EZ, Hamburger, Header, Loading } from './styles';
 import Link from 'next/link';
 import { ReactNode, useEffect, useState } from 'react';
 import { Squeeze } from 'hamburger-react';
-import { Menu } from './Menu';
+import { Menu, MenuItem } from './Menu';
 import { useRouter } from 'next/router';
 
-export const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const BaseLayout: React.FC<{
+  children: ReactNode;
+  menuItems: MenuItem[];
+}> = ({ children, menuItems }) => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
   const [loading, setLoading] = useState<boolean | undefined>(undefined);
@@ -44,7 +47,7 @@ export const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
           />
         </Hamburger>
       </Header>
-      <Menu isOpen={menuOpen} setIsOpen={setMenuOpen} />
+      <Menu menuItems={menuItems} isOpen={menuOpen} setIsOpen={setMenuOpen} />
       <Body>{children}</Body>
     </>
   );

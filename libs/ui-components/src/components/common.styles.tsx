@@ -63,6 +63,7 @@ export const SubheadingAndFriend = styled.div`
     flex-grow: 1;
     margin: 0;
   }
+
   > img {
     flex-grow: 0;
   }
@@ -106,6 +107,7 @@ export const TileGrid = styled.section`
   @media (min-width: 1000px) {
     flex-direction: row;
   }
+
   > div {
     display: flex;
     justify-content: center;
@@ -116,4 +118,61 @@ export const TileGrid = styled.section`
 export const MapScale = styled(ResponsiveImg)`
   width: 50%;
   max-width: 250px;
+`;
+
+export const Formlet = styled.section`
+  width: 267px;
+  margin: auto;
+  padding: 2.5rem 0;
+`;
+export const HR = styled.div`
+  width: 100%;
+  height: 0;
+  margin: 0;
+  background: #00263a;
+  border-bottom: 0.25px solid #00263a;
+  opacity: 0.5;
+`;
+export const SubmitButton = styled.input`
+  display: block;
+  width: 240px;
+  height: 43px;
+  background: #00263a 0% 0% no-repeat padding-box;
+  box-shadow: 0px 1px 3px #00000066;
+  border-radius: 3px;
+  color: white;
+  border: none;
+  font: normal normal normal 13px/16px Source Sans Pro;
+  letter-spacing: 2.6px;
+  margin-top: 2.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-appearance: none;
+
+  :active {
+    color: #00263a;
+    background: white;
+    box-shadow: none;
+    border: 0.5px solid #003d5e;
+    opacity: 0.7;
+  }
+
+  :disabled {
+    opacity: 0.25;
+  }
+`;
+export const SubtleHeader = styled.h2`
+  margin-left: 2rem;
+  margin-top: 1.5rem;
+  font: normal normal normal 11px/13px Source Sans Pro;
+  letter-spacing: 2.2px;
+  color: #00263a;
+  opacity: 0.5;
+`;
+export const HeavyHeader = styled.h2`
+  margin-left: 2rem;
+  margin-top: 1.25rem;
+  font: normal normal normal 15px/18px Source Sans Pro;
+  letter-spacing: 3px;
+  color: #00263a;
 `;
