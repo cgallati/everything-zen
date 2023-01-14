@@ -2,7 +2,7 @@ const Sitemap = () => {
   return null;
 };
 
-export const getStaticProps = async ({ res }) => {
+export const getServerSideProps = async ({ res }) => {
   const BASE_URL = 'https://ezsailingcharters.com';
 
   // Only added base URL and paths with content
