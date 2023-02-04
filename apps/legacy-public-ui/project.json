@@ -1,4 +1,5 @@
 {
+  "name": "legacy-public-ui",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/legacy-public-ui",
   "projectType": "application",
@@ -13,7 +14,9 @@
         "outputPath": "dist/apps/legacy-public-ui"
       },
       "configurations": {
-        "development": {},
+        "development": {
+          "outputPath": "apps/legacy-public-ui"
+        },
         "production": {}
       }
     },
@@ -43,7 +46,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/legacy-public-ui"],
+      "outputs": ["{workspaceRoot}/coverage/apps/legacy-public-ui"],
       "options": {
         "jestConfig": "apps/legacy-public-ui/jest.config.ts",
         "passWithNoTests": true

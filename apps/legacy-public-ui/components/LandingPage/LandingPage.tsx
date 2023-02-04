@@ -9,20 +9,9 @@ import {
 import React from 'react';
 import mobileBG from '../../public/photos/bg-m.jpg';
 import desktopBG from '../../public/photos/bg-d.jpg';
-import boat0 from '../../public/photos/boat0.jpg';
-import boat1 from '../../public/photos/boat1.jpg';
-import boat2 from '../../public/photos/boat2.jpg';
-import boat3 from '../../public/photos/boat3.jpg';
-import boat4 from '../../public/photos/boat4.jpg';
 import boat5 from '../../public/photos/boat5.jpg';
-import boat6 from '../../public/photos/boat6.jpg';
-import boat7 from '../../public/photos/boat7.jpg';
 import boat8 from '../../public/photos/boat8.jpg';
-import boat9 from '../../public/photos/boat9.jpg';
 import boat10 from '../../public/photos/boat10.jpg';
-import boat11 from '../../public/photos/boat11.jpg';
-import boat12 from '../../public/photos/boat12.jpg';
-import boat13 from '../../public/photos/boat13.jpg';
 import expertiseSVG from '../../public/expertise-charters-2022.svg';
 import {
   ContentSection,
@@ -33,7 +22,6 @@ import {
   Subheading,
   SubheadingAndFriend,
   CTA,
-  Gallery,
   Endorsement,
 } from '@everything-zen/ui-components';
 import { Footer } from '../Layout/Footer';
@@ -126,34 +114,6 @@ export const LandingPage: React.FC = () => {
           Catamarans offer a more stable ride on the water, giving you optimal
           comfort and relaxation while you and your guests are underway.
         </Paragraph>
-        <Gallery
-          images={[
-            { src: boat0, alt: '' },
-            { src: boat1, alt: '' },
-            { src: boat2, alt: '' },
-            { src: boat3, alt: '' },
-            { src: boat4, alt: '' },
-            {
-              src: boat5,
-              alt: "Everything Zen sails along Charleston's Low Battery.",
-            },
-            { src: boat6, alt: '' },
-            { src: boat7, alt: '' },
-            {
-              src: boat8,
-              alt: "Everything Zen's spacious and open aft seating and galley.",
-            },
-            { src: boat9, alt: '' },
-            {
-              src: boat10,
-              alt: 'A bottle of wine and glasses on the aft table.',
-            },
-            { src: boat11, alt: '' },
-            { src: boat12, alt: '' },
-            { src: boat13, alt: '' },
-          ]}
-          startingIndex={4}
-        />
         <MapScale src={'/icons/scale.svg'} />
         <CTA variant={'fat'} text={'CHARTERS & RATES'} route={'/charters'} />
         <CTA

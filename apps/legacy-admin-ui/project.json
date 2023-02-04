@@ -1,4 +1,5 @@
 {
+  "name": "legacy-admin-ui",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/legacy-admin-ui",
   "projectType": "application",
@@ -13,7 +14,9 @@
         "outputPath": "dist/apps/legacy-admin-ui"
       },
       "configurations": {
-        "development": {},
+        "development": {
+          "outputPath": "apps/legacy-admin-ui"
+        },
         "production": {}
       }
     },
@@ -44,7 +47,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/legacy-admin-ui"],
+      "outputs": ["{workspaceRoot}/coverage/apps/legacy-admin-ui"],
       "options": {
         "jestConfig": "apps/legacy-admin-ui/jest.config.ts",
         "passWithNoTests": true

@@ -6,7 +6,6 @@ import {
   Subheading,
   SubheadingAndFriend,
   TileGrid,
-  Gallery,
   Tile,
   CTA,
 } from '@everything-zen/ui-components';
@@ -80,17 +79,6 @@ export const OurStoryPage = () => {
           guests and we guarantee to make you and your party&apos;s Charleston
           experience unforgettable.
         </Paragraph>
-        <Gallery
-          images={[
-            { src: testimonial1, alt: '' },
-            { src: testimonialPic3, alt: '' },
-            { src: testimonial2, alt: '' },
-            { src: testimonialPic2, alt: '' },
-            { src: testimonial3, alt: '' },
-            { src: testimonialPic1, alt: '' },
-            { src: testimonial4, alt: '' },
-          ]}
-        />
         <ResponsiveSubheading>JOIN THE SAILING EXPERIENCE</ResponsiveSubheading>
         <Paragraph>
           Join our story and climb aboard! Come be a part of an exclusive

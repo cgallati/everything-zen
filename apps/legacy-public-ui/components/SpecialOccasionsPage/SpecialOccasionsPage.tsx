@@ -1,11 +1,6 @@
 import { Layout, Page } from '../Layout';
 import React from 'react';
 import friends0 from '../../public/photos/friends0.jpg';
-import friends1 from '../../public/photos/friends1.jpg';
-import friends2 from '../../public/photos/friends2.jpg';
-import friends3 from '../../public/photos/friends3.jpg';
-import friends4 from '../../public/photos/friends4.jpg';
-import friends5 from '../../public/photos/friends5.jpg';
 import sunset1 from '../../public/photos/sunset1.jpg';
 import {
   ImageSection,
@@ -14,7 +9,6 @@ import {
   Subheading,
   SubheadingAndFriend,
   BigTile,
-  Gallery,
   CTA,
 } from '@everything-zen/ui-components';
 import { TileList } from './styles';
@@ -91,17 +85,6 @@ export const SpecialOccasionsPage = () => {
             }
           />
         </TileList>
-        <Gallery
-          images={[
-            { src: friends0, alt: '' },
-            { src: friends1, alt: '' },
-            { src: friends2, alt: '' },
-            { src: friends3, alt: '' },
-            { src: friends4, alt: '' },
-            { src: friends5, alt: '' },
-          ]}
-          startingIndex={1}
-        />
         <ResponsiveSubheading>
           SPECIAL CATERING FOR THE CHARTER
         </ResponsiveSubheading>

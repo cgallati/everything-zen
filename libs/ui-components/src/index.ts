@@ -2,7 +2,6 @@ export * from './components/common.styles';
 export * from './components/BandedCard.styles';
 export * from './components/CTA/CTA';
 export * from './components/Endorsement/Endorsement';
-export * from './components/Gallery/Gallery';
 export * from './components/Reservations/';
 export * from './components/types';
 export * from './components/Tile';

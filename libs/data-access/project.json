@@ -1,11 +1,12 @@
 {
+  "name": "data-access",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/data-access/src",
   "projectType": "library",
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "outputs": [],
       "options": {
         "command": "npx prisma generate --schema ./src/prisma/schema.prisma",
@@ -13,7 +14,7 @@
       }
     },
     "seedLookups": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "outputs": [],
       "options": {
         "command": "ts-node --compiler-options {\\\"module\\\":\\\"CommonJS\\\"} src/prisma/seedLookups.ts",
@@ -27,7 +28,7 @@
       ]
     },
     "seed": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "outputs": [],
       "options": {
         "command": "ts-node --compiler-options {\\\"module\\\":\\\"CommonJS\\\"} src/prisma/seed.ts",
@@ -45,7 +46,7 @@
       ]
     },
     "start": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "outputs": [],
       "options": {
         "command": "prisma studio --schema ./src/prisma/schema.prisma",
@@ -60,20 +61,14 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "libs/data-access/**/*.{ts,tsx,js,jsx}"
-        ]
+        "lintFilePatterns": ["libs/data-access/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/data-access"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/libs/data-access"],
       "options": {
         "jestConfig": "libs/data-access/jest.config.ts",
         "passWithNoTests": true

@@ -5,7 +5,6 @@ import {
   ResponsiveSubheading,
   Subheading,
   SubheadingAndFriend,
-  Gallery,
   Tile,
   CTA,
 } from '@everything-zen/ui-components';
@@ -22,20 +21,7 @@ import {
 import React, { FC } from 'react';
 import { Footer } from '../Layout/Footer';
 import { NextSeo } from 'next-seo';
-import boat0 from '../../public/photos/boat0.jpg';
-import boat1 from '../../public/photos/boat1.jpg';
-import boat2 from '../../public/photos/boat2.jpg';
-import boat3 from '../../public/photos/boat3.jpg';
-import boat4 from '../../public/photos/boat4.jpg';
-import boat5 from '../../public/photos/boat5.jpg';
-import boat6 from '../../public/photos/boat6.jpg';
 import boat7 from '../../public/photos/boat7.jpg';
-import boat8 from '../../public/photos/boat8.jpg';
-import boat9 from '../../public/photos/boat9.jpg';
-import boat10 from '../../public/photos/boat10.jpg';
-import boat11 from '../../public/photos/boat11.jpg';
-import boat12 from '../../public/photos/boat12.jpg';
-import boat13 from '../../public/photos/boat13.jpg';
 
 export const ChartersPage: FC = () => {
   return (
@@ -125,34 +111,7 @@ export const ChartersPage: FC = () => {
           enjoy nature watching, or simply enjoy a lively atmosphere while
           sailing.
         </Paragraph>
-        <Gallery
-          images={[
-            { src: boat0, alt: '' },
-            { src: boat1, alt: '' },
-            { src: boat2, alt: '' },
-            { src: boat3, alt: '' },
-            { src: boat4, alt: '' },
-            {
-              src: boat5,
-              alt: "Everything Zen sails along Charleston's Low Battery.",
-            },
-            { src: boat6, alt: '' },
-            { src: boat7, alt: '' },
-            {
-              src: boat8,
-              alt: "Everything Zen's spacious and open aft seating and galley.",
-            },
-            { src: boat9, alt: '' },
-            {
-              src: boat10,
-              alt: 'A bottle of wine and glasses on the aft table.',
-            },
-            { src: boat11, alt: '' },
-            { src: boat12, alt: '' },
-            { src: boat13, alt: '' },
-          ]}
-          startingIndex={6}
-        />
+
         <ResponsiveSubheading>SPECIAL ACCOMMODATIONS</ResponsiveSubheading>
         {/*<Paragraph>*/}
         {/*  You are welcome to bring up to 6 people in your party, with the*/}
