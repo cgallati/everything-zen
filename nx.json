@@ -43,5 +43,5 @@
       }
     }
   },
-  "defaultProject": "public-ui"
+  "defaultProject": "legacy-public-ui"
 }
