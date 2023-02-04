@@ -7,7 +7,7 @@ export const FAQs: FAQ[] = [
   {
     question: 'what is the cancellation policy?',
     answer:
-      'You don’t pay until after the charter so cancellations do not have a penalty.  Please be respectful of this generous policy by calling or texting us if you have to cancel or change your reservation.',
+      'Guest may cancel up to 48 hours before the charter at no cost. Cancellations by the guest with less than 48 hours notice will result in the full charter amount being charged to the payment method on file. Cancellations made by the Captain for weather reasons will not result in a charge to the customer.',
   },
   {
     question: 'What if the weather stinks?',
