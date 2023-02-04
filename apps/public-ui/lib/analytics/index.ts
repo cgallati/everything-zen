@@ -1,6 +1,6 @@
 // log the pageview with their URL
 export const pageview = (url: string): void => {
-  window.gtag('config', process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS, {
+  window.gtag('config', 'G-5WTR2LEY43', {
     page_path: url,
   });
 };
