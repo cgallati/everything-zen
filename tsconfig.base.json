@@ -10,24 +10,15 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@everything-zen/data-access": [
-        "libs/data-access/src/index.ts"
-      ],
-      "@everything-zen/ui-components": [
-        "libs/ui-components/src/index.ts"
-      ]
+      "@everything-zen/data-access": ["libs/data-access/src/index.ts"],
+      "@everything-zen/ui": ["libs/ui/src/index.ts"],
+      "@everything-zen/ui-components": ["libs/ui-components/src/index.ts"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }
