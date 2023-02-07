@@ -11,6 +11,7 @@
     "test": "nx test",
     "format": "nx format:write",
     "build-storybook": "nx build-storybook ui",
+    "storybook": "nx storybook ui",
     "chromatic": "npx chromatic --project-token=a1dd26e3bc06"
   },
   "dependencies": {
