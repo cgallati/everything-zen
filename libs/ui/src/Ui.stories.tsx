@@ -5,6 +5,6 @@ export default {
   component: Ui,
 };
 
-export const Default = {
+export const SomeStory = {
   render: () => <Ui />,
 };
