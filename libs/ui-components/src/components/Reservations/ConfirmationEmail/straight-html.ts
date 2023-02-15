@@ -19,7 +19,7 @@ export const getConfirmationEmailHTMLString = ({
   <meta content='width=device-width' name='viewport'>
   <style>
   @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&display=swap');
-  
+
   @font-face {
       font-family: Title Wave Regular;
       font-style: normal;
@@ -34,7 +34,7 @@ export const getConfirmationEmailHTMLString = ({
       font-display: swap;
       src: local("Source Sans Pro"), url('https://ezsailingcharters.netlify.app/fonts/SourceSansPro-Regular.ttf') format("truetype");
   }
-  
+
   @font-face {
       font-family: Source Sans Pro;
       font-style: normal;
@@ -42,7 +42,7 @@ export const getConfirmationEmailHTMLString = ({
       font-display: swap;
       src: local("Source Sans Pro"), url('https://ezsailingcharters.netlify.app/fonts/SourceSansPro-Light.ttf') format("truetype");
   }
-  
+
   @font-face {
       font-family: Stencilia-A;
       font-style: normal;
@@ -88,13 +88,13 @@ export const getConfirmationEmailHTMLString = ({
         We are thrilled to have you on board Everything Zen!</h4>
       <h4
         style='-webkit-letter-spacing: 1.1px; -moz-letter-spacing: 1.1px; -ms-letter-spacing: 1.1px; letter-spacing: 1.1px; color: #001d2c; margin: 1.2rem 0; font: 11px/13px "Source Sans Pro", Courier;'>
-        You are scheduled for<!-- --> <strong
+        You are scheduled for<strong
         style='-webkit-letter-spacing: 0.8px; -moz-letter-spacing: 0.8px; -ms-letter-spacing: 0.8px; letter-spacing: 0.8px;'>
         ${date} from ${timeRange}</strong>
       </h4>
       <h5
         style='-webkit-letter-spacing: 0.92px; -moz-letter-spacing: 0.92px; -ms-letter-spacing: 0.92px; letter-spacing: 0.92px; color: #001d2c; margin: 1.2rem 0 0; font: 10px/13px "Source Sans Pro", Courier;'>
-        We ask that cancelations be made 24 hours in advance
+        We ask that cancelations be made 48 hours in advance
       </h5>
     </div>
   </div>
@@ -108,7 +108,7 @@ export const getConfirmationEmailHTMLString = ({
          style='position: relative; top: .5rem; z-index: 1; height=33px;'>
     <p
       style='-webkit-letter-spacing: 1.2px; -moz-letter-spacing: 1.2px; -ms-letter-spacing: 1.2px; letter-spacing: 1.2px; color: #001d2c; margin: 1rem 0 2rem; font: 12px/14px "Source Sans Pro", Courier;'>
-      We are located at Charleston Harbor Marina</p>
+      We are located at Charleston Harbor Marina.</p>
     <p
       style='-webkit-letter-spacing: 1.2px; -moz-letter-spacing: 1.2px; -ms-letter-spacing: 1.2px; letter-spacing: 1.2px; color: #001d2c; margin: 1rem 0 2rem; font: 12px/14px "Source Sans Pro", Courier;'>
       Park near the Charleston Harbor Fish House and head out to the docks. We are docked on the last dock down to
@@ -126,7 +126,7 @@ export const getConfirmationEmailHTMLString = ({
     </a>
     <p
       style='-webkit-letter-spacing: 1.2px; -moz-letter-spacing: 1.2px; -ms-letter-spacing: 1.2px; letter-spacing: 1.2px; color: #001d2c; margin: 1rem 0 2rem; font: 12px/14px "Source Sans Pro", Courier;'>
-      We ask our charter guests to wear casual attire with easy off shoes. Barefoot boat experiences are the best for
+      We ask our charter guests to wear casual attire with soft soled boat shoes or shoes don't mind taking off. Barefoot boat experiences are the best for
       you and for the boat. Please bring food and drinks of your choice. We have ample refrigeration space, ice and
       water, tableware, glasses, and a microwave available.</p>
     <p
@@ -136,15 +136,14 @@ export const getConfirmationEmailHTMLString = ({
       <p
       <p
       style='-webkit-letter-spacing: 1.2px; -moz-letter-spacing: 1.2px; -ms-letter-spacing: 1.2px; letter-spacing: 1.2px; color: #001d2c; margin: 1rem 0 2rem; font: 12px/14px "Source Sans Pro", Courier;'>
-      If you’ve reserved a sunset charter, the captain may suggest an earlier departure depending on the time of sunset 
-      to ensure plenty of time to enjoy the view.</p>
-      <p
-      style='-webkit-letter-spacing: 1.2px; -moz-letter-spacing: 1.2px; -ms-letter-spacing: 1.2px; letter-spacing: 1.2px; color: #001d2c; margin: 1rem 0 2rem; font: 12px/14px "Source Sans Pro", Courier;'>
-            Payment is accepted at the end of your charter. We accept Venmo, Apple Pay, Zelle, Cash App, cash and check.
+            Payment is accepted at the end of your charter. We accept Venmo, Apple Pay, Zelle, Cash App, credit cards, cash and check.
     </p>
     <p
       style='-webkit-letter-spacing: 1.2px; -moz-letter-spacing: 1.2px; -ms-letter-spacing: 1.2px; letter-spacing: 1.2px; color: #001d2c; margin: 1rem 0 2rem; font: 12px/14px "Source Sans Pro", Courier;'>
-      Get ready for relaxation!</p>
+      We will text you further information and the exact boat location 24 hours before our sail.</p>
+      <p
+      style='-webkit-letter-spacing: 1.2px; -moz-letter-spacing: 1.2px; -ms-letter-spacing: 1.2px; letter-spacing: 1.2px; color: #001d2c; margin: 1rem 0 2rem; font: 12px/14px "Source Sans Pro", Courier;'>
+      Sails up!</p>
     <h6 class='ConfirmationEmailstyles__Signature-sc-1ckg3y-9 dGejQF'
         style="-webkit-letter-spacing: 1.2px; -moz-letter-spacing: 1.2px; -ms-letter-spacing: 1.2px; letter-spacing: 1.2px; font-family: 'Title Wave Regular',serif; color: #001d2c; font-size: 14px; line-height: 16px;">
       CAPTAIN TODD</h6>
@@ -184,34 +183,34 @@ We are thrilled to have you on board Everything Zen!
 You are scheduled for ${date} from ${timeRange}
 ------------------------------------------------------
 
-We ask that cancelations be made 24 hours in advance.
+We ask that cancellations be made 48 hours in advance.
 ----------------------------------------------------
 
-We are located at Charleston Harbor Marina
+We are located at Charleston Harbor Marina.
 
 Park near the Charleston Harbor Fish House and head out to the
 docks. We are docked on the last dock down to your right, “K”
 dock, between the USS Yorktown and Clamagore Submarine.
 
-We ask our charter guests to wear casual attire with easy off
-shoes. Barefoot boat experiences are the best for you and for the
-boat. Please bring food and drinks of your choice. We have ample
-refrigeration space, ice and water, tableware, glasses, and a
-microwave available.
+We ask our charter guests to wear casual attire with soft soled
+boat shoes or shoes don't mind taking off. Barefoot boat experiences
+are the best for you and for the boat. Please bring food and
+drinks of your choice. We have ample refrigeration space, ice and
+water, tableware, glasses, and a microwave available.
 
 Our yacht’s sound system offers the ability to connect your
 phone, giving you power over music selection for your special
 day.
 
-If you’ve reserved a sunset charter, the captain may suggest an 
-earlier departure depending on the time of sunset to ensure 
-plenty of time to enjoy the view.
-
 Payment is accepted at the end of your charter. We accept
-Venmo, Apple Pay, Zelle, Cash App, cash and check.
+Venmo, Apple Pay, Zelle, Cash App, credit cards, cash and check.
+
+We will text you further information and the exact boat location
+24 hours before our sail.
 
 Get ready for relaxation!
 
+Sails up!
 CAPTAIN TODD
 ------------
 
