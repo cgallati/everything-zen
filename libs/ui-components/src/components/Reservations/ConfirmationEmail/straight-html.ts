@@ -126,9 +126,9 @@ export const getConfirmationEmailHTMLString = ({
     </a>
     <p
       style='-webkit-letter-spacing: 1.2px; -moz-letter-spacing: 1.2px; -ms-letter-spacing: 1.2px; letter-spacing: 1.2px; color: #001d2c; margin: 1rem 0 2rem; font: 12px/14px "Source Sans Pro", Courier;'>
-      We ask our charter guests to wear casual attire with soft soled boat shoes or shoes don't mind taking off. Barefoot boat experiences are the best for
-      you and for the boat. Please bring food and drinks of your choice. We have ample refrigeration space, ice and
-      water, tableware, glasses, and a microwave available.</p>
+      We ask our charter guests to wear casual attire with soft soled boat shoes or shoes you don't mind taking off.
+      Please bring food and drinks of your choice. We have ample refrigeration space, ice and water, tableware, glasses,
+      and a microwave available.</p>
     <p
       style='-webkit-letter-spacing: 1.2px; -moz-letter-spacing: 1.2px; -ms-letter-spacing: 1.2px; letter-spacing: 1.2px; color: #001d2c; margin: 1rem 0 2rem; font: 12px/14px "Source Sans Pro", Courier;'>
       Our yacht’s sound system offers the ability to connect your phone, giving you power over music selection for
@@ -193,8 +193,7 @@ docks. We are docked on the last dock down to your right, “K”
 dock, between the USS Yorktown and Clamagore Submarine.
 
 We ask our charter guests to wear casual attire with soft soled
-boat shoes or shoes don't mind taking off. Barefoot boat experiences
-are the best for you and for the boat. Please bring food and
+boat shoes or shoes you don't mind taking off. Please bring food and
 drinks of your choice. We have ample refrigeration space, ice and
 water, tableware, glasses, and a microwave available.
 
