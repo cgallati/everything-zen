@@ -12,14 +12,6 @@ const menuItems: MenuItem[] = [
   { label: 'HOME', relRoute: '/' },
 ];
 
-const footerItems = [
-  { label: 'CHARTERS & RATES', relRoute: '/charters' },
-  { label: 'CATERING', relRoute: '/catering' },
-  { label: 'SPECIAL OCCASIONS', relRoute: '/special-occasions' },
-  { label: 'OUR STORY', relRoute: '/story' },
-  { label: 'FAQ', relRoute: '/faq' },
-  { label: 'CONTACT US', relRoute: '/contact' },
-];
 export const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
   return <BaseLayout menuItems={menuItems}>{children}</BaseLayout>;
 };

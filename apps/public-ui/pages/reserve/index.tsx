@@ -2,11 +2,12 @@ import { GetServerSideProps, NextPage } from 'next';
 import { Layout } from '../../components/Layout';
 import { Month } from '@everything-zen/ui-components';
 import { NextSeo } from 'next-seo';
-import { fetchAndFormatAvailability } from '@everything-zen/data-access';
-import { addHours, getDaysInMonth, getMonth, getYear } from 'date-fns';
+import {
+  fetchAndFormatAvailability,
+  SerializableMonth,
+} from '@everything-zen/data-access';
+import { addHours } from 'date-fns';
 import { Form } from '../../components/Form';
-import { SerializableMonth } from '../../../../libs/data-access/src/types';
-import { getTimezoneOffset } from 'date-fns-tz';
 
 type ReservePageProps = {
   availability: SerializableMonth[];

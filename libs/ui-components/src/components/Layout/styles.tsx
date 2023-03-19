@@ -19,8 +19,8 @@ export const Header = styled.header`
   padding-top: 0.5rem;
   width: 100vw;
   height: ${headerHeight};
-  background: #ffffff 0% 0% no-repeat padding-box;
-  box-shadow: 0px 0px 10px #00000060;
+  background: #ffffff 0 0 no-repeat padding-box;
+  box-shadow: 0 0 10px #00000060;
   box-sizing: border-box;
 `;
 
