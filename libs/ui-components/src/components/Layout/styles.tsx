@@ -24,7 +24,7 @@ export const Header = styled.header`
   box-sizing: border-box;
 `;
 
-export const EZ = styled.h1`
+export const EZ = styled.div`
   position: absolute;
   top: 1.5rem;
   left: 2rem;

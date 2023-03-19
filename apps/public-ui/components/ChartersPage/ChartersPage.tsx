@@ -36,11 +36,11 @@ import boat10 from '../../public/photos/boat10.jpg';
 import boat11 from '../../public/photos/boat11.jpg';
 import boat12 from '../../public/photos/boat12.jpg';
 import boat13 from '../../public/photos/boat13.jpg';
+import { Layout } from '../Layout';
 
 export const ChartersPage: FC = () => {
   return (
-    <>
-      <NextSeo title={'CHARTERS & RATES'} />
+    <Layout>
       <ContentSection>
         <Heading>CHARTERS & RATES</Heading>
         <MainDetails>
@@ -52,12 +52,10 @@ export const ChartersPage: FC = () => {
           <CharterCard>
             <h4>$675</h4>
             <h5>AFTERNOON CRUISE</h5>
-            {/*<h6>2:00PM - 4:30PM</h6>*/}
           </CharterCard>
           <CharterCard>
             <h4>$750</h4>
             <h5>SUNSET CRUISE</h5>
-            {/*<h6>5:30PM - 8:00PM</h6>*/}
           </CharterCard>
           <CharterCard>
             <h4></h4>
@@ -205,6 +203,6 @@ export const ChartersPage: FC = () => {
         </CTAPadding>
       </ContentSection>
       <Footer />
-    </>
+    </Layout>
   );
 };

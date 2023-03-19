@@ -41,8 +41,9 @@ const ReservePage: NextPage<ReservePageProps> = ({
   return (
     <>
       <NextSeo
-        title="Reservations"
-        description="Reserve your private Charleston Harbor cruise today."
+        title="RESERVE"
+        description="Reserve your private Charleston Harbor catamaran charter today."
+        canonical={'https://ezsailingcharters.com/reserve'}
       />
       <Layout>
         <Form {...{ availability }} />
