@@ -94,12 +94,16 @@ export const ChartersPage: FC = () => {
           <div>
             <Tile
               iconSrc={'/icons/speaker.svg'}
-              alt={'Bluetooth speaker'}
+              alt={
+                'Bluetooth audio available throughout the spacious catamaran charter.'
+              }
               text={'Bluetooth sound system available'}
             />
             <Tile
               iconSrc={'/icons/lifevest.svg'}
-              alt={'Personal floatation device'}
+              alt={
+                'Safety of our private charter guests is of upmost importance.'
+              }
               text={'Safety instruction given at the start of each charter'}
             />
           </div>
@@ -125,41 +129,66 @@ export const ChartersPage: FC = () => {
         </Paragraph>
         <Gallery
           images={[
-            { src: boat0, alt: '' },
-            { src: boat1, alt: '' },
-            { src: boat2, alt: '' },
-            { src: boat3, alt: '' },
-            { src: boat4, alt: '' },
+            {
+              src: boat0,
+              alt: 'Enjoy views of the Ravenel Bridge from your sailboat charter.',
+            },
+            {
+              src: boat1,
+              alt: 'Explore the large galley of our stable catamaran rental.',
+            },
+            {
+              src: boat2,
+              alt: 'See the USS Yorktown as we depart on your Charleston Sailing adventure.',
+            },
+            {
+              src: boat3,
+              alt: 'Lounge in luxury on a Charleston sailboat rental.',
+            },
+            {
+              src: boat4,
+              alt: 'Relax and unwind with a private view of downtown Charleston SC.',
+            },
             {
               src: boat5,
-              alt: "Everything Zen sails along Charleston's Low Battery.",
+              alt: "A private Everything Zen Sailing Charter along Charleston's Low Battery.",
             },
-            { src: boat6, alt: '' },
-            { src: boat7, alt: '' },
+            {
+              src: boat6,
+              alt: "Take in the sun and the history on Charleston's most luxurious private catamaran.",
+            },
+            {
+              src: boat7,
+              alt: 'Enjoy a glass with friends on your Charleston catamaran charter.',
+            },
             {
               src: boat8,
-              alt: "Everything Zen's spacious and open aft seating and galley.",
+              alt: "Our private catamaran charter's spacious and open aft seating and galley.",
             },
-            { src: boat9, alt: '' },
+            {
+              src: boat9,
+              alt: 'Visit the helm to learn how to navigate our private catamaran through Charleston Harbor.',
+            },
             {
               src: boat10,
-              alt: 'A bottle of wine and glasses on the aft table.',
+              alt: 'A bottle of wine and glasses on the aft table during a sailboat charter.',
             },
-            { src: boat11, alt: '' },
-            { src: boat12, alt: '' },
-            { src: boat13, alt: '' },
+            {
+              src: boat11,
+              alt: 'Sunset charters are available for private parties in Charleston SC.',
+            },
+            {
+              src: boat12,
+              alt: 'Hit the water while on your Charleston vacation.',
+            },
+            {
+              src: boat13,
+              alt: "Get a new perspective from Charleston Harbor's best sailboat charter.",
+            },
           ]}
           startingIndex={6}
         />
         <ResponsiveSubheading>SPECIAL ACCOMMODATIONS</ResponsiveSubheading>
-        {/*<Paragraph>*/}
-        {/*  You are welcome to bring up to 6 people in your party, with the*/}
-        {/*  ability to make accommodations to book a separate charter vessel if*/}
-        {/*  you require a larger party. Parties interested in booking a separate*/}
-        {/*  charter vessel should contact us prior too booking for possible*/}
-        {/*  arrangements.*/}
-        {/*</Paragraph>*/}
-        {/*<MapScale src={'/icons/scale.svg'} />*/}
         <Paragraph>
           We also offer a catering option to allow you and your guests to relax
           to the fullest. Charter guests are also welcome to bring along food
@@ -186,7 +215,9 @@ export const ChartersPage: FC = () => {
         </Paragraph>
         <ImageSection
           src={boat7}
-          alt=""
+          alt={
+            'Enjoy a glass with friends on your Charleston catamaran charter.'
+          }
           placeholder="blur"
           width={1000}
           height={714}

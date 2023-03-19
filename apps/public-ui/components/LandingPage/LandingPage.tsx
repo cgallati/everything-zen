@@ -49,7 +49,7 @@ export const LandingPage: React.FC = () => {
       <WithBackground>
         <Image
           className={'bg-image'}
-          alt={'background image; a catamaran under sail from above.'}
+          alt={'background image; a private catamaran under sail from above.'}
           src={imgSrc}
           layout="fill"
           objectFit="cover"
@@ -74,14 +74,19 @@ export const LandingPage: React.FC = () => {
         </Paragraph>
         <ImageSection
           src={boat10}
-          alt="A bottle of wine and glasses on the aft table."
+          alt="A bottle of wine and glasses on the aft table during a sailboat charter."
           placeholder="blur"
           width={1000}
           height={714}
         />
         <SubheadingAndFriend>
           <Subheading>WELCOME ABOARD</Subheading>
-          <img src="/ez.svg" alt="E and Z logo" height="60px" width="60px" />
+          <img
+            src="/ez.svg"
+            alt="Everything Zen Sailing Charters logo"
+            height="60px"
+            width="60px"
+          />
         </SubheadingAndFriend>
         <Paragraph>
           Our modern and spacious layout provides a panoramic view with large
@@ -92,7 +97,7 @@ export const LandingPage: React.FC = () => {
         </Paragraph>
         <ImageSection
           src={boat8}
-          alt="Everything Zen's spacious and open aft seating and galley."
+          alt="Our private catamaran charter's spacious and open aft seating and galley."
           placeholder="blur"
           width={1500}
           height={1071}
@@ -101,7 +106,7 @@ export const LandingPage: React.FC = () => {
           <Subheading>CHARLESTON HARBOR</Subheading>
           <img
             src="/chs-hbr.svg"
-            alt="Charleston Harbor Logo"
+            alt="Sail Charleston Harbor SC"
             height="60px"
             width="60px"
           />
@@ -114,7 +119,7 @@ export const LandingPage: React.FC = () => {
         </Paragraph>
         <ImageSection
           src={boat5}
-          alt="Everything Zen sails along Charleston's Low Battery."
+          alt="A private Everything Zen Sailing Charter along Charleston's Low Battery."
           placeholder="blur"
           width={1000}
           height={714}
@@ -128,29 +133,62 @@ export const LandingPage: React.FC = () => {
         </Paragraph>
         <Gallery
           images={[
-            { src: boat0, alt: '' },
-            { src: boat1, alt: '' },
-            { src: boat2, alt: '' },
-            { src: boat3, alt: '' },
-            { src: boat4, alt: '' },
+            {
+              src: boat0,
+              alt: 'Enjoy views of the Ravenel Bridge from your sailboat charter.',
+            },
+            {
+              src: boat1,
+              alt: 'Explore the large galley of our stable catamaran rental.',
+            },
+            {
+              src: boat2,
+              alt: 'See the USS Yorktown as we depart on your Charleston Sailing adventure.',
+            },
+            {
+              src: boat3,
+              alt: 'Lounge in luxury on a Charleston sailboat rental.',
+            },
+            {
+              src: boat4,
+              alt: 'Relax and unwind with a private view of downtown Charleston SC.',
+            },
             {
               src: boat5,
-              alt: "Everything Zen sails along Charleston's Low Battery.",
+              alt: "A private Everything Zen Sailing Charter along Charleston's Low Battery.",
             },
-            { src: boat6, alt: '' },
-            { src: boat7, alt: '' },
+            {
+              src: boat6,
+              alt: "Take in the sun and the history on Charleston's most luxurious private catamaran.",
+            },
+            {
+              src: boat7,
+              alt: 'Enjoy a glass with friends on your Charleston catamaran charter.',
+            },
             {
               src: boat8,
-              alt: "Everything Zen's spacious and open aft seating and galley.",
+              alt: "Our private catamaran charter's spacious and open aft seating and galley.",
             },
-            { src: boat9, alt: '' },
+            {
+              src: boat9,
+              alt: 'Visit the helm to learn how to navigate our private catamaran through Charleston Harbor.',
+            },
             {
               src: boat10,
-              alt: 'A bottle of wine and glasses on the aft table.',
+              alt: 'A bottle of wine and glasses on the aft table during a sailboat charter.',
             },
-            { src: boat11, alt: '' },
-            { src: boat12, alt: '' },
-            { src: boat13, alt: '' },
+            {
+              src: boat11,
+              alt: 'Sunset charters are available for private parties in Charleston SC.',
+            },
+            {
+              src: boat12,
+              alt: 'Hit the water while on your Charleston vacation.',
+            },
+            {
+              src: boat13,
+              alt: "Get a new perspective from Charleston Harbor's best sailboat charter.",
+            },
           ]}
           startingIndex={4}
         />
