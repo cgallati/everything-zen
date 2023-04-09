@@ -15,7 +15,7 @@ import {
   SubheadingAndFriend,
   BigTile,
   Gallery,
-  CTA,
+  AnchorCTA,
 } from '@everything-zen/ui-components';
 import { TileList } from './styles';
 
@@ -113,8 +113,8 @@ export const SpecialOccasionsPage = () => {
           can help you and your charter guests focus on having the best time
           possible while you are on board.
         </Paragraph>
-        <CTA variant={'fat'} text={'CATERING'} route={'/catering'} />
-        <CTA variant={'fat'} text={'CHARTERS & RATES'} route={'/charters'} />
+        <AnchorCTA route={'/catering'}>CATERING</AnchorCTA>
+        <AnchorCTA route={'/charters'}>CHARTERS & RATES</AnchorCTA>
         <SubheadingAndFriend>
           <Subheading>CHARTER WITH US</Subheading>
           <img
@@ -131,7 +131,7 @@ export const SpecialOccasionsPage = () => {
           party to assure everyone on board is having a relaxing and care-free
           time.
         </Paragraph>
-        <CTA variant={'bluefat'} />
+        <AnchorCTA variant={'bluefat'} />
       </Page>
     </Layout>
   );

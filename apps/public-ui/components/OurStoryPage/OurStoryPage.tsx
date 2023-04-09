@@ -8,7 +8,7 @@ import {
   TileGrid,
   Gallery,
   Tile,
-  CTA,
+  AnchorCTA,
 } from '@everything-zen/ui-components';
 import toddKathy from '../../public/photos/toddAndKathy.jpg';
 import React from 'react';
@@ -101,7 +101,7 @@ export const OurStoryPage = () => {
           concerns. Come feel the harbor breeze while you experience sailing in
           one of the most historic harbors of our nation!
         </Paragraph>
-        <CTA variant={'bluefat'} />
+        <AnchorCTA variant={'bluefat'} />
         <InstaHeading href={'https://www.instagram.com/everythingzensailing/'}>
           JOIN OUR STORY ON INSTAGRAM
         </InstaHeading>

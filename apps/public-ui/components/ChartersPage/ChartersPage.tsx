@@ -8,6 +8,7 @@ import {
   Gallery,
   Tile,
   CTA,
+  AnchorCTA,
 } from '@everything-zen/ui-components';
 import {
   CharterCard,
@@ -230,7 +231,7 @@ export const ChartersPage: FC = () => {
           everyone onboard.
         </Paragraph>
         <CTAPadding>
-          <CTA variant={'bluefat'} />
+          <AnchorCTA variant={'bluefat'} />
         </CTAPadding>
       </ContentSection>
       <Footer />

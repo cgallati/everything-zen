@@ -32,9 +32,9 @@ import {
   ResponsiveSubheading,
   Subheading,
   SubheadingAndFriend,
-  CTA,
   Gallery,
   Endorsement,
+  AnchorCTA,
 } from '@everything-zen/ui-components';
 import { Footer } from '../Layout/Footer';
 import { useWindowSize } from 'usehooks-ts';
@@ -193,13 +193,9 @@ export const LandingPage: React.FC = () => {
           startingIndex={4}
         />
         <MapScale src={'/icons/scale.svg'} />
-        <CTA variant={'fat'} text={'CHARTERS & RATES'} route={'/charters'} />
-        <CTA
-          variant={'fat'}
-          text={'SPECIAL OCCASIONS'}
-          route={'/special-occasions'}
-        />
-        <CTA variant={'fat'} text={'OUR STORY'} route={'/story'} />
+        <AnchorCTA route={'/charters'}>CHARTERS & RATES</AnchorCTA>
+        <AnchorCTA route={'/special-occasions'}>SPECIAL OCCASIONS</AnchorCTA>
+        <AnchorCTA route={'/story'}>OUR STORY</AnchorCTA>
         <LocationHeading>
           LOCATED AT
           <br />
@@ -212,7 +208,7 @@ export const LandingPage: React.FC = () => {
           USS Yorktown. Experience one of our nation’s most historic harbors up
           close and in person!
         </Paragraph>
-        <CTA variant={'bluefat'} />
+        <AnchorCTA variant={'bluefat'} />
         <Endorsement img={expertiseSVG} />
       </ContentSection>
       <Footer />

@@ -2,7 +2,7 @@ import { Layout, Page } from '../Layout';
 import { FAQs } from './content';
 import { FAQ } from './FAQ';
 import React, { useState } from 'react';
-import { CTA, Endorsement } from '@everything-zen/ui-components';
+import { AnchorCTA, CTA, Endorsement } from '@everything-zen/ui-components';
 import expertiseSVG from '../../public/expertise-charters-2022.svg';
 
 export const FAQPage: React.FC = () => {
@@ -24,8 +24,8 @@ export const FAQPage: React.FC = () => {
           />
         ))}
         <br />
-        <CTA variant={'fat'} text={'CONTACT US'} route={'/contact'} />
-        <CTA variant={'fat'} text={'CHARTERS & RATES'} route={'/charters'} />
+        <AnchorCTA route={'/contact'}>CONTACT US</AnchorCTA>
+        <AnchorCTA route={'/charters'}>CHARTERS & RATES</AnchorCTA>
         <Endorsement img={expertiseSVG} />
       </Page>
     </Layout>
