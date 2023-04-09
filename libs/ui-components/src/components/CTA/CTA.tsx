@@ -22,13 +22,15 @@ export const AnchorCTA: React.FC<CTAProps> = ({
 }) =>
   variant === 'bluefat' ? (
     <Padding>
-      <SkinnierBluerStyledAnchor href={route}>
-        {children}
-      </SkinnierBluerStyledAnchor>{' '}
+      <Link href={route} passHref>
+        <SkinnierBluerStyledAnchor>{children}</SkinnierBluerStyledAnchor>
+      </Link>
     </Padding>
   ) : (
     <Padding>
-      <StyledAnchor href={route}>{children}</StyledAnchor>
+      <Link href={route} passHref>
+        <StyledAnchor>{children}</StyledAnchor>
+      </Link>
     </Padding>
   );
 
