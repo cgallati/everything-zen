@@ -14,11 +14,27 @@ export const Heading = styled.h1`
   margin-bottom: 4rem;
 `;
 
-export const CaviarAndBananasLogo = styled.img`
+export const MarjoramSection = styled.section`
+ display: flex;
+ @media (max-width: 600px) {
+   flex-direction: column;
+ }
+ align-items: center;
+ > p {
+    min-width: 200px;
+    margin-top: 2rem;
+  }
+`
+
+export const MarjoramHeading = styled(Heading)`
+margin-bottom: 3rem;
+`
+
+export const MarjoramLogo = styled.img`
   width: 80%;
   display: block;
-  margin: 0 auto;
-  max-width: 500px;
+  margin: 0 auto 3rem;
+  max-width: 300px;
 `;
 
 export const CCCLogo = styled.img`

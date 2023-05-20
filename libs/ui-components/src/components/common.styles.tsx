@@ -39,18 +39,6 @@ export const ResponsiveSubheading = styled(Subheading)`
   }
 `;
 
-export const LongerTextSubheading = styled(Subheading)`
-  font: normal normal 600 12px/25px Source Sans Pro;
-  text-align: center;
-  letter-spacing: 2.8px;
-  @media (min-width: 350px) {
-    margin: 4rem auto;
-    font: normal normal 600 12px/30px Source Sans Pro;
-  }
-  @media (min-width: 600px) {
-    font: normal normal 600 15px/33px Source Sans Pro;
-  }
-`;
 
 export const SubheadingAndFriend = styled.div`
   display: flex;

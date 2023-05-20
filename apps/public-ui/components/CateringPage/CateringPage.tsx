@@ -1,11 +1,11 @@
 import { Paragraph } from '@everything-zen/ui-components';
 import React from 'react';
 import {
-  CaviarAndBananasLogo,
+  MarjoramLogo,
   CCCLogo,
-  Heading,
+  Heading, MarjoramSection,
   MenuCTA,
-  PaddedAnchor,
+  PaddedAnchor, MarjoramHeading
 } from './styles';
 import { Layout, Page } from '../Layout';
 
@@ -20,24 +20,36 @@ export const CateringPage = () => {
           to answer any questions or concerns regarding your catering plans for
           the charter.
         </Paragraph>
-        <CaviarAndBananasLogo src={'/c&b.jpg'} />
-        <Heading>FRESH GOURMET-TO-GO CATERING</Heading>
-        <Paragraph>
-          We believe in making your experience onboard as smooth-sailing as
-          possible, which is why we are proud to partner with Caviar & Bananas
-          to provide you and your guests with catering options that are sure to
-          please everyone. They deliver right to our boat and make the catering
-          process seamless. Gluten-free options available.
-        </Paragraph>
-        <PaddedAnchor
-          href={
-            'https://www.caviarandbananas.com/assets/pdfs/menus/catering/catering_maritime.pdf'
-          }
-          target={'_blank'}
-          rel="noreferrer"
-        >
-          <MenuCTA>VIEW MENU</MenuCTA>
-        </PaddedAnchor>
+        <MarjoramHeading>MARJORAM CUISINE</MarjoramHeading>
+        {/*<MarjoramSection>*/}
+            <MarjoramLogo src={'/marjoram-logo.png'} />
+          <Paragraph>
+            We've collaborated with private Chef Mari Jo Ramie to offer a custom
+            menu for your sail around Charleston Harbor. Through her locally renowned
+            catering outfit, Marjoram Cuisine, she offers a wide selection of southern
+            classics, decadent seafood mains, and fresh, modern snacks and desserts. For
+            an added fee, invite Chef Mari along for the sail so she can prep, clean,
+            and take everything down after so you don’t have to lift a finger!
+          </Paragraph>
+        {/*</MarjoramSection>*/}
+          {/*<PaddedAnchor*/}
+          {/*  href={*/}
+          {/*    'https://www.marjoramcuisine.com/_files/ugd/3b2d2b_517cc90288c04f55be1c44f6c58fc695.pdf'*/}
+          {/*  }*/}
+          {/*  target={'_blank'}*/}
+          {/*  rel="noreferrer"*/}
+          {/*>*/}
+          {/*  <MenuCTA>VIEW MENU</MenuCTA>*/}
+          {/*</PaddedAnchor>*/}
+          <PaddedAnchor
+            href={
+              'https://www.marjoramcuisine.com/everything-zen-collaboration'
+            }
+            target={'_blank'}
+            rel="noreferrer"
+          >
+            <MenuCTA>MORE INFO</MenuCTA>
+          </PaddedAnchor>
         <CCCLogo src={'/ccc-logo.png'} />
         <Heading>CHARCUTERIE BOARD HEAVEN</Heading>
         <Paragraph>
