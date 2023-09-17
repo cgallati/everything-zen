@@ -17,7 +17,7 @@ export const FAQs: FAQ[] = [
   {
     question: 'How can we stay protected from the sun?',
     answer:
-      'We have great shaded indoor (with ample windows) and outdoor spaces for your flexibility and comfort. Don’t forget ur sunscreen when spending time on the bow, but leave the spray/aerosol sunscreens at home please as they stain boat surfaces. And hang onto your hat if you bring one!',
+      'We have great shaded indoor (with ample windows) and outdoor spaces for your flexibility and comfort. Don’t forget your sunscreen when spending time on the bow, but leave the spray/aerosol sunscreens at home please as they stain boat surfaces. And hang onto your hat if you bring one!',
   },
   {
     question: 'Is the charter safe?',
