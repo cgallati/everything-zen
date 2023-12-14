@@ -40,4 +40,4 @@ testem.log
 Thumbs.db
 
 # Duh
-.env
+libs/data-access/src/prisma/.env
