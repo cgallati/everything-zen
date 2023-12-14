@@ -16,7 +16,6 @@ import {
   isBefore
 } from 'date-fns';
 import { getTimezoneOffset } from 'date-fns-tz';
-import { Month } from '@everything-zen/ui-components';
 
 type AvailabilityPageProps = {
   availability: SerializableMonth[];
@@ -26,7 +25,7 @@ const AvailabilityPage: NextPage<AvailabilityPageProps> = ({
   availability: serializedAvail,
 }) => {
   const availability = deserializeAvailability(serializedAvail);
-  const isApril2024 = (month: Month) => month.firstDate.getMonth() === 4 && month.firstDate.getFullYear() === 2024;
+  console.log({ availability })
   const updatedAvail = availability.map(month => {
     if(month.firstDate.getHours() != 0) {
       const newFirstDate = addHours(month.firstDate, 1)
@@ -67,7 +66,7 @@ export const getServerSideProps: GetServerSideProps = withPageAuthRequired({
         });
       }
       months.push({
-        firstDate: addMonths(dateCursor, 1).toString(),
+        firstDate: dateCursor.toString(),
         firstDateOffsetHours: (getTimezoneOffset(
           'America/New_York',
           dateCursor
@@ -75,7 +74,7 @@ export const getServerSideProps: GetServerSideProps = withPageAuthRequired({
           (1_000 * 60 * 60)) as -4 | -5,
         days,
       });
-      dateCursor = new Date(months[months.length - 1].firstDate);
+      dateCursor = addMonths(new Date(months[months.length - 1].firstDate), 1);
     }
     return {
       props: {
