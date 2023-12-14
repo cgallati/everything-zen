@@ -9,14 +9,14 @@ import { AvailabilityForm } from '../components/Forms';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 import { deserializeAvailability } from '../lib/data-access';
 import {
+  addHours,
   addMonths,
   addYears,
   getDaysInMonth,
-  getMonth,
-  getYear,
-  isBefore,
+  isBefore
 } from 'date-fns';
 import { getTimezoneOffset } from 'date-fns-tz';
+import { Month } from '@everything-zen/ui-components';
 
 type AvailabilityPageProps = {
   availability: SerializableMonth[];
@@ -26,6 +26,18 @@ const AvailabilityPage: NextPage<AvailabilityPageProps> = ({
   availability: serializedAvail,
 }) => {
   const availability = deserializeAvailability(serializedAvail);
+  const isApril2024 = (month: Month) => month.firstDate.getMonth() === 4 && month.firstDate.getFullYear() === 2024;
+  const updatedAvail = availability.map(month => {
+    if(month.firstDate.getHours() != 0) {
+      const newFirstDate = addHours(month.firstDate, 1)
+      return {
+        ...month,
+        firstDate: newFirstDate,
+        firstDateOffsetHours: -4
+      }
+    }
+    return month
+  })
 
   return (
     <>
@@ -34,7 +46,7 @@ const AvailabilityPage: NextPage<AvailabilityPageProps> = ({
         description="Manage charter availability."
       />
       <AdminLayout>
-        <AvailabilityForm {...{ availability }} />
+        <AvailabilityForm {...{ availability: updatedAvail }} />
       </AdminLayout>
     </>
   );
