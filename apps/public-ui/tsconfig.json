@@ -14,13 +14,14 @@
     "types": [
       "jest",
       "node"
-    ]
+    ],
+    "skipLibCheck": true
   },
   "include": [
-    //    "**/*.ts",
-    //    "**/*.tsx",
-    //    "**/*.js",
-    //    "**/*.jsx",
+//    "**/*.ts",
+//    "**/*.tsx",
+//    "**/*.js",
+//    "**/*.jsx",
     "next-env.d.ts",
     "global.d.ts",
     "src/**/*"

@@ -10,7 +10,6 @@ const PostListItemContainer = styled.section`
   margin-bottom: 5rem;
   padding: 0 20px;
   @media (min-width: 600px) {
-    //font: normal normal 400 17px/32px Source Sans Pro;
     flex-direction: column;
   }
 `;
