@@ -20,6 +20,7 @@ export interface Month {
   days: {
     avails: Availability[];
   }[];
+  firstDateOffsetHours: number
 }
 
 export interface Guest {

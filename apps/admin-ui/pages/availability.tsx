@@ -9,12 +9,11 @@ import { AvailabilityForm } from '../components/Forms';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 import { deserializeAvailability } from '../lib/data-access';
 import {
+  addHours,
   addMonths,
   addYears,
   getDaysInMonth,
-  getMonth,
-  getYear,
-  isBefore,
+  isBefore
 } from 'date-fns';
 import { getTimezoneOffset } from 'date-fns-tz';
 
@@ -26,6 +25,18 @@ const AvailabilityPage: NextPage<AvailabilityPageProps> = ({
   availability: serializedAvail,
 }) => {
   const availability = deserializeAvailability(serializedAvail);
+  console.log({ availability })
+  const updatedAvail = availability.map(month => {
+    if(month.firstDate.getHours() != 0) {
+      const newFirstDate = addHours(month.firstDate, 1)
+      return {
+        ...month,
+        firstDate: newFirstDate,
+        firstDateOffsetHours: -4
+      }
+    }
+    return month
+  })
 
   return (
     <>
@@ -34,7 +45,7 @@ const AvailabilityPage: NextPage<AvailabilityPageProps> = ({
         description="Manage charter availability."
       />
       <AdminLayout>
-        <AvailabilityForm {...{ availability }} />
+        <AvailabilityForm {...{ availability: updatedAvail }} />
       </AdminLayout>
     </>
   );
@@ -55,7 +66,7 @@ export const getServerSideProps: GetServerSideProps = withPageAuthRequired({
         });
       }
       months.push({
-        firstDate: addMonths(dateCursor, 1).toString(),
+        firstDate: dateCursor.toString(),
         firstDateOffsetHours: (getTimezoneOffset(
           'America/New_York',
           dateCursor
@@ -63,7 +74,7 @@ export const getServerSideProps: GetServerSideProps = withPageAuthRequired({
           (1_000 * 60 * 60)) as -4 | -5,
         days,
       });
-      dateCursor = new Date(months[months.length - 1].firstDate);
+      dateCursor = addMonths(new Date(months[months.length - 1].firstDate), 1);
     }
     return {
       props: {
