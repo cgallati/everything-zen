@@ -1,5 +1,5 @@
 const DESCRIPTION =
-  'Sit back and let us take the helm while you enjoy the harbor breeze. Reserve your private Charleston Harbor cruise today.';
+  'Discover the thrill of catamaran sailing with Everything Zen Sailing Charters – your gateway to unforgettable Charleston harbor adventures. Experience luxury and relaxation on our private cruises, where scenic views and gentle breezes await. Book your exclusive Charleston sailing charter today!';
 const TITLE = 'Everything Zen Sailing Charters';
 const TITLE_TEMPLATE = 'Everything Zen | %s';
 
