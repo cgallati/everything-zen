@@ -11,6 +11,9 @@ const nextConfig = {
     svgr: false,
   },
   reactStrictMode: true,
+  images: {
+    domains: ['images.ctfassets.net'],
+  },
 };
 
 module.exports = withNx(nextConfig);

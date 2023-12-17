@@ -22,7 +22,6 @@ import {
 } from './styles';
 import React, { FC } from 'react';
 import { Footer } from '../Layout/Footer';
-import { NextSeo } from 'next-seo';
 import boat0 from '../../public/photos/boat0.jpg';
 import boat1 from '../../public/photos/boat1.jpg';
 import boat2 from '../../public/photos/boat2.jpg';
