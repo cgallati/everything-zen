@@ -36,16 +36,19 @@ export const Footer: React.FC = () => {
             href={FACEBOOK_PROFILE}
             bg={'/icons/Facebook.svg'}
             target={'_blank'}
+            title={"Follow Everything Zen Sailing Charters on Facebook"}
           />
           <SocialIcon
             href={INSTAGRAM_PROFILE}
             bg={'/icons/Instagram.svg'}
             target={'_blank'}
+            title={"Follow Everything Zen Sailing Charters on Instagram"}
           />
           <SocialIcon
             href={TRIPADVISOR_PROFILE}
             bg={'/icons/Tripadvisor.svg'}
             target={'_blank'}
+            title={"Check out Everything Zen Sailing Charters on Trip Advisor"}
           />
         </div>
         <span />
