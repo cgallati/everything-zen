@@ -26,7 +26,7 @@ export const FAQPage: React.FC = () => {
         <br />
         <AnchorCTA route={'/contact'}>CONTACT US</AnchorCTA>
         <AnchorCTA route={'/charters'}>CHARTERS & RATES</AnchorCTA>
-        <Endorsement img={expertiseSVG} />
+        {/*<Endorsement img={expertiseSVG} />*/}
       </Page>
     </Layout>
   );

@@ -209,7 +209,7 @@ export const LandingPage: React.FC = () => {
           close and in person!
         </Paragraph>
         <AnchorCTA variant={'bluefat'} />
-        <Endorsement img={expertiseSVG} />
+        {/*<Endorsement img={expertiseSVG} />*/}
       </ContentSection>
       <Footer />
     </>
