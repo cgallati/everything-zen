@@ -23,7 +23,6 @@ import boat10 from '../../public/photos/boat10.jpg';
 import boat11 from '../../public/photos/boat11.jpg';
 import boat12 from '../../public/photos/boat12.jpg';
 import boat13 from '../../public/photos/boat13.jpg';
-import expertiseSVG from '../../public/expertise-charters-2022.svg';
 import {
   ContentSection,
   ImageSection,
@@ -33,7 +32,6 @@ import {
   Subheading,
   SubheadingAndFriend,
   Gallery,
-  Endorsement,
   AnchorCTA,
 } from '@everything-zen/ui-components';
 import { Footer } from '../Layout/Footer';
@@ -192,7 +190,7 @@ export const LandingPage: React.FC = () => {
           ]}
           startingIndex={4}
         />
-        <MapScale src={'/icons/scale.svg'} />
+        <MapScale src={'/icons/scale.svg'} alt={"Everything Zen map scale"} />
         <AnchorCTA route={'/charters'}>CHARTERS & RATES</AnchorCTA>
         <AnchorCTA route={'/special-occasions'}>SPECIAL OCCASIONS</AnchorCTA>
         <AnchorCTA route={'/story'}>OUR STORY</AnchorCTA>

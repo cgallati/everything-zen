@@ -41,8 +41,8 @@ export const Gallery: React.FC<GalleryProps> = ({
 
   return (
     <Frame>
-      <Button onClick={slideToPrevItem} />
-      <Button onClick={slideToNextItem} />
+      <Button onClick={slideToPrevItem} aria-label="Show Previous Image"/>
+      <Button onClick={slideToNextItem} aria-label="Show Next Image"/>
       {carouselFragment}
     </Frame>
   );

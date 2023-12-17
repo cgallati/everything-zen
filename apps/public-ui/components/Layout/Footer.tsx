@@ -21,6 +21,7 @@ export const Footer: React.FC = () => {
         <img src={'/WAVEYYY.svg'} />
         <UpArrowButton
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          aria-label="Scroll to top of page."
         />
         <ul>
           {footerItems.map(({ label, relRoute }) => (
