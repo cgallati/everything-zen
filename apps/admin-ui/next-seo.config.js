@@ -8,7 +8,7 @@ export default {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://ezsailingcharters.com',
+    url: 'https://everythingzensailingcharters.com',
     site_name: TITLE,
     description: DESCRIPTION,
     images: [

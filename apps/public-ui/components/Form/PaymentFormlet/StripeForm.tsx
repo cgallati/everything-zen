@@ -15,7 +15,7 @@ export const StripeForm: React.FC<{
   const RETURN_HOST =
     window?.location.hostname === 'localhost'
       ? 'google.com'
-      : 'ezsailingcharters.com';
+      : 'everythingzensailingcharters.com';
   const stripe = useStripe();
   const elements = useElements();
 

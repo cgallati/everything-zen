@@ -11,7 +11,7 @@ export const Catering: NextPage = () => {
         description={
           'We offer catering through partners for your charleston sailboat charter.'
         }
-        canonical={'https://ezsailingcharters.com/catering'}
+        canonical={'https://everythingzensailingcharters.com/catering'}
       />
       <CateringPage />
     </>

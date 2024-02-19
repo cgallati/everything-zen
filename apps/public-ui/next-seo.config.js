@@ -8,11 +8,11 @@ export default {
   defaultTitle: TITLE,
   titleTemplate: TITLE_TEMPLATE,
   description: DESCRIPTION,
-  canonical: 'https://ezsailingcharters.com',
+  canonical: 'https://everythingzensailingcharters.com',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://ezsailingcharters.com',
+    url: 'https://everythingzensailingcharters.com',
     site_name: TITLE,
     description: DESCRIPTION,
     images: [

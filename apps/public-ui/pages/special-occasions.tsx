@@ -10,7 +10,7 @@ const SpecialOccasions: NextPage = () => {
         description={
           'Let us handle everything for your special moment on a private sailboat rental.'
         }
-        canonical={'https://ezsailingcharters.com/special-occasions'}
+        canonical={'https://everythingzensailingcharters.com/special-occasions'}
       />
       <SpecialOccasionsPage />
     </>

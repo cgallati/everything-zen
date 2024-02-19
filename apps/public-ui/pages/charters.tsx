@@ -11,7 +11,7 @@ export const Charters: NextPage = () => {
         description={
           'View rates for our luxury catamaran charters in Charleston SC.'
         }
-        canonical={'https://ezsailingcharters.com/charters'}
+        canonical={'https://everythingzensailingcharters.com/charters'}
       />
       <ChartersPage />
     </>

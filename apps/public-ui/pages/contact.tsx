@@ -10,7 +10,7 @@ const Contact: NextPage = () => {
         description={
           'Get in touch to schedule your private sailboat charter in Charleston.'
         }
-        canonical={'https://ezsailingcharters.com/contact'}
+        canonical={'https://everythingzensailingcharters.com/contact'}
       />
       <ContactUsPage />
     </>

@@ -8,7 +8,7 @@ const OurStory: NextPage = () => {
       <NextSeo
         title={'OUR STORY'}
         description={'Meet the hosts of your Charleston harbor sailing tour.'}
-        canonical={'https://ezsailingcharters.com/story'}
+        canonical={'https://everythingzensailingcharters.com/story'}
       />
       <OurStoryPage />
     </>

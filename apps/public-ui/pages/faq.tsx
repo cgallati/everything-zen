@@ -11,7 +11,7 @@ const FAQ: NextPage = () => {
         description={
           'Frequently asked questions about catamaran charters in Charleston SC.'
         }
-        canonical={'https://ezsailingcharters.com/faq'}
+        canonical={'https://everythingzensailingcharters.com/faq'}
       />
       <FAQPage />
     </>
