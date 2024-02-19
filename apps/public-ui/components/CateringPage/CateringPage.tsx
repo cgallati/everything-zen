@@ -50,22 +50,18 @@ export const CateringPage = () => {
           >
             <MenuCTA>MORE INFO</MenuCTA>
           </PaddedAnchor>
-        <CCCLogo src={'/ccc-logo.png'} />
-        <Heading>CHARCUTERIE BOARD HEAVEN</Heading>
+        <Heading>YOUR CHARCUTERIE BOARD AWAITS</Heading>
         <Paragraph>
-          There is nothing more elegant than snacking on a charcuterie board
-          while sailing, and our local business Classy Cheese Chic does it the
-          best. The owner, Caitlyn, creates the most beautifully done boards
-          that are guaranteed to add charm to your sail. They’re also incredibly
-          fresh and delicious.
+          There is nothing more elegant than snacking on a charcuterie board while
+          under sail. Everything Zen Sailing is happy to provide you with two options
+          for your group, which includes cheese and meet selections along with
+          crackers, nuts, and fruit. Contact Everything Zen Sailing to make arrangements.
+          <br/>
+          <br/>
+          1) Large, serves 4-6 guests. $110
+          <br/>
+          2) Medium, serves 2-4 guests. $85
         </Paragraph>
-        <PaddedAnchor
-          href={'https://classycheesechic.com/collections'}
-          target={'_blank'}
-          rel="noreferrer"
-        >
-          <MenuCTA>VIEW MENU</MenuCTA>
-        </PaddedAnchor>
       </Page>
     </Layout>
   );
