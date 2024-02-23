@@ -23,6 +23,7 @@ const Head = ({ children }) => (
       async
       src={`https://www.googletagmanager.com/gtag/js?id=G-5WTR2LEY43`}
     />
+    <script src="https://assets.usestyle.ai/seonajsplugin" defer id="seona-js-plugin"></script>
     <script
       dangerouslySetInnerHTML={{
         __html: `
@@ -32,7 +33,7 @@ const Head = ({ children }) => (
             gtag('config', 'G-5WTR2LEY43', {
               page_path: window.location.pathname,
             });
-          `,
+          `
       }}
     />
   </NextHead>
