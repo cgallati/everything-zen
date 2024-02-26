@@ -9,6 +9,7 @@ import {
 import { Success } from '../../components/Form/Success';
 import { addMinutes, format } from 'date-fns';
 import { transporter } from '../../config/mail';
+import mailjet from 'node-mailjet';
 
 interface SubmitReservationPageProps {
   ok: boolean;
@@ -17,8 +18,19 @@ interface SubmitReservationPageProps {
 const DOMAIN = 'ezsailingcharters.com';
 
 const defaultMessageData = {
-  from: `"Everything Zen Sailing Charters" no-reply@${DOMAIN}`,
-  subject: 'Your Charter Confirmation',
+  From: {
+    Email: `no-reply@${DOMAIN}`,
+    Name: "Everything Zen Sailing Charters"
+  },
+  Bcc: [
+    { Email: 'tggallati@gmail.com' },
+    { Email: `todd@${DOMAIN}` }
+  ],
+  Subject: 'Your Charter Confirmation',
+  ReplyTo: {
+    Email: `todd@${DOMAIN}`
+  },
+  TemplateID: 5685019
 };
 
 const SubmitReservationPage: NextPage<SubmitReservationPageProps> = ({
@@ -93,27 +105,40 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   });
 
   if (event) {
-    if (process.env.SEND_EMAILS !== 'NO') {
-      const date = format(start, 'MMMM do, yyyy');
-      const timeRange =
-        format(start, 'h:mm') +
-        ' - ' +
-        format(addMinutes(start, type.duration), 'h:mm');
-      const data = {
-        ...defaultMessageData,
-        to: email,
-        bcc: ['tggallati@gmail.com', `todd@${DOMAIN}`],
-        text: getConfirmationEmailText({ date, timeRange }),
-        replyTo: `todd@${DOMAIN}`,
-        html: getConfirmationEmailHTMLString({ date, timeRange }),
-      };
-      await transporter(process.env.ZOHO_PW)
-        .sendMail(data)
-        .then(() => console.log('Success sending email to ' + email))
-        .catch((e) => {
-          console.error('Failure sending email to' + email + '. ' + e);
-        });
+    const date = format(start, 'MMMM do, yyyy');
+    const timeRange =
+      format(start, 'h:mm') +
+      ' - ' +
+      format(addMinutes(start, type.duration), 'h:mm');
+    // Mailjet email data
+    const emailData = {
+      Messages: [
+        {
+          ...defaultMessageData,
+          To: [
+            {
+              Email: email
+            }
+          ],
+          Variables: {
+            charterDate: date,
+            charterTime: timeRange
+          },
+          "TemplateLanguage": true,
+        }
+      ]
+    };
+    try {
+      // Configure MailJet client
+      const client = mailjet.apiConnect(process.env.MAILJET_API_KEY as string, process.env.MAILJET_SECRET_KEY as string);
+
+      // Send the email
+      await client.post('send', { version: 'v3.1' }).request(emailData);
+      console.log('Success sending email to ' + email);
+    } catch (e) {
+      console.error('Failure sending email to ' + email + '. ' + e);
     }
+
     // analyticsEvent({
     //       action: 'purchase',
     //       params: {
