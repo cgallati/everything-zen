@@ -1,15 +1,14 @@
 import { Layout, Page } from '../Layout';
 import { FAQs } from './content';
 import { FAQ } from './FAQ';
-import React, { useState } from 'react';
-import { AnchorCTA, CTA, Endorsement } from '@everything-zen/ui-components';
-import expertiseSVG from '../../public/expertise-charters-2022.svg';
+import React, { FC, useState } from 'react';
+import { AnchorCTA } from '@everything-zen/ui-components';
 
-export const FAQPage: React.FC = () => {
+export const FAQPage: FC<{bannerText?: string}> = ({bannerText}) => {
   const [expanded, setExpanded] = useState<number | undefined>(undefined);
 
   return (
-    <Layout>
+    <Layout bannerText={bannerText}>
       <Page title={'FREQUENTLY ASKED QUESTIONS'}>
         {FAQs.map((faq, idx) => (
           <FAQ

@@ -1,6 +1,6 @@
 import { Layout, Page } from '../../components/Layout';
 import { NextPage } from 'next';
-import { fetchEntries } from '../../lib/content/contentfulPosts';
+import { fetchBanner, fetchEntries } from '../../lib/content/contentfulPosts';
 import PostListItem from '../../components/FeedPage/PostListItem';
 import styled from 'styled-components';
 
@@ -10,9 +10,9 @@ const FeedContainer = styled.div`
   align-items: center;
 `;
 
-export const Feed: NextPage = ({ posts }: { posts: any }) => {
+export const Feed: NextPage = ({ posts, bannerText }: { posts: any, bannerText?: string }) => {
   return (
-    <Layout>
+    <Layout bannerText={bannerText}>
       <Page title={'UPDATES'}>
         <FeedContainer>
           {posts.map((post) => (
@@ -31,9 +31,12 @@ export async function getStaticProps() {
   const posts = res.map((p) => {
     return p;
   });
+
+  const bannerText = await fetchBanner();
   return {
     props: {
       posts,
+      bannerText
     },
   };
 }

@@ -1,9 +1,9 @@
-import { NextPage } from 'next';
-import { Layout } from '../components/Layout/';
 import { FAQPage } from '../components/FAQPage/FAQPage';
 import { NextSeo } from 'next-seo';
+import { FC } from 'react';
+import { fetchBanner } from '../lib/content/contentfulPosts';
 
-const FAQ: NextPage = () => {
+const FAQ: FC<{bannerText?: string}> = ({bannerText}) => {
   return (
     <>
       <NextSeo
@@ -13,9 +13,16 @@ const FAQ: NextPage = () => {
         }
         canonical={'https://everythingzensailingcharters.com/faq'}
       />
-      <FAQPage />
+      <FAQPage bannerText={bannerText}/>
     </>
   );
 };
 
 export default FAQ;
+
+export const getStaticProps = async () => {
+  const bannerText = await fetchBanner();
+  return {
+    props: { bannerText },
+  };
+}

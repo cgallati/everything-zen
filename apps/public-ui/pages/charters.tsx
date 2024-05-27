@@ -1,9 +1,9 @@
 import { NextPage } from 'next';
-import { Layout } from '../components/Layout';
 import { ChartersPage } from '../components/ChartersPage/ChartersPage';
 import { NextSeo } from 'next-seo';
+import { fetchBanner } from '../lib/content/contentfulPosts';
 
-export const Charters: NextPage = () => {
+export const Charters: NextPage = ({bannerText}: {bannerText?: string}) => {
   return (
     <>
       <NextSeo
@@ -13,9 +13,18 @@ export const Charters: NextPage = () => {
         }
         canonical={'https://everythingzensailingcharters.com/charters'}
       />
-      <ChartersPage />
+      <ChartersPage bannerText={bannerText} />
     </>
   );
 };
 
 export default Charters;
+
+export const getStaticProps = async () => {
+  const bannerText = await fetchBanner();
+  return {
+    props: {
+      bannerText: bannerText
+    },
+  };
+}

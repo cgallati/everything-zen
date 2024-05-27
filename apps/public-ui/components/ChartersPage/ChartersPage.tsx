@@ -38,9 +38,9 @@ import boat12 from '../../public/photos/boat12.jpg';
 import boat13 from '../../public/photos/boat13.jpg';
 import { Layout } from '../Layout';
 
-export const ChartersPage: FC = () => {
+export const ChartersPage: FC<{bannerText?: string}> = ({bannerText}) => {
   return (
-    <Layout>
+    <Layout bannerText={bannerText}>
       <ContentSection>
         <Heading>CHARTERS & RATES</Heading>
         <MainDetails>

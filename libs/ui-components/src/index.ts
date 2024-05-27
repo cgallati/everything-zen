@@ -7,3 +7,4 @@ export * from './components/Reservations/';
 export * from './components/types';
 export * from './components/Tile';
 export * from './components/Layout';
+export * from './components/Banner/Banner';

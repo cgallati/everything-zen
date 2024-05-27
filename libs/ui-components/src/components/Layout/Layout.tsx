@@ -1,14 +1,16 @@
 import { Body, EZ, Hamburger, Header, Loading } from './styles';
 import Link from 'next/link';
-import { ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import { Squeeze } from 'hamburger-react';
 import { Menu, MenuItem } from './Menu';
 import { useRouter } from 'next/router';
+import { Banner } from '../Banner/Banner';
 
 export const BaseLayout: React.FC<{
   children: ReactNode;
   menuItems: MenuItem[];
-}> = ({ children, menuItems }) => {
+  bannerText?: string;
+}> = ({ children, menuItems, bannerText }) => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
   const [loading, setLoading] = useState<boolean | undefined>(undefined);
@@ -48,7 +50,10 @@ export const BaseLayout: React.FC<{
         </Hamburger>
       </Header>
       <Menu menuItems={menuItems} isOpen={menuOpen} setIsOpen={setMenuOpen} />
-      <Body>{children}</Body>
+      <Body>
+      <Banner bannerText={bannerText} />
+        {children}
+      </Body>
     </>
   );
 };

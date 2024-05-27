@@ -1,5 +1,5 @@
 import { Layout, Page } from '../Layout';
-import React from 'react';
+import React, { FC } from 'react';
 import friends0 from '../../public/photos/friends0.jpg';
 import friends1 from '../../public/photos/friends1.jpg';
 import friends2 from '../../public/photos/friends2.jpg';
@@ -19,9 +19,9 @@ import {
 } from '@everything-zen/ui-components';
 import { TileList } from './styles';
 
-export const SpecialOccasionsPage = () => {
+export const SpecialOccasionsPage: FC<{bannerText?: string}> = ({bannerText}) => {
   return (
-    <Layout>
+    <Layout bannerText={bannerText}>
       <Page title={'special occasions'}>
         <Paragraph>
           Charleston is one of the most famous locations for celebrations and

@@ -1,8 +1,9 @@
 import { ContactUsPage } from '../components/ContactUsPage/ContactUsPage';
 import { NextPage } from 'next';
 import { NextSeo } from 'next-seo';
+import { fetchBanner } from '../lib/content/contentfulPosts';
 
-const Contact: NextPage = () => {
+const Contact: NextPage = ({bannerText}: {bannerText?: string}) => {
   return (
     <>
       <NextSeo
@@ -12,9 +13,18 @@ const Contact: NextPage = () => {
         }
         canonical={'https://everythingzensailingcharters.com/contact'}
       />
-      <ContactUsPage />
+      <ContactUsPage bannerText={bannerText} />
     </>
   );
 };
 
 export default Contact;
+
+export const getStaticProps = async () => {
+  const bannerText = await fetchBanner();
+  return {
+    props: {
+      bannerText: bannerText
+    },
+  };
+}

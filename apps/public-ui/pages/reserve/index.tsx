@@ -8,13 +8,16 @@ import {
 } from '@everything-zen/data-access';
 import { addHours } from 'date-fns';
 import { Form } from '../../components/Form';
+import { fetchBanner } from '../../lib/content/contentfulPosts';
 
 type ReservePageProps = {
   availability: SerializableMonth[];
+  bannerText?: string;
 };
 
 const ReservePage: NextPage<ReservePageProps> = ({
   availability: serializedAvail,
+  bannerText
 }) => {
   const getOffsetFromChs = (date: Date, chsOffset: -4 | -5) => {
     const localOffset = date.getTimezoneOffset() / 60;
@@ -46,7 +49,7 @@ const ReservePage: NextPage<ReservePageProps> = ({
         description="Reserve your private Charleston Harbor catamaran charter today."
         canonical={'https://everythingzensailingcharters.com/reserve'}
       />
-      <Layout>
+      <Layout bannerText={bannerText}>
         <Form {...{ availability }} />
       </Layout>
     </>
@@ -55,9 +58,10 @@ const ReservePage: NextPage<ReservePageProps> = ({
 
 export const getServerSideProps: GetServerSideProps = async (_) => {
   const months = await fetchAndFormatAvailability();
-
+  const bannerText = await fetchBanner();
   return {
     props: {
+      bannerText,
       availability: months,
     },
   };

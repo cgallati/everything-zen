@@ -11,7 +11,7 @@ import {
   AnchorCTA,
 } from '@everything-zen/ui-components';
 import toddKathy from '../../public/photos/toddAndKathy.jpg';
-import React from 'react';
+import React, { FC } from 'react';
 import { InstaHeading } from './styles';
 import friends3 from '../../public/photos/friends3.jpg';
 import friends5 from '../../public/photos/friends5.jpg';
@@ -23,9 +23,9 @@ import testimonialPic1 from '../../public/testimonials/bw-testimonial0.jpg';
 import testimonialPic2 from '../../public/testimonials/bw-testimonial1.jpg';
 import testimonialPic3 from '../../public/testimonials/bw-testimonial2.jpg';
 
-export const OurStoryPage = () => {
+export const OurStoryPage: FC<{bannerText?: string}> = ({bannerText}) => {
   return (
-    <Layout>
+    <Layout bannerText={bannerText}>
       <Page title={'our story'}>
         <Paragraph>
           After years of sailing around the Caribbean & Southeast with family

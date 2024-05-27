@@ -14,6 +14,6 @@ const menuItems: MenuItem[] = [
   { label: 'HOME', relRoute: '/' },
 ];
 
-export const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
-  return <BaseLayout menuItems={menuItems}>{children}</BaseLayout>;
+export const Layout: React.FC<{ children: ReactNode, bannerText?: string }> = ({ children , bannerText}) => {
+  return <BaseLayout menuItems={menuItems} bannerText={bannerText}>{children}</BaseLayout>;
 };

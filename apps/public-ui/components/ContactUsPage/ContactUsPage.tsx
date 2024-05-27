@@ -1,5 +1,4 @@
 import { Layout, Page } from '../Layout/';
-import { NextPage } from 'next';
 import {
   AddressFlex,
   ContactInfoCard,
@@ -14,11 +13,11 @@ import {
   FullWidthImg,
 } from './styles';
 import { TileGrid, Tile } from '@everything-zen/ui-components';
-import React from 'react';
+import React, { FC } from 'react';
 
-export const ContactUsPage: NextPage = () => {
+export const ContactUsPage: FC<{bannerText?: string}> = ({bannerText}) => {
   return (
-    <Layout>
+    <Layout bannerText={bannerText}>
       <Page title={'contact us'}>
         <form
           name={'contact'}

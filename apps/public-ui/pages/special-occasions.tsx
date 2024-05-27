@@ -1,8 +1,10 @@
 import { NextPage } from 'next';
 import { SpecialOccasionsPage } from '../components/SpecialOccasionsPage/SpecialOccasionsPage';
 import { NextSeo } from 'next-seo';
+import { fetchBanner } from '../lib/content/contentfulPosts';
+import { FC } from 'react';
 
-const SpecialOccasions: NextPage = () => {
+const SpecialOccasions: FC<{bannerText?: string}> = ({bannerText}) => {
   return (
     <>
       <NextSeo
@@ -12,9 +14,16 @@ const SpecialOccasions: NextPage = () => {
         }
         canonical={'https://everythingzensailingcharters.com/special-occasions'}
       />
-      <SpecialOccasionsPage />
+      <SpecialOccasionsPage bannerText={bannerText} />
     </>
   );
 };
 
 export default SpecialOccasions;
+
+export const getStaticProps = async () => {
+  const bannerText = await fetchBanner();
+  return {
+    props: {bannerText},
+  };
+}

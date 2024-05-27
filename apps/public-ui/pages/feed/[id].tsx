@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { createClient } from 'contentful';
-import { fetchPaths } from '../../lib/content/contentfulPosts';
+import { fetchBanner, fetchPaths } from '../../lib/content/contentfulPosts';
 import { Layout } from '../../components/Layout';
 import Image from 'next/image';
 
@@ -34,11 +34,11 @@ const PostBody = styled.div`
   }
 `;
 
-export default function PostDetail({ post }) {
+export default function PostDetail({ post, bannerText }) {
   const { title, featuredImage, content } = post.fields;
 
   return (
-    <Layout>
+    <Layout bannerText={bannerText}>
       <PostDetailContainer>
         <ImageWrapper>
           {/*<PostImage src={featuredImage.fields.file.url} alt={title} />*/}
@@ -71,9 +71,9 @@ export async function getStaticProps({ params }) {
   });
 
   const res = await client.getEntry(params.id);
-
+  const bannerText = await fetchBanner();
   return {
-    props: { post: res },
+    props: { post: res, bannerText },
     revalidate: 1,
   };
 }

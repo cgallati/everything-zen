@@ -9,9 +9,9 @@ import {
 } from './styles';
 import { Layout, Page } from '../Layout';
 
-export const CateringPage = () => {
+export const CateringPage: React.FC<{bannerText: string}> = ({bannerText}) => {
   return (
-    <Layout>
+    <Layout bannerText={bannerText}>
       <Page title={'special catering'}>
         <Paragraph>
           To make your catering arrangements, we ask our charter guests to
