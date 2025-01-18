@@ -36,7 +36,7 @@ export const FAQs: FAQ[] = [
   {
     question: 'Can I bring more than 6 passengers?',
     answer:
-      'No. The coast guard limits this class of charter vessel to 6 passengers, not including the captain and crew. Even small children count. However, it may be possible to accommodate your party on two vessels by partnering with another charter, depending on availability.',
+      'No. The coast guard limits this class of charter vessel to 6 passengers, not including the captain and crew. Even small children count.',
   },
   {
     question: 'Will I get sea sick?',
