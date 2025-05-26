@@ -8,7 +8,7 @@ export interface CreatePaymentLinkInput {
 }
 
 const stripe = new Stripe(process.env.STRIPE_SECRET, {
-  apiVersion: '2024-06-20',
+  apiVersion: '2023-10-16',
 });
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -35,10 +35,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       });
 
       for (const pm of existingPaymentMethods.data) {
-        if (pm.allow_redisplay !== 'always') {
+        if ((pm as any).allow_redisplay !== 'always') {
           await stripe.paymentMethods.update(pm.id, {
             allow_redisplay: 'always',
-          });
+          } as any);
           console.log(`Updated payment method ${pm.id} to allow redisplay`);
         }
       }

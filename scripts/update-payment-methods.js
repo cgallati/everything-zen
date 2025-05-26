@@ -31,7 +31,7 @@ const Stripe = require('stripe');
 
 // Initialize Stripe with your secret key
 const stripe = new Stripe(process.env.STRIPE_SECRET, {
-  apiVersion: '2024-06-20',
+  apiVersion: '2023-10-16',
 });
 
 async function updatePaymentMethods(dryRun = false) {

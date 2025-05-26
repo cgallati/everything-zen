@@ -7,7 +7,7 @@ export interface CustomerWithPhone extends Stripe.Customer {
 }
 
 const stripe = new Stripe(process.env.STRIPE_SECRET, {
-  apiVersion: '2024-06-20',
+  apiVersion: '2023-10-16',
 });
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
