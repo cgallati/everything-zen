@@ -31,7 +31,7 @@ const Stripe = require('stripe');
 
 // Initialize Stripe with your secret key
 const stripe = new Stripe(process.env.STRIPE_SECRET, {
-  apiVersion: '2020-08-27',
+  apiVersion: '2024-06-20',
 });
 
 async function updatePaymentMethods(dryRun = false) {
@@ -159,7 +159,7 @@ async function updatePaymentMethods(dryRun = false) {
 
 // Check if Stripe key is provided
 if (!process.env.STRIPE_SECRET) {
-  console.error('❌ Error: STRIPE_SECRETenvironment variable is required');
+  console.error('❌ Error: STRIPE_SECRET environment variable is required');
   console.log('💡 Usage: STRIPE_SECRET=sk_... node scripts/update-payment-methods.js');
   process.exit(1);
 }
