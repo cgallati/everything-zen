@@ -46,7 +46,7 @@ export const getServerSideProps: GetServerSideProps = withPageAuthRequired({
         },
       })
       .then((events) =>
-        events.map(({ start, duration, partySize, partyType, party, id }) => ({
+        events.map(({ start, duration, partySize, partyType, party, id, type }) => ({
           id,
           guest: party[0],
           partyType,
@@ -54,6 +54,7 @@ export const getServerSideProps: GetServerSideProps = withPageAuthRequired({
           // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           partySize: partySize!,
           duration,
+          charterType: type.type,
         }))
       );
 

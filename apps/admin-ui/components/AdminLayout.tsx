@@ -6,6 +6,7 @@ const menuItems: MenuItem[] = [
   { label: 'BOOK A CHARTER', relRoute: '/reserve' },
   { label: 'MANIFEST', relRoute: '/' },
   { label: 'CHARTER TYPES', relRoute: '/charters' },
+  { label: 'PAYMENT LINKS', relRoute: '/payment-link' },
 ];
 export const AdminLayout: React.FC<{ children: ReactNode }> = ({
   children,

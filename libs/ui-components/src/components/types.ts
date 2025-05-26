@@ -36,4 +36,5 @@ export type Charter = {
   time: Date | string;
   partySize: number;
   duration: number;
+  charterType?: string;
 };

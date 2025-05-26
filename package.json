@@ -9,7 +9,9 @@
     "build": "nx build",
     "build:admin": "nx build admin-ui",
     "test": "nx test",
-    "format": "nx format:write"
+    "format": "nx format:write",
+    "stripe:update-payment-methods": "node scripts/update-payment-methods.js",
+    "stripe:check-payment-methods": "node scripts/update-payment-methods.js --dry-run"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^1.9.1",

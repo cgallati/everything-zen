@@ -90,6 +90,28 @@ export const CancelButton = styled.button`
   cursor: pointer;
 `
 
+export const PaymentLinkButton = styled.button`
+  background: #007AFF;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  margin-right: 1rem;
+  font: normal normal 400 11px/13px Source Sans Pro;
+  letter-spacing: 2px;
+  cursor: pointer;
+  box-shadow: 0 0 2px #00000033;
+  
+  &:hover {
+    background: #0056CC;
+  }
+  
+  &:active {
+    background: #004499;
+  }
+`
+
 export const CancellationText = styled.h2`
   color: #7e0000;
   font-family: "Stencilia-A", sans-serif;

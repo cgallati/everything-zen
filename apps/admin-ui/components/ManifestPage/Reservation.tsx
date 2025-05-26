@@ -1,6 +1,7 @@
 import React from 'react';
 import phoneNumberFormatter from 'phone-number-formats';
 import Modal from 'react-modal';
+import { useRouter } from 'next/router';
 
 import {
   CancelButton,
@@ -11,6 +12,7 @@ import {
   modalStyles,
   PartyInfo,
   ReservationCard,
+  PaymentLinkButton,
 } from './styles';
 import { addMinutes, format } from 'date-fns';
 import { Charter } from '@everything-zen/ui-components';
@@ -22,7 +24,9 @@ export const Reservation: React.FC<Charter> = ({
   partyType,
   partySize,
   duration,
+  charterType,
 }) => {
+  const router = useRouter();
   const [modalIsOpen, setIsOpen] = React.useState<boolean>(false);
   const [cancelled, setCancelled] = React.useState<boolean>(false);
   const [error, setError] = React.useState<boolean>(false);
@@ -54,6 +58,17 @@ export const Reservation: React.FC<Charter> = ({
       })
       .catch(() => setError(true));
   };
+
+  const navigateToPaymentLink = () => {
+    const params = new URLSearchParams();
+    if (guest.email) {
+      params.append('customerEmail', guest.email);
+    }
+    if (charterType) {
+      params.append('charterType', charterType);
+    }
+    router.push(`/payment-link?${params.toString()}`);
+  };
   Modal.setAppElement('#__next');
   return (
     <ReservationCard>
@@ -75,11 +90,18 @@ export const Reservation: React.FC<Charter> = ({
             <span>PARTY TYPE:</span> {partyType}
           </h3>
         </div>
-        {cancelled ? (
-          <CancellationText>CANCELLED</CancellationText>
-        ) : (
-          <CancelButton onClick={() => setIsOpen(true)}>CANCEL</CancelButton>
-        )}
+        <div>
+          {cancelled ? (
+            <CancellationText>CANCELLED</CancellationText>
+          ) : (
+            <>
+              <PaymentLinkButton onClick={navigateToPaymentLink}>
+                PAYMENT LINK
+              </PaymentLinkButton>
+              <CancelButton onClick={() => setIsOpen(true)}>CANCEL</CancelButton>
+            </>
+          )}
+        </div>
       </PartyInfo>
       <Modal
         isOpen={modalIsOpen}
