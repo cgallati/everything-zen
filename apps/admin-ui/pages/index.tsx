@@ -18,11 +18,15 @@ const MainPage: FC<ManifestPageProps> = ({ reservations }) => {
 
 export const getServerSideProps: GetServerSideProps = withPageAuthRequired({
   getServerSideProps: async (_) => {
+    // Show charters from 2 days ago onwards
+    const twoDaysAgo = new Date();
+    twoDaysAgo.setDate(twoDaysAgo.getDate() - 2);
+    
     const reservations: Charter[] = await prisma.event
       .findMany({
         where: {
           start: {
-            gt: new Date(),
+            gte: twoDaysAgo,
           },
         },
         orderBy: {
