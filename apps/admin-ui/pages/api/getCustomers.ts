@@ -6,7 +6,7 @@ export interface CustomerWithPhone extends Stripe.Customer {
   phone_from_db?: string;
 }
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+const stripe = new Stripe(process.env.STRIPE_SECRET, {
   apiVersion: '2020-08-27',
 });
 
@@ -26,7 +26,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const customersWithPhones: CustomerWithPhone[] = await Promise.all(
       customers.data.map(async (customer) => {
         let phoneFromDb = customer.phone;
-        
+
         if (customer.email) {
           // Look up phone number in database
           const guestRecord = await prisma.guest.findFirst({
@@ -37,7 +37,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
               phone: true,
             },
           });
-          
+
           if (guestRecord?.phone) {
             phoneFromDb = guestRecord.phone;
           }

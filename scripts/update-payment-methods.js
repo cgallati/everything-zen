@@ -8,7 +8,7 @@ function loadEnv() {
   try {
     const envPath = path.join(__dirname, '..', '.env');
     const envContent = fs.readFileSync(envPath, 'utf8');
-    
+
     envContent.split('\n').forEach(line => {
       const trimmedLine = line.trim();
       if (trimmedLine && !trimmedLine.startsWith('#')) {
@@ -30,7 +30,7 @@ loadEnv();
 const Stripe = require('stripe');
 
 // Initialize Stripe with your secret key
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+const stripe = new Stripe(process.env.STRIPE_SECRET, {
   apiVersion: '2020-08-27',
 });
 
@@ -40,7 +40,7 @@ async function updatePaymentMethods(dryRun = false) {
   } else {
     console.log('🔄 Starting payment method update...');
   }
-  
+
   try {
     let totalUpdated = 0;
     let totalProcessed = 0;
@@ -55,14 +55,14 @@ async function updatePaymentMethods(dryRun = false) {
       const customerParams = {
         limit: 100,
       };
-      
+
       if (customerStartingAfter) {
         customerParams.starting_after = customerStartingAfter;
       }
 
       const customers = await stripe.customers.list(customerParams);
       customersProcessed += customers.data.length;
-      
+
       console.log(`📦 Processing ${customers.data.length} customers (${customersProcessed} total)...`);
 
       // For each customer, get their payment methods
@@ -100,19 +100,19 @@ async function updatePaymentMethods(dryRun = false) {
                 await stripe.paymentMethods.update(pm.id, {
                   allow_redisplay: 'always',
                 });
-                
+
                 totalUpdated++;
                 console.log(`✅ Updated payment method ${pm.id} for customer ${customer.email || customer.id} (${totalUpdated}/${totalProcessed})`);
-                
+
                 // Small delay to avoid rate limiting
                 await new Promise(resolve => setTimeout(resolve, 50));
               }
-              
+
             } catch (error) {
               console.error(`❌ Error ${dryRun ? 'analyzing' : 'updating'} payment method ${pm.id}:`, error.message);
             }
           }
-          
+
         } catch (error) {
           console.error(`❌ Error fetching payment methods for customer ${customer.id}:`, error.message);
         }
@@ -131,7 +131,7 @@ async function updatePaymentMethods(dryRun = false) {
       console.log(`📊 Total payment methods analyzed: ${totalProcessed}`);
       console.log(`🔄 Payment methods that WOULD be updated: ${totalUpdated}`);
       console.log(`✅ Already up to date: ${totalProcessed - totalUpdated}`);
-      
+
       if (totalUpdated > 0) {
         console.log('\n💡 To actually make these changes, run:');
         console.log('   npm run stripe:update-payment-methods');
@@ -158,9 +158,9 @@ async function updatePaymentMethods(dryRun = false) {
 }
 
 // Check if Stripe key is provided
-if (!process.env.STRIPE_SECRET_KEY) {
-  console.error('❌ Error: STRIPE_SECRET_KEY environment variable is required');
-  console.log('💡 Usage: STRIPE_SECRET_KEY=sk_... node scripts/update-payment-methods.js');
+if (!process.env.STRIPE_SECRET) {
+  console.error('❌ Error: STRIPE_SECRETenvironment variable is required');
+  console.log('💡 Usage: STRIPE_SECRET=sk_... node scripts/update-payment-methods.js');
   process.exit(1);
 }
 

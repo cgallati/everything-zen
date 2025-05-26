@@ -7,7 +7,7 @@ export interface CreatePaymentLinkInput {
   priceId: string; // Stripe price ID
 }
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+const stripe = new Stripe(process.env.STRIPE_SECRET, {
   apiVersion: '2020-08-27',
 });
 
@@ -26,7 +26,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     // Update all existing payment methods for this customer to allow redisplay
     console.log(`Updating payment methods for customer ${customerId} to allow redisplay...`);
-    
+
     try {
       const existingPaymentMethods = await stripe.paymentMethods.list({
         customer: customerId,
@@ -42,7 +42,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           console.log(`Updated payment method ${pm.id} to allow redisplay`);
         }
       }
-      
+
       console.log(`Updated ${existingPaymentMethods.data.length} payment methods for customer ${customerId}`);
     } catch (pmError) {
       console.warn('Warning: Could not update existing payment methods:', pmError.message);
