@@ -50,11 +50,11 @@ export const ChartersPage: FC<{bannerText?: string}> = ({bannerText}) => {
         <ResponsiveSubheading>TIMES MAY VARY SEASONALLY</ResponsiveSubheading>
         <CharterCardSection>
           <CharterCard>
-            <h4>$725</h4>
+            <h4>$775</h4>
             <h5>AFTERNOON CRUISE</h5>
           </CharterCard>
           <CharterCard>
-            <h4>$800</h4>
+            <h4>$850</h4>
             <h5>SUNSET CRUISE</h5>
           </CharterCard>
           <CharterCard>
