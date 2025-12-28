@@ -27,7 +27,7 @@ export const FAQs: FAQ[] = [
   {
     question: 'Can we stop and swim?',
     answer:
-      'Yes! This is possible, weather and tidal current dependent. Keep in mind that it will shorten our sailing time.',
+      'Unfortunately, our insurance company does not permit swimming off the boat due to strong winds and currents. Charter guests do have access to the resort pool at the marina before or after our sail.',
   },
   {
     question: 'Should I tip the sailing team?',
