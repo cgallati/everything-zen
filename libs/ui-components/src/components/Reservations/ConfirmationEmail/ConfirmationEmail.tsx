@@ -60,7 +60,7 @@ export const ConfirmationEmail: React.FC<ConfirmationEmailProps> = ({
                 dock, between the USS Yorktown and Clamagore Submarine.
               </p>
               <DockMap>
-                <Image src="/dockmap.jpg" width="294px" height="294px" />
+                <Image src="/dockmap.jpg" width="294px" height="294px" unoptimized />
               </DockMap>
               <p>
                 We ask our charter guests to wear casual attire with easy off

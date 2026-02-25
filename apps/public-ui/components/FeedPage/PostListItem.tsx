@@ -68,6 +68,7 @@ function PostListItem({ post }) {
               layout={'fill'}
               objectFit={'cover'}
               style={{cursor: 'pointer'}}
+              unoptimized
             />
           </ImageWrapper>
         </Link>

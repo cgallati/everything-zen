@@ -47,6 +47,7 @@ export default function PostDetail({ post, bannerText }) {
             alt={title}
             layout={'fill'}
             objectFit={'cover'}
+            unoptimized
           />
         </ImageWrapper>
         <PostTitle>{title}</PostTitle>
