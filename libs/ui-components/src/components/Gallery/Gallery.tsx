@@ -25,6 +25,7 @@ export const Gallery: React.FC<GalleryProps> = ({
         src={image.src}
         alt={image.alt}
         placeholder="blur"
+        unoptimized
       />
     ),
   }));

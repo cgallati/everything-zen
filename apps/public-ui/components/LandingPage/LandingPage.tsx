@@ -54,6 +54,7 @@ export const LandingPage: React.FC = () => {
           objectPosition="30% center"
           placeholder="blur"
           priority={true}
+          unoptimized
         />
         <Heading>WELCOME ABOARD YOUR 40’ CATAMARAN</Heading>
         <Link href={'/reserve'}>

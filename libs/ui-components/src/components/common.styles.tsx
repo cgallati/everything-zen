@@ -84,7 +84,7 @@ const ImageMargins = styled.div`
 
 export const ImageSection: React.FC<ImageProps> = (props) => (
   <ImageMargins>
-    <StyledImage {...props} />
+    <StyledImage unoptimized {...props} />
   </ImageMargins>
 );
 
