@@ -207,7 +207,7 @@ export const ChartersPage: FC<{bannerText?: string}> = ({bannerText}) => {
         </SubheadingAndFriend>
         <Paragraph>
           After years of experience sailing across seas while living aboard, we
-          know your expectations for the atmosphere and service. Our Leopard 40’
+          know your expectations for the atmosphere and service. Our Leopard 42’
           sailing catamaran has a modern layout that provides ample seating
           spaces, including a lounge space at the bow, with easy access in and
           around the yacht between spaces. Simply walk forward through the salon

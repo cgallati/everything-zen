@@ -56,7 +56,7 @@ export const LandingPage: React.FC = () => {
           priority={true}
           unoptimized
         />
-        <Heading>WELCOME ABOARD YOUR 40’ CATAMARAN</Heading>
+        <Heading>WELCOME ABOARD YOUR 42’ CATAMARAN</Heading>
         <Link href={'/reserve'}>
           <PositionedCTA>BOOK A CHARTER</PositionedCTA>
         </Link>
