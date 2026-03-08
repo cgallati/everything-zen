@@ -16,6 +16,13 @@ const getStartTimeDate = (
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { startDate, endDate, startTime, type } = req.body;
+
+  const eventType = await prisma.eventType.findFirst({ where: { type } });
+  if (!eventType) {
+    res.status(400).json({ error: `Unknown charter type: ${type}` });
+    return;
+  }
+
   const avails = [];
   const [year, month, date] = startDate.split('-');
   if (endDate) {
@@ -24,13 +31,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     for (let i = date; i <= endDay; i++) {
       avails.push({
         start: getStartTimeDate(month, i, year, startTime),
-        typeId: type === 'CHARTER' ? 1 : 2,
+        typeId: eventType.id,
       });
     }
   } else {
     avails.push({
       start: getStartTimeDate(month, date, year, startTime),
-      typeId: type === 'CHARTER' ? 1 : 2,
+      typeId: eventType.id,
     });
   }
   const response = await prisma.availability.createMany({

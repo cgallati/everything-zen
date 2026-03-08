@@ -20,6 +20,19 @@ async function main() {
       },
     })
     .then((charterType) => console.log('Success:', { charterType }));
+
+  console.log('upserting charter with daisy type...');
+  await prisma.eventType
+    .upsert({
+      where: { type: 'CHARTER WITH DAISY' },
+      update: { cost: 975, duration: 150 },
+      create: {
+        type: 'CHARTER WITH DAISY',
+        cost: 975,
+        duration: 150,
+      },
+    })
+    .then((charterType) => console.log('Success:', { charterType }));
 }
 
 main()

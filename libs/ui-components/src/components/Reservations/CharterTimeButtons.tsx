@@ -61,7 +61,7 @@ export const CharterTimeButtons: FC<{
           isSelected={selected && selected.id === avail.id}
         >
           <strong>{format(avail.start, 'h:mm')}</strong> {avail.length / 60}{' '}
-          HOUR {avail.type} CRUISE
+          HOUR {avail.type === 'DAISY' ? 'CRUISE W/DAISY' : `${avail.type} CRUISE`}
         </CharterTimeButton>
       ))}
     </>

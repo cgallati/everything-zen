@@ -78,7 +78,8 @@ export const PaymentLinkPage: React.FC<PaymentLinkPageProps> = () => {
           return (
             productName.includes('tip') &&
             ((charterTypeLower.includes('sunset') && productName.includes('sunset')) ||
-             (charterTypeLower === 'charter' && productName.includes('afternoon')))
+             (charterTypeLower === 'charter' && productName.includes('afternoon')) ||
+             (charterTypeLower.includes('daisy') && productName.includes('daisy')))
           );
         });
         if (product) {

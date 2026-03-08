@@ -69,7 +69,7 @@ export const fetchAndFormatAvailability = async () => {
       length: avail.type.duration,
       cost: avail.type.cost,
       booked: !!avail.event,
-      type: avail.type.type === 'CHARTER' ? 'DAYTIME' : 'SUNSET',
+      type: avail.type.type === 'CHARTER' ? 'DAYTIME' : avail.type.type === 'CHARTER WITH DAISY' ? 'DAISY' : 'SUNSET',
       startOffsetHours: (getTimezoneOffset('America/New_York', avail.start) /
         (1_000 * 60 * 60)) as -4 | -5,
     };

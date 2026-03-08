@@ -78,7 +78,7 @@ export const InfoFormlet: React.FC<InfoFormletProps> = ({
       <SubtleHeader>YOU ARE RESERVING</SubtleHeader>
       <ItemLine>
         <ReservationItem>
-          {length / 60} HOUR {cruiseTimeStrings[0]} CRUISE
+          {length / 60} HOUR {cruiseTimeStrings[0] === 'DAISY' ? 'CRUISE W/DAISY' : `${cruiseTimeStrings[0]} CRUISE`}
         </ReservationItem>
         <ReservationItem>${cost}</ReservationItem>
       </ItemLine>

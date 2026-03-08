@@ -184,6 +184,7 @@ export const AvailabilityForm: React.FC<FormProps> = ({ availability }) => {
           <select name={'type'}>
             <option>CHARTER</option>
             <option>SUNSET CHARTER</option>
+            <option>CHARTER WITH DAISY</option>
           </select>
           <input type={'submit'} />
           <button onClick={handleCancelClick}>CANCEL</button>
